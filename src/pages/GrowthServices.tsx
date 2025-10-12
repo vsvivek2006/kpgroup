@@ -308,7 +308,7 @@ const GrowthServices: React.FC = () => {
     {
       id: "web-traffic",
       name: "Website Organic Traffic",
-      price: 34.48, // Doubled from 17.24
+      price: 60, // Doubled from 20.24
       min: 100,
       max: 100000,
       description: "Organic website traffic from real sources",
