@@ -8,222 +8,302 @@ import {
   Instagram,
   Linkedin,
   Facebook,
+  Globe,
+  Rocket,
+  Users,
+  Zap,
+  Award,
+  Star,
+  Target,
+  TrendingUp
 } from "lucide-react";
 
 const Footer: React.FC = () => {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="bg-gray-900 text-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-          {/* Brand + Blurb */}
-          <div className="col-span-1 md:col-span-2">
-            <div className="flex items-center space-x-3 mb-4">
-              {/* Logo Image */}
-              <div className="flex-shrink-0">
-                <img 
-                  src="/logo.png" 
-                  alt="DiziGrow Logo" 
-                  className="h-12 w-12 object-contain"
-                  onError={(e) => {
-                    // Fallback if logo doesn't load
-                    e.currentTarget.style.display = 'none';
-                  }}
-                />
+    <footer className="bg-gradient-to-br from-gray-900 via-purple-900 to-gray-950 text-white relative overflow-hidden">
+      {/* Background Pattern */}
+      <div className="absolute inset-0 opacity-10">
+        <div className="absolute inset-0" style={{
+          backgroundImage: `radial-gradient(circle at 25px 25px, rgba(255,255,255,0.3) 2%, transparent 0%), 
+                           radial-gradient(circle at 75px 75px, rgba(255,255,255,0.2) 2%, transparent 0%)`,
+          backgroundSize: '100px 100px'
+        }}></div>
+      </div>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 relative z-10">
+        {/* Main Footer Content */}
+        <div className="grid grid-cols-1 lg:grid-cols-4 gap-8 mb-12">
+          {/* Brand Section - Full Width Logo */}
+          <div className="lg:col-span-4 text-center mb-8">
+            <div className="flex flex-col items-center justify-center space-y-6">
+              {/* Large Logo */}
+              <div className="flex items-center justify-center space-x-4 bg-gradient-to-r from-purple-600 to-pink-600 p-8 rounded-3xl shadow-2xl border-2 border-purple-400/30">
+                <div className="flex-shrink-0">
+                  <img 
+                    src="/logo.png" 
+                    alt="Earning Sharthi Logo" 
+                    className="h-32 w-32 object-contain drop-shadow-2xl animate-pulse"
+                    onError={(e) => {
+                      // Fallback if logo doesn't load
+                      const target = e.currentTarget;
+                      target.style.display = 'none';
+                      const fallback = document.createElement('div');
+                      fallback.className = 'h-32 w-32 bg-gradient-to-r from-yellow-400 to-purple-600 rounded-full flex items-center justify-center text-white text-2xl font-bold';
+                      fallback.textContent = 'ES';
+                      target.parentNode?.insertBefore(fallback, target);
+                    }}
+                  />
+                </div>
+                
+                {/* Brand Name with Enhanced Styling */}
+                <div className="flex flex-col text-left">
+                  <span 
+                    className="text-5xl font-bold bg-gradient-to-r from-yellow-300 via-pink-300 to-purple-300 bg-clip-text text-transparent drop-shadow-2xl"
+                    style={{ 
+                      fontFamily: '"Haboro Serif", serif',
+                      fontWeight: 800,
+                      letterSpacing: '-0.025em',
+                      textShadow: '0 4px 8px rgba(0,0,0,0.3)'
+                    }}
+                  >
+                    EARNING SHARTHI
+                  </span>
+                  <div className="flex items-center gap-4 mt-3">
+                    <div className="flex items-center gap-1 bg-green-500/20 px-3 py-1 rounded-full border border-green-400/30">
+                      <Star className="h-4 w-4 text-yellow-400 fill-current" />
+                      <span className="text-green-300 text-sm font-semibold">Premium Services</span>
+                    </div>
+                    <div className="flex items-center gap-1 bg-blue-500/20 px-3 py-1 rounded-full border border-blue-400/30">
+                      <Rocket className="h-4 w-4 text-blue-400" />
+                      <span className="text-blue-300 text-sm font-semibold">Fast Delivery</span>
+                    </div>
+                  </div>
+                </div>
               </div>
-              
-              {/* Brand Name with Haboro Serif Font */}
-              <div className="flex flex-col">
-                <span 
-                  className="text-2xl font-bold bg-gradient-to-r from-purple-400 to-yellow-400 bg-clip-text text-transparent"
-                  style={{ 
-                    fontFamily: '"Haboro Serif", serif',
-                    fontWeight: 700,
-                    letterSpacing: '-0.025em'
-                  }}
-                >
-                  DiziGrow
-                </span>
-                <span 
-                  className="text-sm text-gray-400 -mt-1"
-                  style={{ fontFamily: '"Haboro Serif", serif' }}
-                >
-                  Digital Growth Partners
-                </span>
+
+              {/* Trust Badges */}
+              <div className="flex flex-wrap justify-center items-center gap-6 mt-6">
+                {[
+                  { icon: Users, text: "5000+ Happy Clients", color: "text-green-400" },
+                  { icon: Award, text: "50K+ Orders", color: "text-yellow-400" },
+                  { icon: Zap, text: "24/7 Support", color: "text-blue-400" },
+                  { icon: TrendingUp, text: "4.9/5 Rating", color: "text-purple-400" }
+                ].map((item, index) => (
+                  <div key={index} className="flex items-center gap-2 bg-white/5 px-4 py-2 rounded-xl border border-white/10">
+                    <item.icon className={`h-5 w-5 ${item.color}`} />
+                    <span className="text-white font-semibold text-sm">{item.text}</span>
+                  </div>
+                ))}
               </div>
             </div>
+          </div>
 
-            <p className="text-gray-300 mb-6 max-w-md text-lg leading-relaxed">
-              Creative Digital Solutions That Deliver Growth 🚀
-              <br />
-              We provide branding, digital marketing, and web development solutions that help you succeed online.
-            </p>
+          {/* Contact Information */}
+          <div className="lg:col-span-2">
+            <div className="bg-gradient-to-br from-purple-900/50 to-pink-900/30 p-6 rounded-2xl border border-purple-400/20">
+              <h3 className="text-2xl font-bold mb-6 text-yellow-300 text-center">Get In Touch</h3>
+              <div className="space-y-4">
+                <div className="flex items-center space-x-4 p-3 bg-white/5 rounded-xl hover:bg-white/10 transition-all duration-300">
+                  <div className="p-2 bg-green-500/20 rounded-lg">
+                    <Phone className="h-6 w-6 text-green-400" />
+                  </div>
+                  <div>
+                    <p className="text-gray-300 text-sm">Call Us</p>
+                    <a 
+                      href="tel:+916398799013" 
+                      className="text-white font-semibold text-lg hover:text-green-300 transition-colors"
+                    >
+                      +91 6398799013
+                    </a>
+                  </div>
+                </div>
 
-            <div className="space-y-3" aria-label="Contact information">
-              <div className="flex items-center space-x-3">
-                <Phone className="h-5 w-5 text-purple-400 flex-shrink-0" aria-hidden="true" />
-                <a 
-                  href="tel:+919521281509" 
-                  className="hover:text-purple-300 transition-colors duration-200 text-lg"
-                >
-                  +91 9521281509
-                </a>
-              </div>
-              <div className="flex items-center space-x-3">
-                <Mail className="h-5 w-5 text-purple-400 flex-shrink-0" aria-hidden="true" />
-                <a 
-                  href="mailto:info@dizigrow.com" 
-                  className="hover:text-purple-300 transition-colors duration-200 text-lg"
-                >
-                  info@dizigrow.com
-                </a>
-              </div>
-              <div className="flex items-center space-x-3">
-                <MapPin className="h-5 w-5 text-purple-400 flex-shrink-0" aria-hidden="true" />
-                <span className="text-lg">Jaipur, Rajasthan</span>
+                <div className="flex items-center space-x-4 p-3 bg-white/5 rounded-xl hover:bg-white/10 transition-all duration-300">
+                  <div className="p-2 bg-blue-500/20 rounded-lg">
+                    <Mail className="h-6 w-6 text-blue-400" />
+                  </div>
+                  <div>
+                    <p className="text-gray-300 text-sm">Email Us</p>
+                    <a 
+                      href="mailto:info@earningsharthi.in" 
+                      className="text-white font-semibold text-lg hover:text-blue-300 transition-colors"
+                    >
+                      info@earningsharthi.in
+                    </a>
+                  </div>
+                </div>
+
+                <div className="flex items-center space-x-4 p-3 bg-white/5 rounded-xl hover:bg-white/10 transition-all duration-300">
+                  <div className="p-2 bg-purple-500/20 rounded-lg">
+                    <MapPin className="h-6 w-6 text-purple-400" />
+                  </div>
+                  <div>
+                    <p className="text-gray-300 text-sm">Location</p>
+                    <span className="text-white font-semibold text-lg">Khatima, Uttarakhand</span>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
 
           {/* Quick Links */}
           <div>
-            <h3 
-              className="text-lg font-semibold mb-4 text-yellow-400"
-              style={{ fontFamily: '"Haboro Serif", serif' }}
-            >
-              Quick Links
-            </h3>
-            <ul className="space-y-3">
-              {[
-                { name: "Home", path: "/" },
-                { name: "About", path: "/about" },
-                { name: "Services", path: "/services" },
-                { name: "Growth Services", path: "/growth-services" }, // ✅ YEH ADD KIYA
-                { name: "Portfolio", path: "/portfolio" },
-                { name: "Pricing", path: "/pricing" },
-                { name: "Contact", path: "/contact" },
-                { name: "Offer", path: "/offer" },
-                { name: "FAQ", path: "/faq" }
-              ].map((item) => (
-                <li key={item.name}>
-                  <Link 
-                    to={item.path} 
-                    className="text-gray-300 hover:text-purple-400 transition-colors duration-200 text-lg block py-1"
-                  >
-                    {item.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
+            <div className="bg-gradient-to-br from-blue-900/50 to-cyan-900/30 p-6 rounded-2xl border border-blue-400/20 h-full">
+              <h3 className="text-xl font-bold mb-6 text-yellow-300 text-center">Quick Links</h3>
+              <ul className="space-y-3">
+                {[
+                  { name: "🏠 Home", path: "/" },
+                  { name: "👥 About", path: "/about" },
+                  { name: "🚀 Services", path: "/services" },
+                  { name: "💼 Portfolio", path: "/portfolio" },
+                  { name: "💰 Pricing", path: "/pricing" },
+                  { name: "📞 Contact", path: "/contact" },
+                ].map((item) => (
+                  <li key={item.name}>
+                    <Link 
+                      to={item.path} 
+                      className="text-gray-300 hover:text-yellow-300 transition-all duration-300 text-lg block py-2 px-3 rounded-lg hover:bg-white/5 hover:translate-x-2"
+                    >
+                      {item.name}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
 
-          {/* Legal + Social */}
+          {/* Services & Social */}
           <div>
-            <h3 
-              className="text-lg font-semibold mb-4 text-yellow-400"
-              style={{ fontFamily: '"Haboro Serif", serif' }}
-            >
-              Legal
-            </h3>
-            <ul className="space-y-3 mb-8">
-              {[
-                { name: "Onboarding Agreement", path: "/onboarding-agreement" },
-                { name: "Terms of Service", path: "/terms" },
-                { name: "Privacy Policy", path: "/privacy" }
-              ].map((item) => (
-                <li key={item.name}>
-                  <Link 
-                    to={item.path} 
-                    className="text-gray-300 hover:text-purple-400 transition-colors duration-200 text-lg block py-1"
+            <div className="bg-gradient-to-br from-pink-900/50 to-red-900/30 p-6 rounded-2xl border border-pink-400/20 h-full">
+              <h3 className="text-xl font-bold mb-6 text-yellow-300 text-center">Our Services</h3>
+              <ul className="space-y-3 mb-6">
+                {[
+                  { name: "🌐 Website Development", path: "/services#web-development" },
+                  { name: "🔍 SEO Services", path: "/services#seo" },
+                  { name: "📱 Social Media Marketing", path: "/services#smm" },
+                  { name: "🎯 Google & Meta Ads", path: "/services#ads" },
+                  { name: "🛒 E-commerce Solutions", path: "/services#ecommerce" },
+                  { name: "🎨 Branding", path: "/services#branding" }
+                ].map((item) => (
+                  <li key={item.name}>
+                    <Link 
+                      to={item.path} 
+                      className="text-gray-300 hover:text-pink-300 transition-all duration-300 text-sm block py-2 px-3 rounded-lg hover:bg-white/5"
+                    >
+                      {item.name}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+
+              <h3 className="text-xl font-bold mb-4 text-yellow-300 text-center">Follow Us</h3>
+              <div className="flex justify-center space-x-4">
+                {[
+                  { 
+                    icon: MessageCircle, 
+                    href: "https://wa.me/916398799013", 
+                    color: "bg-green-500 hover:bg-green-600",
+                    label: "WhatsApp"
+                  },
+                  { 
+                    icon: Instagram, 
+                    href: "https://www.instagram.com/earningsharthi", 
+                    color: "bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600",
+                    label: "Instagram"
+                  },
+                  { 
+                    icon: Facebook, 
+                    href: "https://www.facebook.com/earningsharthidigital", 
+                    color: "bg-blue-600 hover:bg-blue-700",
+                    label: "Facebook"
+                  },
+                  { 
+                    icon: Linkedin, 
+                    href: "https://x.com/earningsharthi", 
+                    color: "bg-blue-500 hover:bg-blue-600",
+                    label: "Twitter/X"
+                  }
+                ].map((social) => (
+                  <a
+                    key={social.label}
+                    href={social.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`${social.color} text-white p-3 rounded-xl transition-all duration-300 hover:scale-110 hover:shadow-lg transform`}
+                    aria-label={social.label}
                   >
-                    {item.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-
-            <h3 
-              className="text-lg font-semibold mb-4 text-yellow-400"
-              style={{ fontFamily: '"Haboro Serif", serif' }}
-            >
-              Follow Us
-            </h3>
-            <div className="flex space-x-4" aria-label="Social links">
-              {[
-                { 
-                  icon: MessageCircle, 
-                  href: "https://wa.me/919521281509?text=Hello%20DiziGrow,%20I%20want%20to%20grow%20my%20business%20online.", 
-                  color: "text-green-400 hover:text-green-300",
-                  label: "WhatsApp"
-                },
-                { 
-                  icon: Instagram, 
-                  href: "https://www.instagram.com/dizi_grow/", 
-                  color: "text-gray-300 hover:text-pink-400",
-                  label: "Instagram"
-                },
-                { 
-                  icon: Linkedin, 
-                  href: "https://www.linkedin.com/company/109423940/", 
-                  color: "text-gray-300 hover:text-blue-400",
-                  label: "LinkedIn"
-                },
-                { 
-                  icon: Facebook, 
-                  href: "https://www.facebook.com/profile.php?id=61581763886467#", 
-                  color: "text-gray-300 hover:text-blue-500",
-                  label: "Facebook"
-                }
-              ].map((social) => (
-                <a
-                  key={social.label}
-                  href={social.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={`${social.color} transition-colors duration-200 hover:scale-110 transform`}
-                  aria-label={social.label}
-                >
-                  <social.icon className="h-7 w-7" aria-hidden="true" />
-                </a>
-              ))}
+                    <social.icon className="h-5 w-5" />
+                  </a>
+                ))}
+              </div>
             </div>
+          </div>
+        </div>
 
-            {/* WhatsApp CTA Button */}
-            <div className="mt-6">
-              <a
-                href="https://wa.me/919521281509?text=Hello%20DiziGrow,%20I%20want%20to%20grow%20my%20business%20online."
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-lg font-semibold transition-all duration-200 hover:scale-105 hover:shadow-lg flex items-center justify-center gap-2 w-full text-center"
-              >
-                <MessageCircle className="h-5 w-5" />
-                Start Conversation
-              </a>
+        {/* CTA Section */}
+        <div className="text-center mb-12">
+          <div className="bg-gradient-to-r from-purple-600 to-pink-600 rounded-2xl p-8 border-2 border-yellow-400/30 shadow-2xl">
+            <h2 className="text-3xl font-bold text-white mb-4">Ready to Grow Your Business?</h2>
+            <p className="text-purple-100 text-xl mb-6">Let's create something amazing together!</p>
+            <a
+              href="https://wa.me/916398799013"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white px-8 py-4 rounded-xl font-bold text-lg transition-all duration-300 hover:scale-105 hover:shadow-2xl inline-flex items-center gap-3"
+            >
+              <MessageCircle className="h-6 w-6" />
+              Start Your Project Today
+            </a>
+          </div>
+        </div>
+
+        {/* Legal Links */}
+        <div className="border-t border-purple-800 pt-8">
+          <div className="flex flex-col lg:flex-row justify-between items-center space-y-6 lg:space-y-0">
+            <div className="flex flex-wrap justify-center gap-6">
+              {[
+                { name: "📄 Onboarding Agreement", path: "/onboarding-agreement" },
+                { name: "📝 Terms of Service", path: "/terms" },
+                { name: "🔒 Privacy Policy", path: "/privacy" },
+                { name: "💸 Refund Policy", path: "/refund-policy" }
+              ].map((item) => (
+                <Link 
+                  key={item.name}
+                  to={item.path} 
+                  className="text-gray-400 hover:text-yellow-300 transition-all duration-300 text-sm font-medium hover:scale-105"
+                >
+                  {item.name}
+                </Link>
+              ))}
             </div>
           </div>
         </div>
 
         {/* Bottom Section */}
-        <div className="border-t border-gray-800 mt-8 pt-8 text-center">
-<p
-  className="text-gray-300 text-lg mb-2"
-  style={{ fontFamily: '"Haboro Serif", serif' }}
->
-  © {year} DiziGrow. All rights reserved.
-</p>
-<p className="text-gray-400 text-md">
-  Made with ❤️ in India | Empowering Businesses Digitally <br />
-  <span className="text-gray-400">
-    Website designed & maintained by <strong>Vivek Singh</strong>
-  </span>
-</p>
+        <div className="border-t border-purple-800 mt-8 pt-8 text-center">
+          <p className="text-gray-300 text-lg mb-4 font-semibold">
+            © {year} <span className="text-yellow-300">EARNING SHARTHI</span>. All rights reserved.
+          </p>
+          <p className="text-gray-400 text-md mb-4">
+            Made with 💖 in India | Empowering Businesses Digitally
+          </p>
           
-          {/* Trust Badges */}
-          <div className="flex justify-center items-center gap-6 mt-4 pt-4 border-t border-gray-800">
-            <div className="text-gray-400 text-sm">🚀 Premium Digital Solutions</div>
-            <div className="text-gray-400 text-sm">⭐ 5-Star Rated Service</div>
-            <div className="text-gray-400 text-sm">⚡ Fast & Reliable</div>
+          {/* Service Highlights */}
+          <div className="flex flex-wrap justify-center items-center gap-6 mt-6 pt-6 border-t border-purple-800">
+            {[
+              "🚀 Premium Growth Services",
+              "⭐ 5000+ Happy Clients", 
+              "⚡ Instant Start",
+              "💼 50K+ Orders Completed",
+              "🎯 Real Results",
+              "🛡️ 100% Safe"
+            ].map((text, index) => (
+              <div key={index} className="text-gray-300 text-sm font-medium bg-white/5 px-4 py-2 rounded-full border border-white/10">
+                {text}
+              </div>
+            ))}
           </div>
         </div>
       </div>

@@ -10,7 +10,6 @@ const primaryNav: NavItem[] = [
   { name: "Portfolio", href: "/portfolio" },
   { name: "Pricing", href: "/pricing" },
   { name: "Contact", href: "/contact" },
-  { name: "FAQ", href: "/faq" },
 ];
 
 const legalNav: NavItem[] = [
@@ -43,26 +42,26 @@ const Header: React.FC = () => {
   const linkBase = "px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200";
   const navClass = ({ isActive }: { isActive: boolean }) =>
     isActive
-      ? `${linkBase} bg-purple-600 text-white shadow-md`
-      : `${linkBase} text-gray-700 hover:bg-purple-50 hover:text-purple-600`;
+      ? `${linkBase} bg-blue-600 text-white shadow-md`
+      : `${linkBase} text-gray-700 hover:bg-blue-50 hover:text-blue-600`;
 
   return (
     <header className="bg-white shadow-lg sticky top-0 z-50 border-b border-gray-100">
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" aria-label="Main">
-        <div className="flex justify-between items-center h-16">
-          {/* Brand with Logo */}
+        <div className="flex justify-between items-center h-20">
+          {/* Brand with Larger Logo */}
           <div className="flex items-center">
             <Link 
               to="/" 
-              className="flex items-center space-x-3 hover:scale-105 transition-transform duration-200" 
-              aria-label="DiziGrow Home"
+              className="flex items-center space-x-4 hover:scale-105 transition-transform duration-200" 
+              aria-label="Earningsharthi Home"
             >
-              {/* Logo Image */}
+              {/* Larger Logo Image */}
               <div className="flex-shrink-0">
                 <img 
                   src="/logo.png" 
-                  alt="DiziGrow Logo" 
-                  className="h-10 w-10 object-contain"
+                  alt="Earningsharthi Logo" 
+                  className="h-14 w-14 object-contain drop-shadow-md"
                   onError={(e) => {
                     // Fallback if logo doesn't load
                     e.currentTarget.style.display = 'none';
@@ -70,20 +69,17 @@ const Header: React.FC = () => {
                 />
               </div>
               
-              {/* Brand Name with Haboro Serif Font */}
+              {/* Brand Name Only - No Tagline */}
               <div className="flex flex-col">
                 <span 
-                  className="text-2xl font-bold bg-gradient-to-r from-purple-600 to-purple-800 bg-clip-text text-transparent"
+                  className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent"
                   style={{ 
                     fontFamily: '"Haboro Serif", serif',
                     fontWeight: 700,
                     letterSpacing: '-0.025em'
                   }}
                 >
-                  DiziGrow
-                </span>
-                <span className="text-xs text-gray-500 -mt-1" style={{ fontFamily: '"Haboro Serif", serif' }}>
-                  Digital Growth Partners
+                  Earningsharthi
                 </span>
               </div>
             </Link>
@@ -105,8 +101,8 @@ const Header: React.FC = () => {
             {/* Legal dropdown (desktop) */}
             <div className="relative legal-dropdown">
               <button
-                className={`${linkBase} text-gray-700 hover:bg-purple-50 hover:text-purple-600 flex items-center gap-1 transition-all duration-200 ${
-                  legalOpen ? 'bg-purple-50 text-purple-600' : ''
+                className={`${linkBase} text-gray-700 hover:bg-blue-50 hover:text-blue-600 flex items-center gap-1 transition-all duration-200 ${
+                  legalOpen ? 'bg-blue-50 text-blue-600' : ''
                 }`}
                 aria-haspopup="menu"
                 aria-expanded={legalOpen}
@@ -132,8 +128,8 @@ const Header: React.FC = () => {
                       className={({ isActive }) =>
                         `block px-3 py-2 rounded-md text-sm transition-colors duration-200 ${
                           isActive
-                            ? "bg-purple-600 text-white shadow-md"
-                            : "text-gray-700 hover:bg-purple-50 hover:text-purple-600"
+                            ? "bg-blue-600 text-white shadow-md"
+                            : "text-gray-700 hover:bg-blue-50 hover:text-blue-600"
                         }`
                       }
                       role="menuitem"
@@ -150,7 +146,7 @@ const Header: React.FC = () => {
           {/* Desktop CTAs */}
           <div className="hidden md:flex items-center space-x-3">
             <a
-              href="https://wa.me/919521281509?text=Hello%20DiziGrow,%20I%20want%20to%20grow%20my%20business%20online."
+              href="https://wa.me/916398799013?text=Hello%20Earningsharthi,%20I%20want%20to%20learn%20about%20your%20digital%20marketing%20services."
               target="_blank"
               rel="noopener noreferrer"
               className="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-lg font-medium transition-all duration-200 hover:scale-105 hover:shadow-lg flex items-center gap-2 group"
@@ -160,10 +156,10 @@ const Header: React.FC = () => {
             </a>
             <NavLink
               to="/contact"
-              className="bg-gradient-to-r from-purple-600 to-purple-800 hover:from-purple-700 hover:to-purple-900 text-white px-4 py-2 rounded-lg font-medium transition-all duration-200 hover:scale-105 hover:shadow-lg flex items-center gap-2 group"
+              className="bg-gradient-to-r from-blue-600 to-blue-800 hover:from-blue-700 hover:to-blue-900 text-white px-4 py-2 rounded-lg font-medium transition-all duration-200 hover:scale-105 hover:shadow-lg flex items-center gap-2 group"
             >
               <Phone className="h-4 w-4" />
-              <span>Get Free Quote</span>
+              <span>Get Started</span>
             </NavLink>
           </div>
 
@@ -171,7 +167,7 @@ const Header: React.FC = () => {
           <div className="md:hidden">
             <button
               onClick={() => setIsOpen((v) => !v)}
-              className="inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-purple-600 hover:bg-purple-50 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-purple-500 transition-colors duration-200"
+              className="inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-blue-600 hover:bg-blue-50 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500 transition-colors duration-200"
               aria-label="Toggle menu"
               aria-expanded={isOpen}
             >
@@ -191,8 +187,8 @@ const Header: React.FC = () => {
                   className={({ isActive }) =>
                     `block px-3 py-3 rounded-lg text-base font-medium transition-colors duration-200 ${
                       isActive
-                        ? "bg-purple-600 text-white shadow-md"
-                        : "text-gray-700 hover:bg-purple-50 hover:text-purple-600"
+                        ? "bg-blue-600 text-white shadow-md"
+                        : "text-gray-700 hover:bg-blue-50 hover:text-blue-600"
                     }`
                   }
                   onClick={() => setIsOpen(false)}
@@ -213,8 +209,8 @@ const Header: React.FC = () => {
                     className={({ isActive }) =>
                       `block px-3 py-3 rounded-lg text-base transition-colors duration-200 ${
                         isActive
-                          ? "bg-purple-600 text-white shadow-md"
-                          : "text-gray-700 hover:bg-purple-50 hover:text-purple-600"
+                          ? "bg-blue-600 text-white shadow-md"
+                          : "text-gray-700 hover:bg-blue-50 hover:text-blue-600"
                       }`
                     }
                     onClick={() => setIsOpen(false)}
@@ -227,7 +223,7 @@ const Header: React.FC = () => {
               {/* Mobile CTAs */}
               <div className="flex flex-col space-y-3 pt-4 border-t border-gray-200">
                 <a
-                  href="https://wa.me/919521281509?text=Hello%20DiziGrow,%20I%20want%20to%20grow%20my%20business%20online."
+                  href="https://wa.me/916398799013?text=Hello%20Earningsharthi,%20I%20want%20to%20learn%20about%20your%20digital%20marketing%20services."
                   target="_blank"
                   rel="noopener noreferrer"
                   className="bg-green-500 hover:bg-green-600 text-white px-4 py-3 rounded-lg font-medium transition-colors duration-200 text-center flex items-center justify-center gap-2"
@@ -238,11 +234,11 @@ const Header: React.FC = () => {
                 </a>
                 <NavLink
                   to="/contact"
-                  className="bg-gradient-to-r from-purple-600 to-purple-800 hover:from-purple-700 hover:to-purple-900 text-white px-4 py-3 rounded-lg font-medium transition-all duration-200 text-center flex items-center justify-center gap-2"
+                  className="bg-gradient-to-r from-blue-600 to-blue-800 hover:from-blue-700 hover:to-blue-900 text-white px-4 py-3 rounded-lg font-medium transition-all duration-200 text-center flex items-center justify-center gap-2"
                   onClick={() => setIsOpen(false)}
                 >
                   <Phone className="h-4 w-4" />
-                  Get Free Quote
+                  Get Started
                 </NavLink>
               </div>
             </div>

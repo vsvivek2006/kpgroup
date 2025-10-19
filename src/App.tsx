@@ -13,25 +13,48 @@ import Contact from './pages/Contact';
 import Terms from './pages/Terms'; 
 import OnboardingAgreement from './pages/OnboardingAgreement'; 
 import Privacy from './pages/Privacy';
-import FAQ from './FAQ';
 import NotFound from './pages/NotFound';
 import Offer from './pages/Offer';
 import GrowthServices from './pages/GrowthServices';
+
 function App() {
   return (
     <Router>
       {/* Global SEO + GA4 */}
       <Helmet>
-        {/* GA4 Tracking */}
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-M92TJDJ055"></script>
+        {/* Primary Meta Tags */}
+        <title>Earningsharthi - Digital Marketing & Web Development Company in Uttarakhand</title>
+        <meta name="description" content="Earningsharthi provides professional digital marketing, branding, and web development services in Khatima, Uttarakhand. Grow your business online with our expert solutions." />
+        <meta name="keywords" content="digital marketing, web development, branding, SEO, social media marketing, e-commerce, Khatima, Uttarakhand, India, website design, logo design" />
+        <meta name="author" content="Earningsharthi" />
+        
+        {/* Open Graph / Facebook */}
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://earningsharthi.in/" />
+        <meta property="og:title" content="Earningsharthi - Digital Marketing & Web Development Company" />
+        <meta property="og:description" content="Professional digital marketing, web development, and branding services in Khatima, Uttarakhand. Transform your online presence with Earningsharthi." />
+        <meta property="og:image" content="https://earningsharthi.in/og-image.jpg" />
+        
+        {/* Twitter */}
+        <meta property="twitter:card" content="summary_large_image" />
+        <meta property="twitter:url" content="https://earningsharthi.in/" />
+        <meta property="twitter:title" content="Earningsharthi - Digital Marketing & Web Development Company" />
+        <meta property="twitter:description" content="Professional digital marketing, web development, and branding services in Khatima, Uttarakhand." />
+        <meta property="twitter:image" content="https://earningsharthi.in/og-image.jpg" />
+        
+        {/* Canonical URL */}
+        <link rel="canonical" href="https://earningsharthi.in/" />
+        
+        {/* GA4 Tracking - Add your actual GA4 ID when available */}
+        {/* <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
         <script>
           {`
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
-            gtag('config', 'G-M92TJDJ055');
+            gtag('config', 'GA_MEASUREMENT_ID');
           `}
-        </script>
+        </script> */}
         
         {/* ✅ Razorpay Script for Payment Functionality */}
         <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
@@ -50,10 +73,8 @@ function App() {
             <Route path="/onboarding-agreement" element={<OnboardingAgreement />} />
             <Route path="/terms" element={<Terms />} />
             <Route path="/privacy" element={<Privacy />} />
-            <Route path="/faq" element={<FAQ />} />
             <Route path="/growth-services" element={<GrowthServices />} />
-            
-            <Route path="/Offer" element={<Offer />} />
+            <Route path="/offer" element={<Offer />} />
             
             {/* ✅ PAYMENT SUCCESS PAGE */}
             <Route path="/payment/success" element={
@@ -67,12 +88,12 @@ function App() {
                   <div className="space-y-3">
                     <a 
                       href="/" 
-                      className="bg-purple-600 hover:bg-purple-700 text-white px-6 py-3 rounded-lg font-semibold transition-colors block"
+                      className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-semibold transition-colors block"
                     >
                       Return to Home
                     </a>
                     <a 
-                      href="https://wa.me/919521281509" 
+                      href="https://wa.me/916398799013" 
                       target="_blank"
                       rel="noopener noreferrer"
                       className="bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-lg font-semibold transition-colors block"
@@ -96,12 +117,12 @@ function App() {
                   <div className="space-y-3">
                     <a 
                       href="/pricing" 
-                      className="bg-purple-600 hover:bg-purple-700 text-white px-6 py-3 rounded-lg font-semibold transition-colors block"
+                      className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-semibold transition-colors block"
                     >
                       Try Again
                     </a>
                     <a 
-                      href="https://wa.me/919521281509" 
+                      href="https://wa.me/916398799013" 
                       target="_blank"
                       rel="noopener noreferrer"
                       className="bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-lg font-semibold transition-colors block"
@@ -109,7 +130,7 @@ function App() {
                       💬 WhatsApp Support
                     </a>
                     <a 
-                      href="tel:+919521281509"
+                      href="tel:+916398799013"
                       className="bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold transition-colors block"
                     >
                       📞 Call Support

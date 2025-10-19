@@ -1,5 +1,24 @@
 import React, { useState } from 'react';
-import { Check, Star, Zap, Shield, Clock, Users, TrendingUp, ShoppingCart, Video, Mail, MessageCircle, CreditCard } from 'lucide-react';
+import { 
+  Check, 
+  Star, 
+  Zap, 
+  Shield, 
+  Clock, 
+  Users, 
+  TrendingUp, 
+  ShoppingCart, 
+  Video, 
+  Mail, 
+  MessageCircle, 
+  CreditCard, 
+  Crown, 
+  Rocket, 
+  Target, 
+  Award, 
+  Sparkles,
+  Phone
+} from 'lucide-react';
 import { Helmet } from 'react-helmet';
 
 // Razorpay types
@@ -9,15 +28,58 @@ declare global {
   }
 }
 
-const Pricing = () => {
-  const [isPaymentOpen, setIsPaymentOpen] = useState(false);
-  const [paymentService, setPaymentService] = useState("");
-  const [paymentAmount, setPaymentAmount] = useState(0);
-  const [originalAmount, setOriginalAmount] = useState(0);
+// Type Definitions
+interface PlanFeature {
+  text: string;
+}
 
-const RAZORPAY_KEY_ID = 'rzp_live_ROjWHHKbSiP7Al';
+interface Plan {
+  name: string;
+  price: string;
+  originalPrice: string;
+  currentPrice: number;
+  popular: boolean;
+  badge: string | null;
+  features: string[];
+  duration?: string;
+}
+
+interface ServiceCategory {
+  category: string;
+  plans: Plan[];
+}
+
+interface QuickService {
+  name: string;
+  price: string;
+  originalPrice: string;
+  currentPrice: number;
+  description: string;
+  icon: React.ReactNode;
+}
+
+interface Tab {
+  id: string;
+  label: string;
+  icon: React.ReactNode;
+}
+
+interface BenefitItem {
+  icon: React.ReactNode;
+  text: string;
+}
+
+const Pricing: React.FC = () => {
+  const [isPaymentOpen, setIsPaymentOpen] = useState<boolean>(false);
+  const [paymentService, setPaymentService] = useState<string>("");
+  const [paymentAmount, setPaymentAmount] = useState<number>(0);
+  const [originalAmount, setOriginalAmount] = useState<number>(0);
+  const [activeTab, setActiveTab] = useState<string>('website');
+
+  const RAZORPAY_KEY_ID = 'rzp_live_ROjWHHKbSiP7Al';
+
   // Payment Handler
-  const handlePayment = async (amount: number, serviceName: string) => {
+  const handlePayment = async (amount: number, serviceName: string): Promise<void> => {
     try {
       const amountInPaise = Math.round(amount * 100);
       
@@ -25,10 +87,10 @@ const RAZORPAY_KEY_ID = 'rzp_live_ROjWHHKbSiP7Al';
         key: RAZORPAY_KEY_ID,
         amount: amountInPaise,
         currency: 'INR',
-        name: 'DiziGrow Digital Marketing',
+        name: 'Earningsharthi Digital Marketing',
         description: `${serviceName} - Advance Payment`,
         handler: function(response: any) {
-          alert(`Payment Successful! Payment ID: ${response.razorpay_payment_id}`);
+          alert(`🎉 Payment Successful! Payment ID: ${response.razorpay_payment_id}`);
           window.location.href = `https://wa.me/919521281509?text=Payment Successful for ${serviceName}. Payment ID: ${response.razorpay_payment_id}`;
         },
         prefill: {
@@ -40,7 +102,7 @@ const RAZORPAY_KEY_ID = 'rzp_live_ROjWHHKbSiP7Al';
           service: serviceName
         },
         theme: {
-          color: '#8B5CF6'
+          color: '#2563eb'
         }
       };
 
@@ -48,11 +110,11 @@ const RAZORPAY_KEY_ID = 'rzp_live_ROjWHHKbSiP7Al';
       paymentObject.open();
     } catch (error) {
       console.error('Payment Error:', error);
-      alert('Payment failed. Please try again or contact support.');
+      alert('❌ Payment failed. Please try again or contact support.');
     }
   };
 
-  const openPaymentModal = (serviceName: string, currentPrice: number, originalPrice: number) => {
+  const openPaymentModal = (serviceName: string, currentPrice: number, originalPrice: number): void => {
     const discountedPrice = Math.floor(currentPrice * 0.95); // 5% extra discount
     setPaymentAmount(discountedPrice);
     setOriginalAmount(currentPrice);
@@ -60,212 +122,657 @@ const RAZORPAY_KEY_ID = 'rzp_live_ROjWHHKbSiP7Al';
     setIsPaymentOpen(true);
   };
 
-  // Monthly Services - Minimum 3 Months
-  const monthlyServices = [
-    { 
-      name: 'Social Media Management', 
-      price: '₹4,999/month', 
-      originalPrice: '₹18,000',
+  // Website Development Services
+  const websiteServices: ServiceCategory[] = [
+    {
+      category: "Real Estate Website Development",
+      plans: [
+        {
+          name: 'BASIC',
+          price: '₹9,999',
+          originalPrice: '₹22,000',
+          currentPrice: 9999,
+          popular: false,
+          badge: null,
+          features: [
+            'Responsive Design',
+            'Basic SEO',
+            'Website Optimization',
+            'Domain and Hosting',
+            'Secure SSL certificate',
+            'Social Media and Whatsapp Integration',
+            'Maintenance & Support',
+            'Analytics Integration',
+            'Keyword Research',
+            'Monthly Report'
+          ]
+        },
+        {
+          name: 'STANDARD',
+          price: '₹16,999',
+          originalPrice: '₹35,000',
+          currentPrice: 16999,
+          popular: false,
+          badge: null,
+          features: [
+            'Responsive Design',
+            'Standard SEO',
+            'Website Optimization',
+            'Domain and Hosting',
+            'Secure SSL certificate',
+            'Social Media and Whatsapp Integration',
+            'Maintenance & Support',
+            'Analytics Integration',
+            'Keyword Research',
+            'Monthly Report'
+          ]
+        },
+        {
+          name: 'PROFESSIONAL',
+          price: '₹21,999',
+          originalPrice: '₹45,000',
+          currentPrice: 21999,
+          popular: true,
+          badge: 'MOST POPULAR',
+          features: [
+            'Responsive Design',
+            'Advance SEO',
+            'Website Optimization',
+            'Domain and Hosting',
+            'Secure SSL certificate',
+            'Social Media and Whatsapp Integration',
+            'Maintenance & Support',
+            'Analytics Integration',
+            'Keyword Research',
+            'Monthly Report'
+          ]
+        },
+        {
+          name: 'PREMIUM',
+          price: '₹39,999',
+          originalPrice: '₹75,000',
+          currentPrice: 39999,
+          popular: false,
+          badge: 'PREMIUM',
+          features: [
+            'Responsive Design',
+            'Premium SEO',
+            'Website Optimization',
+            'Domain and Hosting',
+            'Secure SSL certificate',
+            'Social Media and Whatsapp Integration',
+            'Maintenance & Support',
+            'Property Listing Module',
+            'Keyword Research',
+            'Monthly Report'
+          ]
+        }
+      ]
+    },
+    {
+      category: "E-commerce Website Development",
+      plans: [
+        {
+          name: 'BASIC',
+          price: '₹4,999',
+          originalPrice: '₹12,000',
+          currentPrice: 4999,
+          popular: false,
+          badge: null,
+          features: [
+            'Basic Template',
+            'Basic SEO',
+            'Upto 10 Products',
+            'Domain and Hosting',
+            'Secure SSL certificate',
+            'Shopping Cart and Checkout',
+            'Maintenance & Support',
+            'Analytics Integration',
+            'Keyword Research',
+            'Monthly Report'
+          ]
+        },
+        {
+          name: 'STANDARD',
+          price: '₹14,999',
+          originalPrice: '₹30,000',
+          currentPrice: 14999,
+          popular: false,
+          badge: null,
+          features: [
+            'Responsive Design',
+            'Standard SEO',
+            'Upto 50 Products',
+            'Domain and Hosting',
+            'Secure SSL certificate',
+            'Shopping cart and Checkout',
+            'Maintenance & Support',
+            'Monthly Report',
+            'Analytics Integration',
+            'Keyword Research'
+          ]
+        },
+        {
+          name: 'PROFESSIONAL',
+          price: '₹28,999',
+          originalPrice: '₹55,000',
+          currentPrice: 28999,
+          popular: true,
+          badge: 'POPULAR',
+          features: [
+            'Responsive Design',
+            'Advance SEO',
+            'Upto 200 products',
+            'Domain and Hosting',
+            'Secure SSL certificate',
+            'Product Review and Rating',
+            'Maintenance & Support',
+            'Analytics Integration',
+            'Keyword Research',
+            'Monthly Report'
+          ]
+        },
+        {
+          name: 'PREMIUM',
+          price: '₹51,999',
+          originalPrice: '₹95,000',
+          currentPrice: 51999,
+          popular: false,
+          badge: 'PREMIUM',
+          features: [
+            'Responsive Design',
+            'Premium SEO',
+            'Unlimited Products',
+            'Domain and Hosting',
+            'Secure SSL certificate',
+            'Multi Vendor & Marketplace Option',
+            'Maintenance & Support',
+            'Order & Inventory Management',
+            'Keyword Research',
+            'Monthly Report'
+          ]
+        }
+      ]
+    },
+    {
+      category: "News Portal Website Development",
+      plans: [
+        {
+          name: 'BASIC',
+          price: '₹4,999',
+          originalPrice: '₹12,000',
+          currentPrice: 4999,
+          popular: false,
+          badge: null,
+          features: [
+            'Basic Template',
+            'Basic SEO',
+            'Breaking News Ticker',
+            'Domain and Hosting',
+            'Secure SSL certificate',
+            'Image and Video Post Support',
+            'Maintenance & Support',
+            'Analytics Integration',
+            'Keyword Research',
+            'Monthly Report'
+          ]
+        },
+        {
+          name: 'STANDARD',
+          price: '₹9,999',
+          originalPrice: '₹22,000',
+          currentPrice: 9999,
+          popular: true,
+          badge: 'POPULAR',
+          features: [
+            'Responsive Design',
+            'Standard SEO',
+            'Post scheduling & Management',
+            'Domain and Hosting',
+            'Secure SSL certificate',
+            'Google news Integration',
+            'Maintenance & Support',
+            'Monthly Report',
+            'Analytics Integration',
+            'Keyword Research'
+          ]
+        },
+        {
+          name: 'PROFESSIONAL',
+          price: '₹16,999',
+          originalPrice: '₹35,000',
+          currentPrice: 16999,
+          popular: false,
+          badge: null,
+          features: [
+            'Responsive Design',
+            'Advance SEO',
+            'Author & Editor Login',
+            'Domain and Hosting',
+            'Secure SSL certificate',
+            'Newsletter Subscription',
+            'Maintenance & Support',
+            'Analytics Integration',
+            'Keyword Research',
+            'Monthly Report'
+          ]
+        }
+      ]
+    }
+  ];
+
+  // Other Website Services
+  const otherWebsiteServices: ServiceCategory[] = [
+    {
+      category: "NGO Website Development",
+      plans: [
+        {
+          name: 'BASIC',
+          price: '₹4,999',
+          originalPrice: '₹12,000',
+          currentPrice: 4999,
+          popular: true,
+          badge: 'POPULAR',
+          features: [
+            'Responsive Design',
+            'Basic SEO',
+            'Website Optimization',
+            'Domain and Hosting',
+            'Secure SSL certificate',
+            'Volunteer Registration form',
+            'Maintenance & Support',
+            'Monthly Report',
+            'Analytics Integration',
+            'Keyword Research'
+          ]
+        },
+        {
+          name: 'STANDARD',
+          price: '₹14,999',
+          originalPrice: '₹30,000',
+          currentPrice: 14999,
+          popular: false,
+          badge: null,
+          features: [
+            'Responsive Design',
+            'Standard SEO',
+            'Author & Editor Login',
+            'Domain and Hosting',
+            'Secure SSL certificate',
+            'Donation Page Integration',
+            'Maintenance & Support',
+            'Analytics Integration',
+            'Keyword Research',
+            'Monthly Report'
+          ]
+        }
+      ]
+    },
+    {
+      category: "Shopify Website Development",
+      plans: [
+        {
+          name: 'BASIC',
+          price: '₹5,500',
+          originalPrice: '₹12,000',
+          currentPrice: 5500,
+          popular: true,
+          badge: 'POPULAR',
+          features: [
+            'Responsive Design',
+            'Basic SEO',
+            'Shipping Setup',
+            'Domain and Hosting',
+            'Secure SSL certificate',
+            'Shipping Cart & Checkout Setup',
+            'Maintenance & Support',
+            'Monthly Report',
+            'Analytics Integration',
+            'Keyword Research'
+          ]
+        },
+        {
+          name: 'STANDARD',
+          price: '₹11,000',
+          originalPrice: '₹25,000',
+          currentPrice: 11000,
+          popular: false,
+          badge: null,
+          features: [
+            'Responsive Design',
+            'Standard SEO',
+            'Collection & Categories Setup',
+            'Domain and Hosting',
+            'Secure SSL certificate',
+            'Social Media Integration',
+            'Maintenance & Support',
+            'Analytics Integration',
+            'Keyword Research',
+            'Monthly Report'
+          ]
+        }
+      ]
+    },
+    {
+      category: "Information Website Development",
+      plans: [
+        {
+          name: 'BASIC',
+          price: '₹4,999',
+          originalPrice: '₹12,000',
+          currentPrice: 4999,
+          popular: true,
+          badge: 'POPULAR',
+          features: [
+            'Responsive Design',
+            'Basic SEO',
+            'Basic Template',
+            'Domain and Hosting',
+            'Secure SSL certificate',
+            'Contact Form and Whatsapp Chat',
+            'Maintenance & Support',
+            'Monthly Report',
+            'Analytics Integration',
+            'Keyword Research'
+          ]
+        },
+        {
+          name: 'STANDARD',
+          price: '₹7,999',
+          originalPrice: '₹18,000',
+          currentPrice: 7999,
+          popular: false,
+          badge: null,
+          features: [
+            'Responsive Design',
+            'Standard SEO',
+            'Custom Layout',
+            'Domain and Hosting',
+            'Secure SSL certificate',
+            'Social Media Integration',
+            'Maintenance & Support',
+            'Analytics Integration',
+            'Keyword Research',
+            'Monthly Report'
+          ]
+        }
+      ]
+    },
+    {
+      category: "School / College Website Development",
+      plans: [
+        {
+          name: 'STANDARD',
+          price: '₹2,199',
+          originalPrice: '₹8,000',
+          currentPrice: 2199,
+          popular: true,
+          badge: 'BEST VALUE',
+          features: [
+            'Responsive Design',
+            'Standard SEO',
+            'Custom Layout',
+            'Domain and Hosting',
+            'Secure SSL certificate',
+            'Social Media Integration',
+            'Maintenance & Support',
+            'Analytics Integration',
+            'Keyword Research',
+            'Monthly Report'
+          ]
+        }
+      ]
+    }
+  ];
+
+  // SEO Services
+  const seoServices: Plan[] = [
+    {
+      name: 'BASIC',
+      price: '₹4,999',
+      originalPrice: '₹12,000',
       currentPrice: 4999,
-      duration: 'Minimum 3 months commitment',
-      description: 'Complete social media management across all platforms',
       popular: true,
+      badge: 'POPULAR',
+      duration: 'per month',
       features: [
-        '15 Creative Design Posts Monthly',
-        '2 Professional Videos/Reels',
-        'Platform Management: Instagram, Meta, Twitter(X), WhatsApp',
-        'Trending Hashtags & Keyword Research',
-        'Content Calendar & Strategy',
-        'Audience Engagement Management',
-        'Performance Analytics Report',
-        'Monthly Growth Strategy'
-      ],
-      badge: 'MOST POPULAR'
+        'Basic website Audit',
+        'Basic SEO',
+        'Content Optimization',
+        '1 Keyword Research',
+        'Technical SEO',
+        'Backlink Strategy',
+        'Local SEO',
+        'Maintenance & Support',
+        'Monthly Report'
+      ]
     },
-    { 
-      name: 'SEO Service', 
-      price: '₹7,999/month', 
-      originalPrice: '₹14,999',
-      currentPrice: 7999,
-      duration: 'Minimum 3 months commitment',
-      description: 'Complete SEO optimization for better Google rankings',
+    {
+      name: 'STANDARD',
+      price: '₹11,000',
+      originalPrice: '₹25,000',
+      currentPrice: 11000,
       popular: false,
+      badge: null,
+      duration: 'per month',
       features: [
-        'Comprehensive Keyword Research (50+ keywords)',
-        'On-Page SEO Optimization',
-        'Technical SEO Audit & Fixes',
-        'Content Optimization & Strategy',
-        'Quality Backlink Building',
-        'Monthly Ranking Reports',
-        'Google Analytics & Search Console Setup',
-        'Local SEO Optimization',
-        'Website Speed Optimization',
-        'Monthly Strategy Calls'
-      ],
-      badge: 'BEST FOR GROWTH'
-    },
-    { 
-  name: 'Google Ads Management', 
-  price: '₹3,999/month', 
-  originalPrice: '₹14,999',
-  currentPrice: 3999,   // 
-  duration: 'Minimum 3 months commitment',
-  description: 'Professional Google Ads campaign management',
-  popular: false,
-  features: [
-    'Campaign Strategy & Setup',
-    'Keyword Research & Analysis',
-    'Ad Copy Creation & Optimization',
-    'Landing Page Quality Score Optimization',
-    'Daily Budget & Bid Management',
-    'A/B Testing of Ads & Landing Pages',
-    'Conversion Tracking Setup',
-    'Monthly Performance Reports',
-    'ROI Optimization',
-    '24/7 Campaign Monitoring'
-      ],
-      badge: 'HIGH ROI'
-    }
-  ];
-
-  // One-time Digital Marketing Services
-  const digitalMarketingServices = [
-    { 
-      name: 'Social Media Account Creation', 
-      price: '₹1,999', 
-      originalPrice: '₹4,999',
-      currentPrice: 1999,
-      description: 'Professional social media account setup',
-      features: [
-        'META Business Account Setup',
-        'Instagram Professional Account',
-        'Twitter (X) Business Profile',
-        'Profile Optimization',
-        'Cover & Profile Picture Design',
-        'Bio & Description Writing'
+        'Basic website Audit',
+        'Basic SEO',
+        'Content Optimization',
+        '15 Keyword Research',
+        'Technical SEO',
+        'Backlink Strategy',
+        'Local SEO',
+        'Maintenance & Support',
+        'Monthly Report'
       ]
     },
-    { 
-      name: 'Google Business Page', 
-      price: '₹999', 
-      originalPrice: '₹2,999',
-      currentPrice: 999,
-      description: 'Google My Business listing setup & optimization',
-      features: [
-        'Google Business Profile Creation',
-        'Category & Description Optimization',
-        'Photos & Logo Upload',
-        'Service/Product Listings',
-        'Review Management Setup',
-        'Google Map Integration'
-      ]
-    },
-    { 
-      name: 'Business WhatsApp', 
-      price: '₹999', 
-      originalPrice: '₹2,499',
-      currentPrice: 999,
-      description: 'Business WhatsApp API setup with catalog',
-      features: [
-        'Business WhatsApp API Setup',
-        'Business Profile Creation',
-        '10 Product Catalog Listings',
-        'Quick Reply Setup',
-        'Away Message Configuration',
-        'Business Hours Setup'
-      ]
-    },
-    { 
-
-  name: 'YouTube Channel Launch & SEO',
-  price: '₹3,999',
-  originalPrice: '₹9,999',
-  currentPrice: 3999,
-  description: 'Professional YouTube Channel Launch & Optimization',
-  features: [
-    'Complete Channel Creation & Setup',
-    'Custom Branding (Logo & Banner)',
-    'Video SEO & Metadata Optimization',
-    'Optimized Channel Bio & Keywords',
-    'Playlist / Section Arrangement',
-    'Monetization Ready Guidance'
-  ]
-
-
-    },
-    { 
-      name: 'E-commerce Marketing', 
-      price: '₹5,999', 
-      originalPrice: '₹12,999',
-      currentPrice: 5999,
-      description: 'Complete E-commerce Solutions',
-      features: [
-        'Amazon Seller Account Setup',
-        'Flipkart Seller Account Setup',
-        'Meesho Store Setup',
-        'Product Listing & Optimization',
-        'Sales Strategy & Optimization',
-        'Multi-platform Management'
-      ]
-    },
-    { 
-      name: 'Meta & Google Ads Setup', 
-      price: '₹3,999', 
-      originalPrice: '₹7,999',
-      currentPrice: 3999,
-      description: 'Complete advertising account setup',
-      features: [
-        'Meta Business Manager Setup',
-        'Google Ads Account Creation',
-        'Pixel Installation & Tracking',
-        'Conversion API Setup',
-        'Audience Research & Creation',
-        'Initial Campaign Structure'
-      ]
-    }
-  ];
-
-  // IT & Website Services
-  const itServices = [
-    { 
-      name: 'Website Development', 
-      price: '₹9,999', 
-      originalPrice: '₹22,000',
-      currentPrice: 9999,
-      description: 'Professional Website Development',
-      popular: true,
-      features: [
-        'WordPress or Shopify Platform',
-        '5 Page Responsive Website',
-        'Mobile-Friendly Design',
-        'Contact Form Integration',
-        'Basic SEO Setup',
-        '1 Year Hosting Included',
-        'SSL Certificate',
-        '6 Months Technical Support'
-      ]
-    },
-    { 
-      name: 'Shopify Website', 
-      price: '₹24,999', 
-      originalPrice: '₹49,999',
-      currentPrice: 24999,
-      description: 'Complete e-commerce website on Shopify',
+    {
+      name: 'PROFESSIONAL',
+      price: '₹22,000',
+      originalPrice: '₹45,000',
+      currentPrice: 22000,
       popular: false,
+      badge: 'PREMIUM',
+      duration: 'per month',
       features: [
-        'Custom Shopify Theme',
-        'Product Listing (Up to 50 products)',
-        'Inventory Management',
-        'Order Processing System',
-        'Mobile App Ready',
-        'SEO Optimized',
-        '1 Year Technical Support'
+        'Basic website Audit',
+        'Basic SEO',
+        'Content Optimization',
+        '30+ Keyword Research',
+        'Technical SEO',
+        'Backlink Strategy',
+        'Local SEO',
+        'Maintenance & Support',
+        'Monthly Report'
       ]
     }
   ];
 
-  // Marketing Services
-  const marketingServices = [
+  // Social Media Services
+  const socialMediaServices: ServiceCategory[] = [
+    {
+      category: "Social Media Marketing",
+      plans: [
+        {
+          name: 'STARTER',
+          price: '₹5,500',
+          originalPrice: '₹12,000',
+          currentPrice: 5500,
+          popular: false,
+          badge: null,
+          duration: 'Monthly',
+          features: [
+            'Account Setup and Optimization',
+            'Creative Post designs',
+            'Reel / Video Content',
+            'Story Highlight Design',
+            'Content Calendar & Strategy',
+            'Hashtag & Caption Writing',
+            'Ad campaign',
+            'Lead generation',
+            'Influencer Collaboration',
+            'Community Management'
+          ]
+        },
+        {
+          name: 'STANDARD',
+          price: '₹11,000',
+          originalPrice: '₹22,000',
+          currentPrice: 11000,
+          popular: false,
+          badge: null,
+          duration: 'Monthly',
+          features: [
+            'Account Setup and Optimization',
+            'Creative Post designs',
+            'Reel / Video Content',
+            'Story Highlight Design',
+            'Content Calendar & Strategy',
+            'Hashtag & Caption Writing',
+            'Ad campaign',
+            'Basic Lead generation',
+            'Influencer Collaboration',
+            'Community Management'
+          ]
+        },
+        {
+          name: 'PROFESSIONAL',
+          price: '₹22,000',
+          originalPrice: '₹40,000',
+          currentPrice: 22000,
+          popular: true,
+          badge: 'MOST POPULAR',
+          duration: 'Monthly',
+          features: [
+            'Account Setup and Optimization',
+            'Creative Post designs',
+            'Reel / Video Content',
+            'Story Highlight Design',
+            'Content Calendar & Strategy',
+            'Hashtag & Caption Writing',
+            'Ad campaign',
+            'Targeted Lead generation',
+            'Influencer Collaboration (Optional)',
+            'Community Management'
+          ]
+        },
+        {
+          name: 'PREMIUM',
+          price: '₹33,000',
+          originalPrice: '₹60,000',
+          currentPrice: 33000,
+          popular: false,
+          badge: 'PREMIUM',
+          duration: 'Monthly',
+          features: [
+            'Account Setup and Optimization',
+            'Creative Post designs',
+            'Reel / Video Content',
+            'Story Highlight Design',
+            'Content Calendar & Strategy',
+            'Hashtag & Caption Writing',
+            'Ad campaign',
+            'Advanced Lead generation',
+            'Influencer Collaboration',
+            'Community Management'
+          ]
+        }
+      ]
+    },
+    {
+      category: "Social Media Management",
+      plans: [
+        {
+          name: 'STARTER',
+          price: '₹2,500',
+          originalPrice: '₹8,000',
+          currentPrice: 2500,
+          popular: false,
+          badge: null,
+          duration: 'Monthly',
+          features: [
+            '1 Platforms Managed',
+            'Creative Post designs',
+            'Reel / Video Content',
+            'Story Highlight Design',
+            'Content Calendar & Strategy',
+            'Engagement',
+            'Ad campaign',
+            'Lead generation',
+            'Influencer Collaboration',
+            'Community Management'
+          ]
+        },
+        {
+          name: 'STANDARD',
+          price: '₹5,000',
+          originalPrice: '₹15,000',
+          currentPrice: 5000,
+          popular: true,
+          badge: 'BEST VALUE',
+          duration: 'Monthly',
+          features: [
+            '2 Platforms managed',
+            'Creative Post designs',
+            'Reel / Video Content',
+            'Story Highlight Design',
+            'Content Calendar & Strategy',
+            'Hashtag & Caption Writing',
+            'Ad campaign',
+            'Basic Lead generation',
+            'Influencer Collaboration',
+            'Community Management'
+          ]
+        },
+        {
+          name: 'PROFESSIONAL',
+          price: '₹7,500',
+          originalPrice: '₹20,000',
+          currentPrice: 7500,
+          popular: false,
+          badge: null,
+          duration: 'Monthly',
+          features: [
+            '3 Platforms Managed',
+            'Creative Post designs',
+            'Reel / Video Content',
+            'Story Highlight Design',
+            'Content Calendar & Strategy',
+            'Hashtag & Caption Writing',
+            'Ad campaign',
+            'Targeted Lead generation',
+            'Influencer Collaboration (Optional)',
+            'Community Management'
+          ]
+        },
+        {
+          name: 'PREMIUM',
+          price: '₹7,500',
+          originalPrice: '₹25,000',
+          currentPrice: 7500,
+          popular: false,
+          badge: 'PREMIUM',
+          duration: 'Monthly',
+          features: [
+            '4 Platforms Managed',
+            'Creative Post designs',
+            'Reel / Video Content',
+            'Story Highlight Design',
+            'Content Calendar & Strategy',
+            'Hashtag & Caption Writing',
+            'Ad campaign',
+            'Advanced Lead generation',
+            'Influencer Collaboration',
+            'Community Management'
+          ]
+        }
+      ]
+    }
+  ];
+
+  // Quick Services
+  const quickServices: QuickService[] = [
     { 
       name: 'Logo Design Service', 
       price: '₹799', 
@@ -275,642 +782,630 @@ const RAZORPAY_KEY_ID = 'rzp_live_ROjWHHKbSiP7Al';
       icon: <TrendingUp className="h-6 w-6" />
     },
     { 
-      name: 'Email Marketing', 
-      price: '₹4,999', 
-      originalPrice: '₹9,999',
-      currentPrice: 4999,
-      description: 'Email campaign setup & management',
-      icon: <Mail className="h-6 w-6" />
+      name: 'Google Business Page', 
+      price: '₹999', 
+      originalPrice: '₹2,999',
+      currentPrice: 999,
+      description: 'Google My Business listing setup & optimization',
+      icon: <Target className="h-6 w-6" />
     },
     { 
-      name: 'Flyer & Video Creation', 
-      price: '₹1,999', 
-      originalPrice: '₹3,999',
-      currentPrice: 1999,
-      description: 'Professional flyer design & video editing',
-      icon: <Video className="h-6 w-6" />
+      name: 'Business WhatsApp', 
+      price: '₹999', 
+      originalPrice: '₹2,499',
+      currentPrice: 999,
+      description: 'Business WhatsApp API setup with catalog',
+      icon: <MessageCircle className="h-6 w-6" />
     }
   ];
 
-  // Combo Packages - High Value Bundles
-  const comboPackages = [
-    {
-      name: 'Website + SEO Combo',
-      price: '₹29,999',
-      originalPrice: '₹67,497',
-      currentPrice: 29999,
-      popular: true,
-      type: 'one-time + 3 months',
-      description: 'Complete website with 3 months SEO service - Perfect for business growth',
-      features: [
-        'Professional Website (5 pages)',
-        '3 Months SEO Service Included',
-        'Google Business Page Setup',
-        'Social Media Account Creation',
-        'Mobile Responsive Design',
-        'Basic On-Page SEO',
-        'Monthly SEO Reports',
-        '12 Months Technical Support',
-        'Website Hosting & SSL',
-        'Performance Analytics'
-      ],
-      savings: '₹37,498',
-      whatsappText: 'Hello DiziGrow, I want the Website + SEO Combo Package for my business'
-    },
-    {
-      name: 'Social Media Pro Package',
-      price: '₹12,999',
-      originalPrice: '₹24,997',
-      currentPrice: 12999,
-      popular: false,
-      type: '3 months service',
-      description: 'Complete social media management for 3 months with account setup',
-      features: [
-        '3 Months Social Media Management',
-        'Social Media Account Creation (All Platforms)',
-        '45 Creative Design Posts',
-        '6 Professional Videos/Reels',
-        'Google Business Page Setup',
-        'Content Strategy & Calendar',
-        'Performance Analytics Dashboard',
-        'Hashtag Research & Optimization',
-        'Competitor Analysis',
-        'Monthly Strategy Reports'
-      ],
-      savings: '₹11,998',
-      whatsappText: 'Hello DiziGrow, I want the Social Media Pro Package for my business'
-    }
+  // Navigation Tabs
+  const tabs: Tab[] = [
+    { id: 'website', label: '🌐 Website Development', icon: <Rocket className="h-4 w-4" /> },
+    { id: 'seo', label: '🔍 SEO Services', icon: <TrendingUp className="h-4 w-4" /> },
+    { id: 'social', label: '📱 Social Media', icon: <Users className="h-4 w-4" /> },
+    { id: 'quick', label: '⚡ Quick Services', icon: <Zap className="h-4 w-4" /> }
   ];
 
-// Add-ons & Extra Services
-const addOns = [
-  { 
-    name: 'Extra Social Media Post', 
-    price: '₹100/post', 
-    currentPrice: 100,
-    description: 'Additional creative posts for social media',
-    category: 'social'
-  },
-  { 
-    name: 'Extra Video/Reel Creation', 
-    price: '₹200/video', 
-    currentPrice: 200,
-    description: 'Additional video content (Max 2 minutes)',
-    category: 'content'
-  },
-  { 
-    name: 'Product Listing', 
-    price: '₹50/product', 
-    currentPrice: 50,
-    description: 'Additional product listings for e-commerce',
-    category: 'ecommerce'
-  },
-  { 
-    name: 'Free Consultation', 
-    price: '₹999', 
-    currentPrice: 10,
-    description: '30-min Professional Digital Marketing Consultation',
-    category: 'consultation',
-  }
-];
+  // Benefit Items
+  const benefitItems: BenefitItem[] = [
+    { icon: <Shield className="h-6 w-6" />, text: "30-Day Money Back Guarantee" },
+    { icon: <Zap className="h-6 w-6" />, text: "24/7 Priority Support" },
+    { icon: <Award className="h-6 w-6" />, text: "Certified Experts" }
+  ];
 
-const calculateDiscount = (currentPrice: number, originalPrice: number) => {
-  return Math.round((1 - currentPrice / originalPrice) * 100);
-};
+  // Utility Functions
+  const calculateDiscount = (currentPrice: number, originalPrice: number): number => {
+    return Math.round((1 - currentPrice / originalPrice) * 100);
+  };
 
-// Add this function for consultation scheduling
-const scheduleConsultation = () => {
-  const consultationMessage = `🎯 I want to schedule a Free Digital Marketing Consultation!\n\nPlease share available time slots for a 30-minute video call.`;
-  const encodedMessage = encodeURIComponent(consultationMessage);
-  window.open(`https://wa.me/919521281509?text=${encodedMessage}`, '_blank');
-};
+  const getOriginalPriceNumber = (priceString: string): number => {
+    return parseInt(priceString.replace(/[^0-9]/g, ''));
+  };
+
+  const scheduleConsultation = (): void => {
+    const consultationMessage = `🎯 I want to schedule a Free Digital Marketing Consultation!\n\nPlease share available time slots for a 30-minute video call.`;
+    const encodedMessage = encodeURIComponent(consultationMessage);
+    window.open(`https://wa.me/919521281509?text=${encodedMessage}`, '_blank');
+  };
 
   return (
-    <div>
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-blue-50">
       <Helmet>
-        <title>Digital Marketing Pricing | Social Media ₹4,999, SEO ₹7,999, Website ₹9,999 - DiziGrow</title>
+        <title>Digital Marketing Pricing | Website Development from ₹2,199 | Earningsharthi</title>
         <meta
           name="description"
-          content="Affordable digital marketing packages: Social Media Management ₹4,999/month, SEO ₹7,999/month, Website Development ₹9,999. 70% OFF + 5% Extra on Advance Payment."
+          content="Affordable digital marketing packages: Website Development from ₹2,199, SEO from ₹4,999, Social Media from ₹2,500. 70% OFF + 5% Extra on Advance Payment."
         />
         <meta 
           name="keywords" 
-          content="digital marketing pricing, social media management cost, SEO services price, website development cost, e-commerce setup, Google Ads management, affordable digital marketing India"
+          content="website development price, SEO services cost, social media marketing pricing, e-commerce website cost, digital marketing packages India"
         />
-        <link rel="canonical" href="https://dizigrow.com/pricing" />
+        <link rel="canonical" href="https://earningsharthi.in/pricing" />
       </Helmet>
 
-      {/* Hero Section */}
-      <section className="bg-gradient-to-br from-purple-900 via-purple-800 to-purple-600 text-white py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <h1 className="text-4xl md:text-6xl font-bold mb-6">
-              Digital Marketing <span className="text-yellow-400">Pricing</span>
-            </h1>
-            <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto text-purple-100">
-              Professional Digital Marketing Services at 70% OFF + 5% Extra on Advance Payment
-            </p>
-            <div className="flex flex-wrap items-center justify-center gap-8 text-purple-100">
-              <div className="flex items-center space-x-2">
-                <Check className="h-5 w-5 text-green-400" />
-                <span>70% Discount on All Services</span>
-              </div>
-              <div className="flex items-center space-x-2">
-                <Check className="h-5 w-5 text-green-400" />
-                <span>5% Extra OFF on Advance Payment</span>
-              </div>
-              <div className="flex items-center space-x-2">
-                <Check className="h-5 w-5 text-green-400" />
-                <span>24/7 Customer Support</span>
-              </div>
-            </div>
-          </div>
+      {/* Enhanced Hero Section */}
+      <section className="relative bg-gradient-to-br from-blue-600 via-blue-700 to-blue-800 text-white py-20 lg:py-24 overflow-hidden">
+        {/* Animated Background */}
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute inset-0" style={{
+            backgroundImage: `radial-gradient(circle at 20% 80%, rgba(255,255,255,0.3) 2%, transparent 20%),
+                             radial-gradient(circle at 80% 20%, rgba(255,255,255,0.2) 1%, transparent 25%),
+                             radial-gradient(circle at 40% 40%, rgba(255,255,255,0.1) 1%, transparent 15%)`,
+          }}></div>
         </div>
-      </section>
-
-      {/* Monthly Services Section */}
-      <section className="py-16 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Monthly Marketing Services
-            </h2>
-            <p className="text-xl text-gray-600">
-              Minimum 3 Months Commitment Required for Optimal Results
-            </p>
+        
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <div className="inline-flex items-center gap-2 bg-yellow-500 text-blue-900 px-4 py-2 rounded-full text-sm font-bold mb-6">
+            <Sparkles className="h-4 w-4" />
+            SPECIAL OFFER: 70% OFF + 5% EXTRA ON ADVANCE PAYMENT
           </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {monthlyServices.map((service, index) => (
-              <div key={index} className={`relative bg-white rounded-2xl shadow-xl border-2 ${
-                service.popular ? 'border-yellow-400 transform hover:scale-105' : 'border-gray-200'
-              } transition-all duration-300`}>
-                {service.popular && (
-                  <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                    <span className="bg-gradient-to-r from-yellow-400 to-yellow-500 text-purple-900 px-6 py-2 rounded-full text-sm font-bold flex items-center space-x-1">
-                      <Star className="h-4 w-4 fill-current" />
-                      <span>{service.badge}</span>
-                    </span>
-                  </div>
-                )}
-                
-                <div className="p-8">
-                  <h3 className="text-2xl font-bold text-gray-900 mb-2">{service.name}</h3>
-                  <p className="text-gray-600 mb-4">{service.description}</p>
-                  
-                  <div className="mb-6 text-center">
-                    <div className="flex items-baseline justify-center">
-                      <span className="text-4xl font-bold text-purple-600">{service.price}</span>
-                      <span className="text-lg text-gray-400 line-through ml-2">{service.originalPrice}</span>
-                    </div>
-                    <p className="text-sm text-gray-500 mt-1">{service.duration}</p>
-                    <div className="mt-2">
-                      <span className="bg-red-500 text-white px-3 py-1 rounded-full text-sm font-bold">
-                        SAVE {calculateDiscount(service.currentPrice, parseInt(service.originalPrice.replace(/[^0-9]/g, '')))}%
-                      </span>
-                    </div>
-                    <div className="mt-2 bg-green-500 text-white px-3 py-1 rounded-full text-sm font-bold">
-                      Advance: ₹{Math.floor(service.currentPrice * 0.95).toLocaleString()} (5% OFF)
-                    </div>
-                  </div>
-
-                  <ul className="space-y-3 mb-8">
-                    {service.features.map((feature, featureIndex) => (
-                      <li key={featureIndex} className="flex items-start space-x-3">
-                        <Check className="h-5 w-5 text-green-500 mt-0.5 flex-shrink-0" />
-                        <span className="text-gray-700">{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
-
-                  <div className="space-y-3">
-                    <button
-                      onClick={() => openPaymentModal(service.name, service.currentPrice, parseInt(service.originalPrice.replace(/[^0-9]/g, '')))}
-                      className={`w-full py-3 px-6 rounded-lg font-semibold transition-all block text-center ${
-                        service.popular
-                          ? 'bg-yellow-500 hover:bg-yellow-600 text-purple-900'
-                          : 'bg-purple-600 hover:bg-purple-700 text-white'
-                      }`}
-                    >
-                      💳 Pay Advance - Save 5%
-                    </button>
-                    <a
-                      href={`https://wa.me/919521281509?text=Hello DiziGrow, I want to get ${service.name} monthly service`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="w-full bg-green-500 hover:bg-green-600 text-white py-2 px-6 rounded-lg font-medium transition-colors block text-center"
-                    >
-                      💬 WhatsApp for Details
-                    </a>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Digital Marketing Services Section */}
-      <section className="py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Quick Digital Marketing Services
-            </h2>
-            <p className="text-xl text-gray-600">
-              One-time Setup Services for Immediate Digital Presence
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {digitalMarketingServices.map((service, index) => (
-              <div key={index} className="bg-white p-6 rounded-xl shadow-lg border border-gray-100 hover:shadow-xl transition-shadow">
-                <div className="flex justify-between items-start mb-4">
-                  <h3 className="text-xl font-semibold text-gray-900">{service.name}</h3>
-                  {service.originalPrice && (
-                    <span className="text-sm text-gray-400 line-through">{service.originalPrice}</span>
-                  )}
-                </div>
-                <p className="text-gray-600 mb-4">{service.description}</p>
-                
-                <ul className="space-y-2 mb-4">
-                  {service.features.map((feature, featureIndex) => (
-                    <li key={featureIndex} className="flex items-center space-x-2 text-sm text-gray-700">
-                      <Check className="h-4 w-4 text-green-500 flex-shrink-0" />
-                      <span>{feature}</span>
-                    </li>
-                  ))}
-                </ul>
-
-                <div className="flex items-center justify-between mb-4">
-                  <span className="text-2xl font-bold text-purple-600">{service.price}</span>
-                  <div className="bg-red-500 text-white px-2 py-1 rounded text-xs font-bold">
-                    SAVE {calculateDiscount(service.currentPrice, parseInt(service.originalPrice.replace(/[^0-9]/g, '')))}%
-                  </div>
-                </div>
-                
-                <div className="space-y-2">
-                  <button
-                    onClick={() => openPaymentModal(service.name, service.currentPrice, parseInt(service.originalPrice.replace(/[^0-9]/g, '')))}
-                    className="w-full bg-purple-600 hover:bg-purple-700 text-white py-2 px-4 rounded-lg font-medium transition-colors block text-center"
-                  >
-                    💳 Pay Advance - Save 5%
-                  </button>
-                  <a
-                    href={`https://wa.me/919521281509?text=Hello DiziGrow, I want to get ${service.name} service`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-full bg-green-500 hover:bg-green-600 text-white py-2 px-4 rounded-lg font-medium transition-colors block text-center"
-                  >
-                    💬 WhatsApp Now
-                  </a>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* IT Services Section */}
-      <section className="py-16 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Website & IT Services
-            </h2>
-            <p className="text-xl text-gray-600">
-              Professional Website Development & IT Solutions
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {itServices.map((service, index) => (
-              <div key={index} className={`bg-white p-8 rounded-xl shadow-lg border-2 ${
-                service.popular ? 'border-yellow-400' : 'border-gray-200'
-              } hover:shadow-xl transition-shadow`}>
-                {service.popular && (
-                  <div className="inline-block bg-yellow-500 text-purple-900 px-4 py-1 rounded-full text-sm font-bold mb-4">
-                    RECOMMENDED
-                  </div>
-                )}
-                
-                <h3 className="text-2xl font-bold text-gray-900 mb-2">{service.name}</h3>
-                <p className="text-gray-600 mb-6">{service.description}</p>
-                
-                <div className="flex items-baseline mb-6">
-                  <span className="text-4xl font-bold text-purple-600">{service.price}</span>
-                  <span className="text-lg text-gray-400 line-through ml-2">{service.originalPrice}</span>
-                  <div className="ml-4 bg-red-500 text-white px-3 py-1 rounded-full text-sm font-bold">
-                    SAVE {calculateDiscount(service.currentPrice, parseInt(service.originalPrice.replace(/[^0-9]/g, '')))}%
-                  </div>
-                </div>
-
-                <ul className="space-y-3 mb-8">
-                  {service.features.map((feature, featureIndex) => (
-                    <li key={featureIndex} className="flex items-start space-x-3">
-                      <Check className="h-5 w-5 text-green-500 mt-0.5 flex-shrink-0" />
-                      <span className="text-gray-700">{feature}</span>
-                    </li>
-                  ))}
-                </ul>
-
-                <div className="space-y-3">
-                  <button
-                    onClick={() => openPaymentModal(service.name, service.currentPrice, parseInt(service.originalPrice.replace(/[^0-9]/g, '')))}
-                    className={`w-full py-3 px-6 rounded-lg font-semibold transition-all block text-center ${
-                      service.popular
-                        ? 'bg-yellow-500 hover:bg-yellow-600 text-purple-900'
-                        : 'bg-purple-600 hover:bg-purple-700 text-white'
-                    }`}
-                  >
-                    💳 Pay Advance - Save 5%
-                  </button>
-                  <a
-                    href={`https://wa.me/919521281509?text=Hello DiziGrow, I want to get ${service.name} service`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-full bg-green-500 hover:bg-green-600 text-white py-2 px-6 rounded-lg font-medium transition-colors block text-center"
-                  >
-                    💬 WhatsApp for Details
-                  </a>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Marketing Services Grid */}
-      <section className="py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Additional Marketing Services
-            </h2>
-            <p className="text-xl text-gray-600">
-              Comprehensive Digital Marketing Solutions
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {marketingServices.map((service, index) => (
-              <div key={index} className="bg-white p-6 rounded-xl shadow-lg border border-gray-100 hover:shadow-xl transition-shadow">
-                <div className="flex items-center space-x-3 mb-4">
-                  <div className="bg-purple-100 text-purple-600 p-3 rounded-lg">
-                    {service.icon}
-                  </div>
-                  <div>
-                    <h3 className="text-lg font-semibold text-gray-900">{service.name}</h3>
-                    <div className="flex items-baseline space-x-2">
-                      <span className="text-2xl font-bold text-purple-600">{service.price}</span>
-                      <span className="text-sm text-gray-400 line-through">{service.originalPrice}</span>
-                    </div>
-                  </div>
-                </div>
-                <p className="text-gray-600 text-sm mb-4">{service.description}</p>
-                <div className="bg-red-500 text-white px-2 py-1 rounded text-xs font-bold inline-block mb-4">
-                  SAVE {calculateDiscount(service.currentPrice, parseInt(service.originalPrice.replace(/[^0-9]/g, '')))}%
-                </div>
-                <div className="space-y-2">
-                  <button
-                    onClick={() => openPaymentModal(service.name, service.currentPrice, parseInt(service.originalPrice.replace(/[^0-9]/g, '')))}
-                    className="w-full bg-purple-600 hover:bg-purple-700 text-white py-2 px-4 rounded-lg font-medium transition-colors block text-center"
-                  >
-                    💳 Pay Advance
-                  </button>
-                  <a
-                    href={`https://wa.me/919521281509?text=Hello DiziGrow, I want to get ${service.name} service`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-full bg-green-500 hover:bg-green-600 text-white py-2 px-4 rounded-lg font-medium transition-colors block text-center"
-                  >
-                    💬 Get Quote
-                  </a>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Combo Packages Section */}
-      <section className="py-16 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Value Combo Packages
-            </h2>
-            <p className="text-xl text-gray-600">
-              Save Big with Our Carefully Curated Service Bundles
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {comboPackages.map((pkg, index) => (
-              <div key={index} className={`relative bg-white rounded-2xl shadow-xl border-2 ${
-                pkg.popular ? 'border-yellow-400 transform hover:scale-105' : 'border-gray-200'
-              } transition-all duration-300`}>
-                {pkg.popular && (
-                  <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                    <span className="bg-gradient-to-r from-yellow-400 to-yellow-500 text-purple-900 px-6 py-2 rounded-full text-sm font-bold flex items-center space-x-1">
-                      <Star className="h-4 w-4 fill-current" />
-                      <span>MOST POPULAR</span>
-                    </span>
-                  </div>
-                )}
-                
-                <div className="p-8">
-                  <div className="flex items-center justify-between mb-2">
-                    <h3 className="text-2xl font-bold text-gray-900">{pkg.name}</h3>
-                    <span className="text-sm bg-green-100 text-green-800 px-2 py-1 rounded">
-                      Save {pkg.savings}
-                    </span>
-                  </div>
-                  <p className="text-gray-600 mb-6">{pkg.description}</p>
-                  
-                  <div className="mb-6">
-                    <div className="flex items-baseline">
-                      <span className="text-4xl font-bold text-purple-600">{pkg.price}</span>
-                      <span className="text-lg text-gray-400 line-through ml-2">{pkg.originalPrice}</span>
-                    </div>
-                    <p className="text-sm text-gray-500 mt-1">{pkg.type}</p>
-                    <div className="mt-2">
-                      <span className="bg-red-500 text-white px-3 py-1 rounded-full text-sm font-bold">
-                        SAVE {calculateDiscount(pkg.currentPrice, parseInt(pkg.originalPrice.replace(/[^0-9]/g, '')))}%
-                      </span>
-                    </div>
-                    <div className="mt-2 bg-green-500 text-white px-3 py-1 rounded-full text-sm font-bold">
-                      Advance: ₹{Math.floor(pkg.currentPrice * 0.95).toLocaleString()} (5% OFF)
-                    </div>
-                  </div>
-
-                  <ul className="space-y-3 mb-8">
-                    {pkg.features.map((feature, featureIndex) => (
-                      <li key={featureIndex} className="flex items-start space-x-3">
-                        <Check className="h-5 w-5 text-green-500 mt-0.5 flex-shrink-0" />
-                        <span className="text-gray-700">{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
-
-                  <div className="space-y-3">
-                    <button
-                      onClick={() => openPaymentModal(pkg.name, pkg.currentPrice, parseInt(pkg.originalPrice.replace(/[^0-9]/g, '')))}
-                      className={`w-full py-3 px-6 rounded-lg font-semibold transition-all block text-center ${
-                        pkg.popular
-                          ? 'bg-yellow-500 hover:bg-yellow-600 text-purple-900'
-                          : 'bg-purple-600 hover:bg-purple-700 text-white'
-                      }`}
-                    >
-                      💳 Pay Advance - Save 5%
-                    </button>
-                    <a
-                      href={`https://wa.me/919521281509?text=${encodeURIComponent(pkg.whatsappText)}`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="w-full bg-green-500 hover:bg-green-600 text-white py-2 px-6 rounded-lg font-medium transition-colors block text-center"
-                    >
-                      💬 WhatsApp for Details
-                    </a>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-     {/* Add-ons Section */}
-<section className="py-16 bg-white">
-  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div className="text-center mb-12">
-      <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-        Add-on Services
-      </h2>
-      <p className="text-xl text-gray-600">
-        Enhance Your Package with These Additional Services
-      </p>
-    </div>
-
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-      {addOns.map((addon, index) => (
-        <div key={index} className={`bg-gray-50 p-6 rounded-xl border-2 ${
-          addon.name === 'Free Consultation' ? 'border-green-300 bg-green-50' : 'border-gray-200'
-        } hover:border-purple-300 transition-colors`}>
-          {addon.name === 'Free Consultation' && (
-            <div className="inline-block bg-green-500 text-white px-3 py-1 rounded-full text-xs font-bold mb-3">
-              🎯 FREE CONSULTATION
-            </div>
-          )}
           
-          <h3 className="text-lg font-semibold text-gray-900 mb-2">{addon.name}</h3>
-          <p className="text-gray-600 text-sm mb-4">{addon.description}</p>
+          <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
+            Professional Digital Marketing
+            <span className="block bg-gradient-to-r from-yellow-400 to-yellow-300 bg-clip-text text-transparent">
+              Pricing Plans
+            </span>
+          </h1>
+          <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto text-blue-100 leading-relaxed">
+            Get premium digital marketing services at unbeatable prices. 
+            Scale your business with our expert solutions.
+          </p>
           
-          {addon.features && (
-            <ul className="space-y-2 mb-4">
-              {addon.features.map((feature, featureIndex) => (
-                <li key={featureIndex} className="flex items-center space-x-2 text-xs text-gray-700">
-                  <Check className="h-3 w-3 text-green-500 flex-shrink-0" />
-                  <span>{feature}</span>
-                </li>
-              ))}
-            </ul>
-          )}
-          
-          <div className="flex items-center justify-between mb-4">
-            <span className="text-lg font-bold text-purple-600">{addon.price}</span>
-            {addon.name !== 'Free Consultation' && (
-              <a
-                href={`https://wa.me/919521281509?text=Hello DiziGrow, I want to add ${addon.name} to my package`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bg-purple-600 hover:bg-purple-700 text-white px-3 py-1 rounded font-medium text-sm transition-colors"
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+            {benefitItems.map((item, index) => (
+              <div key={index} className="flex items-center justify-center gap-3 bg-blue-500/30 backdrop-blur-sm px-4 py-3 rounded-2xl">
+                <div className="text-yellow-400">
+                  {item.icon}
+                </div>
+                <span className="text-blue-100 font-medium">{item.text}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Navigation Tabs */}
+      <section className="sticky top-0 z-40 bg-white/80 backdrop-blur-md border-b border-gray-200">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex overflow-x-auto py-4 space-x-1">
+            {tabs.map((tab) => (
+              <button
+                key={tab.id}
+                onClick={() => setActiveTab(tab.id)}
+                className={`flex items-center gap-2 px-6 py-3 rounded-2xl font-semibold transition-all whitespace-nowrap ${
+                  activeTab === tab.id
+                    ? 'bg-blue-600 text-white shadow-lg shadow-blue-500/25'
+                    : 'text-gray-600 hover:text-blue-600 hover:bg-blue-50'
+                }`}
               >
-                Add Service
-              </a>
-            )}
+                {tab.icon}
+                {tab.label}
+              </button>
+            ))}
           </div>
+        </div>
+      </section>
 
-          <div className="space-y-2">
-            {addon.name === 'Free Consultation' ? (
-              <>
-                <button
-                  onClick={() => openPaymentModal(addon.name, addon.currentPrice, 999)}
-                  className="w-full bg-green-500 hover:bg-green-600 text-white py-2 px-4 rounded-lg font-medium transition-colors block text-center text-sm"
-                >
-                  💳 Pay ₹10 & Schedule
-                </button>
+      {/* Website Development Section */}
+      {activeTab === 'website' && (
+        <section className="py-16 bg-white">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                Professional Website Development
+              </h2>
+              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+                Get stunning, responsive websites that convert visitors into customers
+              </p>
+            </div>
+
+            {/* Main Website Services */}
+            <div className="space-y-16">
+              {websiteServices.map((service, index) => (
+                <div key={index} className="bg-gradient-to-br from-gray-50 to-white rounded-3xl p-8 border border-gray-200">
+                  <div className="text-center mb-8">
+                    <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-2">
+                      {service.category}
+                    </h3>
+                    <div className="w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto rounded-full"></div>
+                  </div>
+
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    {service.plans.map((plan, planIndex) => (
+                      <div key={planIndex} className={`relative bg-white rounded-2xl shadow-xl border-2 ${
+                        plan.popular ? 'border-yellow-400 transform hover:scale-105' : 'border-gray-200 hover:border-blue-300'
+                      } transition-all duration-300 hover:shadow-2xl`}>
+                        {plan.popular && plan.badge && (
+                          <div className="absolute -top-3 left-1/2 transform -translate-x-1/2">
+                            <span className="bg-gradient-to-r from-yellow-400 to-yellow-500 text-gray-900 px-4 py-1 rounded-full text-xs font-bold flex items-center space-x-1">
+                              <Crown className="h-3 w-3 fill-current" />
+                              <span>{plan.badge}</span>
+                            </span>
+                          </div>
+                        )}
+                        
+                        <div className="p-6">
+                          <h4 className="text-xl font-bold text-gray-900 text-center mb-2">{plan.name}</h4>
+                          
+                          <div className="text-center mb-6">
+                            <div className="flex items-baseline justify-center gap-2">
+                              <span className="text-3xl font-bold text-blue-600">{plan.price}</span>
+                              <span className="text-lg text-gray-400 line-through">{plan.originalPrice}</span>
+                            </div>
+                            <div className="mt-2">
+                              <span className="bg-red-500 text-white px-3 py-1 rounded-full text-sm font-bold">
+                                SAVE {calculateDiscount(plan.currentPrice, getOriginalPriceNumber(plan.originalPrice))}%
+                              </span>
+                            </div>
+                            <div className="mt-2 bg-green-500 text-white px-3 py-1 rounded-full text-sm font-bold">
+                              Advance: ₹{Math.floor(plan.currentPrice * 0.95).toLocaleString()} (5% OFF)
+                            </div>
+                          </div>
+
+                          <ul className="space-y-3 mb-6">
+                            {plan.features.map((feature, featureIndex) => (
+                              <li key={featureIndex} className="flex items-start space-x-3">
+                                <Check className="h-5 w-5 text-green-500 mt-0.5 flex-shrink-0" />
+                                <span className="text-gray-700 text-sm">{feature}</span>
+                              </li>
+                            ))}
+                          </ul>
+
+                          <div className="space-y-3">
+                            <button
+                              onClick={() => openPaymentModal(`${service.category} - ${plan.name}`, plan.currentPrice, getOriginalPriceNumber(plan.originalPrice))}
+                              className={`w-full py-3 px-4 rounded-xl font-semibold transition-all ${
+                                plan.popular
+                                  ? 'bg-gradient-to-r from-yellow-500 to-yellow-600 hover:from-yellow-600 hover:to-yellow-700 text-gray-900'
+                                  : 'bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white'
+                              }`}
+                            >
+                              💳 Pay Advance - Save 5%
+                            </button>
+                            <a
+                              href={`https://wa.me/919521281509?text=Hello Earningsharthi, I want ${service.category} - ${plan.name} plan`}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="w-full bg-green-500 hover:bg-green-600 text-white py-2 px-4 rounded-xl font-medium transition-colors block text-center"
+                            >
+                              💬 WhatsApp for Details
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              ))}
+
+              {/* Other Website Services */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                {otherWebsiteServices.map((service, index) => (
+                  <div key={index} className="bg-gradient-to-br from-gray-50 to-white rounded-3xl p-8 border border-gray-200">
+                    <div className="text-center mb-6">
+                      <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-2">
+                        {service.category}
+                      </h3>
+                      <div className="w-16 h-1 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto rounded-full"></div>
+                    </div>
+
+                    <div className="space-y-6">
+                      {service.plans.map((plan, planIndex) => (
+                        <div key={planIndex} className={`bg-white rounded-2xl p-6 border-2 ${
+                          plan.popular ? 'border-yellow-400' : 'border-gray-200'
+                        } hover:shadow-lg transition-shadow`}>
+                          {plan.popular && plan.badge && (
+                            <div className="inline-block bg-yellow-500 text-gray-900 px-3 py-1 rounded-full text-xs font-bold mb-3">
+                              {plan.badge}
+                            </div>
+                          )}
+                          
+                          <div className="flex items-center justify-between mb-4">
+                            <h4 className="text-lg font-bold text-gray-900">{plan.name}</h4>
+                            <div className="text-right">
+                              <div className="flex items-baseline gap-2">
+                                <span className="text-2xl font-bold text-blue-600">{plan.price}</span>
+                                <span className="text-sm text-gray-400 line-through">{plan.originalPrice}</span>
+                              </div>
+                              <div className="bg-red-500 text-white px-2 py-1 rounded text-xs font-bold mt-1">
+                                SAVE {calculateDiscount(plan.currentPrice, getOriginalPriceNumber(plan.originalPrice))}%
+                              </div>
+                            </div>
+                          </div>
+
+                          <ul className="space-y-2 mb-4">
+                            {plan.features.slice(0, 6).map((feature, featureIndex) => (
+                              <li key={featureIndex} className="flex items-center space-x-2 text-sm text-gray-700">
+                                <Check className="h-4 w-4 text-green-500 flex-shrink-0" />
+                                <span>{feature}</span>
+                              </li>
+                            ))}
+                          </ul>
+
+                          <div className="space-y-2">
+                            <button
+                              onClick={() => openPaymentModal(`${service.category} - ${plan.name}`, plan.currentPrice, getOriginalPriceNumber(plan.originalPrice))}
+                              className={`w-full py-2 px-4 rounded-lg font-medium transition-all ${
+                                plan.popular
+                                  ? 'bg-yellow-500 hover:bg-yellow-600 text-gray-900'
+                                  : 'bg-blue-600 hover:bg-blue-700 text-white'
+                              }`}
+                            >
+                              💳 Pay Advance
+                            </button>
+                            <a
+                              href={`https://wa.me/919521281509?text=Hello Earningsharthi, I want ${service.category} - ${plan.name} plan`}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="w-full bg-green-500 hover:bg-green-600 text-white py-2 px-4 rounded-lg font-medium transition-colors block text-center text-sm"
+                            >
+                              💬 Get Quote
+                            </a>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* SEO Services Section */}
+      {activeTab === 'seo' && (
+        <section className="py-16 bg-gradient-to-br from-gray-50 to-blue-50">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                Professional SEO Services
+              </h2>
+              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+                Boost your Google rankings and drive organic traffic with our expert SEO strategies
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+              {seoServices.map((service, index) => (
+                <div key={index} className={`relative bg-white rounded-2xl shadow-xl border-2 ${
+                  service.popular ? 'border-yellow-400 transform hover:scale-105' : 'border-gray-200 hover:border-blue-300'
+                } transition-all duration-300 hover:shadow-2xl`}>
+                  {service.popular && service.badge && (
+                    <div className="absolute -top-3 left-1/2 transform -translate-x-1/2">
+                      <span className="bg-gradient-to-r from-yellow-400 to-yellow-500 text-gray-900 px-4 py-1 rounded-full text-xs font-bold flex items-center space-x-1">
+                        <Crown className="h-3 w-3 fill-current" />
+                        <span>{service.badge}</span>
+                      </span>
+                    </div>
+                  )}
+                  
+                  <div className="p-8">
+                    <h3 className="text-2xl font-bold text-gray-900 text-center mb-2">{service.name}</h3>
+                    <p className="text-gray-500 text-center text-sm mb-6">{service.duration}</p>
+                    
+                    <div className="text-center mb-6">
+                      <div className="flex items-baseline justify-center gap-2">
+                        <span className="text-4xl font-bold text-blue-600">{service.price}</span>
+                        <span className="text-lg text-gray-400 line-through">{service.originalPrice}</span>
+                      </div>
+                      <div className="mt-2">
+                        <span className="bg-red-500 text-white px-3 py-1 rounded-full text-sm font-bold">
+                          SAVE {calculateDiscount(service.currentPrice, getOriginalPriceNumber(service.originalPrice))}%
+                        </span>
+                      </div>
+                      <div className="mt-2 bg-green-500 text-white px-3 py-1 rounded-full text-sm font-bold">
+                        Advance: ₹{Math.floor(service.currentPrice * 0.95).toLocaleString()} (5% OFF)
+                      </div>
+                    </div>
+
+                    <ul className="space-y-3 mb-8">
+                      {service.features.map((feature, featureIndex) => (
+                        <li key={featureIndex} className="flex items-start space-x-3">
+                          <Check className="h-5 w-5 text-green-500 mt-0.5 flex-shrink-0" />
+                          <span className="text-gray-700">{feature}</span>
+                        </li>
+                      ))}
+                    </ul>
+
+                    <div className="space-y-3">
+                      <button
+                        onClick={() => openPaymentModal(`SEO Service - ${service.name}`, service.currentPrice, getOriginalPriceNumber(service.originalPrice))}
+                        className={`w-full py-3 px-6 rounded-xl font-semibold transition-all ${
+                          service.popular
+                            ? 'bg-gradient-to-r from-yellow-500 to-yellow-600 hover:from-yellow-600 hover:to-yellow-700 text-gray-900'
+                            : 'bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white'
+                        }`}
+                      >
+                        💳 Pay Advance - Save 5%
+                      </button>
+                      <a
+                        href={`https://wa.me/919521281509?text=Hello Earningsharthi, I want SEO Service - ${service.name} plan`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="w-full bg-green-500 hover:bg-green-600 text-white py-2 px-6 rounded-xl font-medium transition-colors block text-center"
+                      >
+                        💬 WhatsApp for Details
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* Social Media Services Section */}
+      {activeTab === 'social' && (
+        <section className="py-16 bg-white">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                Social Media Marketing & Management
+              </h2>
+              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+                Grow your social presence, engage your audience, and drive conversions
+              </p>
+            </div>
+
+            <div className="space-y-16">
+              {socialMediaServices.map((service, index) => (
+                <div key={index} className="bg-gradient-to-br from-gray-50 to-white rounded-3xl p-8 border border-gray-200">
+                  <div className="text-center mb-8">
+                    <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-2">
+                      {service.category}
+                    </h3>
+                    <div className="w-24 h-1 bg-gradient-to-r from-purple-500 to-pink-500 mx-auto rounded-full"></div>
+                  </div>
+
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    {service.plans.map((plan, planIndex) => (
+                      <div key={planIndex} className={`relative bg-white rounded-2xl shadow-xl border-2 ${
+                        plan.popular ? 'border-yellow-400 transform hover:scale-105' : 'border-gray-200 hover:border-purple-300'
+                      } transition-all duration-300 hover:shadow-2xl`}>
+                        {plan.popular && plan.badge && (
+                          <div className="absolute -top-3 left-1/2 transform -translate-x-1/2">
+                            <span className="bg-gradient-to-r from-yellow-400 to-yellow-500 text-gray-900 px-4 py-1 rounded-full text-xs font-bold flex items-center space-x-1">
+                              <Crown className="h-3 w-3 fill-current" />
+                              <span>{plan.badge}</span>
+                            </span>
+                          </div>
+                        )}
+                        
+                        <div className="p-6">
+                          <h4 className="text-xl font-bold text-gray-900 text-center mb-2">{plan.name}</h4>
+                          <p className="text-gray-500 text-center text-sm mb-4">{plan.duration}</p>
+                          
+                          <div className="text-center mb-6">
+                            <div className="flex items-baseline justify-center gap-2">
+                              <span className="text-3xl font-bold text-purple-600">{plan.price}</span>
+                              <span className="text-lg text-gray-400 line-through">{plan.originalPrice}</span>
+                            </div>
+                            <div className="mt-2">
+                              <span className="bg-red-500 text-white px-3 py-1 rounded-full text-sm font-bold">
+                                SAVE {calculateDiscount(plan.currentPrice, getOriginalPriceNumber(plan.originalPrice))}%
+                              </span>
+                            </div>
+                            <div className="mt-2 bg-green-500 text-white px-3 py-1 rounded-full text-sm font-bold">
+                              Advance: ₹{Math.floor(plan.currentPrice * 0.95).toLocaleString()} (5% OFF)
+                            </div>
+                          </div>
+
+                          <ul className="space-y-3 mb-6">
+                            {plan.features.map((feature, featureIndex) => (
+                              <li key={featureIndex} className="flex items-start space-x-3">
+                                <Check className="h-5 w-5 text-green-500 mt-0.5 flex-shrink-0" />
+                                <span className="text-gray-700 text-sm">{feature}</span>
+                              </li>
+                            ))}
+                          </ul>
+
+                          <div className="space-y-3">
+                            <button
+                              onClick={() => openPaymentModal(`${service.category} - ${plan.name}`, plan.currentPrice, getOriginalPriceNumber(plan.originalPrice))}
+                              className={`w-full py-3 px-4 rounded-xl font-semibold transition-all ${
+                                plan.popular
+                                  ? 'bg-gradient-to-r from-yellow-500 to-yellow-600 hover:from-yellow-600 hover:to-yellow-700 text-gray-900'
+                                  : 'bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800 text-white'
+                              }`}
+                            >
+                              💳 Pay Advance - Save 5%
+                            </button>
+                            <a
+                              href={`https://wa.me/919521281509?text=Hello Earningsharthi, I want ${service.category} - ${plan.name} plan`}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="w-full bg-green-500 hover:bg-green-600 text-white py-2 px-4 rounded-xl font-medium transition-colors block text-center"
+                            >
+                              💬 WhatsApp for Details
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* Quick Services Section */}
+      {activeTab === 'quick' && (
+        <section className="py-16 bg-gradient-to-br from-gray-50 to-blue-50">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                Quick Digital Services
+              </h2>
+              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+                Get your digital presence started with our quick and affordable services
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+              {quickServices.map((service, index) => (
+                <div key={index} className="bg-white p-8 rounded-2xl shadow-xl border-2 border-gray-200 hover:border-blue-300 hover:shadow-2xl transition-all duration-300">
+                  <div className="flex items-center space-x-4 mb-6">
+                    <div className="bg-blue-100 text-blue-600 p-4 rounded-2xl">
+                      {service.icon}
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-bold text-gray-900">{service.name}</h3>
+                      <div className="flex items-baseline space-x-2 mt-1">
+                        <span className="text-2xl font-bold text-blue-600">{service.price}</span>
+                        <span className="text-sm text-gray-400 line-through">{service.originalPrice}</span>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <p className="text-gray-600 mb-6">{service.description}</p>
+                  
+                  <div className="bg-red-500 text-white px-3 py-1 rounded-full text-sm font-bold inline-block mb-4">
+                    SAVE {calculateDiscount(service.currentPrice, getOriginalPriceNumber(service.originalPrice))}%
+                  </div>
+
+                  <div className="space-y-3">
+                    <button
+                      onClick={() => openPaymentModal(service.name, service.currentPrice, getOriginalPriceNumber(service.originalPrice))}
+                      className="w-full bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white py-3 px-4 rounded-xl font-semibold transition-all"
+                    >
+                      💳 Pay Advance - Save 5%
+                    </button>
+                    <a
+                      href={`https://wa.me/919521281509?text=Hello Earningsharthi, I want ${service.name} service`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-full bg-green-500 hover:bg-green-600 text-white py-2 px-4 rounded-xl font-medium transition-colors block text-center"
+                    >
+                      💬 Get Quote
+                    </a>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Free Consultation Card */}
+            <div className="max-w-2xl mx-auto mt-12 bg-gradient-to-r from-green-500 to-emerald-600 rounded-3xl p-8 text-white text-center shadow-2xl">
+              <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full text-sm font-bold mb-4">
+                <Sparkles className="h-4 w-4" />
+                FREE DIGITAL MARKETING CONSULTATION
+              </div>
+              <h3 className="text-2xl font-bold mb-4">Not Sure Which Plan to Choose?</h3>
+              <p className="text-green-100 mb-6 text-lg">
+                Get a FREE 30-minute consultation with our digital marketing experts. 
+                We'll analyze your business and recommend the perfect strategy.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <button
                   onClick={scheduleConsultation}
-                  className="w-full bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-lg font-medium transition-colors block text-center text-sm"
+                  className="bg-white text-green-600 hover:bg-gray-100 px-8 py-3 rounded-xl font-bold transition-all hover:scale-105 flex items-center justify-center gap-2"
                 >
-                  📅 Schedule Free Call
+                  <MessageCircle className="h-5 w-5" />
+                  Schedule Free Call
                 </button>
-              </>
-            ) : (
-              <button
-                onClick={() => openPaymentModal(addon.name, addon.currentPrice, addon.currentPrice * 2)}
-                className="w-full bg-purple-600 hover:bg-purple-700 text-white py-2 px-4 rounded-lg font-medium transition-colors block text-center text-sm"
-              >
-                💳 Pay Now
-              </button>
-            )}
+                <a
+                  href="tel:+919521281509"
+                  className="bg-yellow-500 text-gray-900 hover:bg-yellow-600 px-8 py-3 rounded-xl font-bold transition-all hover:scale-105 flex items-center justify-center gap-2"
+                >
+                  <Phone className="h-5 w-5" />
+                  Call Now: +91 9521281509
+                </a>
+              </div>
+            </div>
           </div>
-        </div>
-      ))}
-    </div>
-  </div>
-</section>
+        </section>
+      )}
+
       {/* Final CTA Section */}
-      <section className="py-16 bg-gradient-to-r from-purple-600 to-purple-800 text-white">
+      <section className="py-16 bg-gradient-to-r from-blue-600 to-blue-800 text-white">
         <div className="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            Ready to Grow Your Business?
+            Ready to Transform Your Digital Presence?
           </h2>
-          <p className="text-xl mb-8 text-purple-100">
-            Get Professional Digital Marketing Services at 70% OFF + 5% Extra on Advance Payment!
+          <p className="text-xl mb-8 text-blue-100">
+            Join 500+ satisfied clients who've scaled their business with Earningsharthi
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
-              href="https://wa.me/919521281509?text=Hello DiziGrow, I want to discuss digital marketing services for my business"
+              href="https://wa.me/919521281509?text=Hello Earningsharthi, I want to discuss digital marketing services for my business"
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-yellow-500 hover:bg-yellow-600 text-purple-900 px-8 py-4 rounded-lg text-lg font-semibold transition-all hover:scale-105 flex items-center justify-center space-x-2"
+              className="bg-yellow-500 hover:bg-yellow-600 text-blue-900 px-8 py-4 rounded-xl text-lg font-bold transition-all hover:scale-105 flex items-center justify-center space-x-2 shadow-lg"
             >
+              <MessageCircle className="h-6 w-6" />
               <span>💬 WhatsApp for 70% OFF</span>
             </a>
             <a
               href="tel:+919521281509"
-              className="bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-lg text-lg font-semibold transition-all hover:scale-105 flex items-center justify-center space-x-2"
+              className="bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-xl text-lg font-bold transition-all hover:scale-105 flex items-center justify-center space-x-2 shadow-lg"
             >
+              <Phone className="h-6 w-6" />
               <span>📞 Call: +91 9521281509</span>
             </a>
           </div>
-          <p className="text-purple-200 mt-4">
-            Limited Time Offer - Prices increasing soon!
-          </p>
+          <div className="mt-6 flex flex-wrap items-center justify-center gap-6 text-blue-200">
+            <div className="flex items-center gap-2">
+              <Shield className="h-5 w-5" />
+              <span>30-Day Money Back Guarantee</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <Clock className="h-5 w-5" />
+              <span>24/7 Customer Support</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <Award className="h-5 w-5" />
+              <span>Certified Experts</span>
+            </div>
+          </div>
         </div>
       </section>
 
       {/* Payment Modal */}
       {isPaymentOpen && (
-        <div className="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50 p-4">
-          <div className="bg-white rounded-2xl p-6 max-w-md w-full shadow-2xl border-2 border-purple-300">
+        <div className="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50 p-4 backdrop-blur-sm">
+          <div className="bg-white rounded-3xl p-6 max-w-md w-full shadow-2xl border-2 border-blue-300 animate-pop-in">
             <div className="flex justify-between items-center mb-4">
               <div>
                 <h3 className="text-xl md:text-2xl font-bold text-gray-900 flex items-center gap-2">
-                  <CreditCard className="h-5 w-5 md:h-6 md:w-6 text-purple-500" />
+                  <CreditCard className="h-5 w-5 md:h-6 md:w-6 text-blue-500" />
                   Advance Payment - 5% OFF
                 </h3>
-                <p className="text-purple-600 font-semibold text-sm mt-1">{paymentService}</p>
+                <p className="text-blue-600 font-semibold text-sm mt-1">{paymentService}</p>
               </div>
-              <button onClick={() => setIsPaymentOpen(false)} className="text-gray-500 hover:text-gray-700 p-1 hover:bg-gray-100 rounded-full">
+              <button 
+                onClick={() => setIsPaymentOpen(false)} 
+                className="text-gray-500 hover:text-gray-700 p-1 hover:bg-gray-100 rounded-full transition-colors"
+              >
                 <span className="text-2xl">×</span>
               </button>
             </div>
             
             <div className="space-y-4">
-              <div className="p-4 rounded-xl border-2 bg-green-50 border-green-200">
+              <div className="p-4 rounded-2xl border-2 bg-gradient-to-r from-green-50 to-emerald-50 border-green-200">
                 <div className="text-center">
                   <div className="text-2xl md:text-3xl font-bold text-green-600 mb-2">
                     ₹{paymentAmount.toLocaleString()}
@@ -932,12 +1427,15 @@ const scheduleConsultation = () => {
                 Pay ₹{paymentAmount.toLocaleString()} Now
               </button>
 
-              <button 
-                onClick={() => {setIsPaymentOpen(false);}}
-                className="w-full bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white py-2 md:py-3 rounded-xl font-bold transition-all hover:scale-105 text-center block border-2 border-purple-300 text-sm md:text-base"
+              <a
+                href={`https://wa.me/919521281509?text=Hello Earningsharthi, I want to discuss ${paymentService} before payment`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white py-2 md:py-3 rounded-xl font-bold transition-all hover:scale-105 text-center block border-2 border-blue-300 text-sm md:text-base flex items-center justify-center gap-2"
               >
-                💬 Contact First Instead
-              </button>
+                <MessageCircle className="h-4 w-4" />
+                Discuss First on WhatsApp
+              </a>
             </div>
           </div>
         </div>
@@ -945,6 +1443,16 @@ const scheduleConsultation = () => {
 
       {/* Razorpay Script */}
       <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
+      <style jsx>{`
+        @keyframes pop-in {
+          0% { transform: scale(0.8); opacity: 0; }
+          100% { transform: scale(1); opacity: 1; }
+        }
+        .animate-pop-in {
+          animation: pop-in 0.3s ease-out;
+        }
+      `}</style>
     </div>
   );
 };

@@ -12,32 +12,25 @@ const About: React.FC = () => {
   // Team members with images
   const teamMembers = [
     {
-      name: "Harshit Chaudhary",
-      role: "CEO & Founder",
-      description: "Digital marketing expert with 3+ years experience in SEO, web development & performance marketing. Founded DiziGrow to make digital growth accessible for all businesses.",
-      image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80",
+      name: "Priyanka",
+      role: "Founder",
+      description: "Visionary leader with expertise in digital marketing and business strategies. Founded Earning Sharthi to provide affordable digital solutions for startups and businesses.",
+      image: "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
       color: "from-purple-600 to-purple-800"
     },
     {
-      name: "Praveen Gupta",
-      role: "Operations Manager",
-      description: "Strategic planner ensuring smooth execution of all digital marketing campaigns and client satisfaction. Manages project timelines and team coordination.",
-      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80",
+      name: "Daya Shankar Prajapati",
+      role: "Director",
+      description: "Strategic business leader with extensive experience in digital entrepreneurship and client management. Oversees operations and business development.",
+      image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
       color: "from-yellow-500 to-yellow-600"
     },
     {
-      name: "Vikash Singh",
-      role: "IT & Social Media Head",
-      description: "Handles IT infrastructure & social media marketing strategies to expand digital footprints. Expert in platform management and technical implementations.",
-      image: "https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80",
+      name: "Vivek Singh",
+      role: "Director",
+      description: "Digital marketing expert and technology strategist. Manages website development, SEO, and digital advertising campaigns for clients.",
+      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
       color: "from-green-500 to-green-600"
-    },
-    {
-      name: "Rahul Kumar",
-      role: "Graphics Design Head",
-      description: "Leads creative team delivering stunning branding & visual designs that engage audiences. Specializes in brand identity and marketing collateral.",
-      image: "https://images.unsplash.com/photo-1480429370139-e0132c086e2a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80",
-      color: "from-red-500 to-red-600"
     }
   ];
 
@@ -45,83 +38,63 @@ const About: React.FC = () => {
   const stats = [
     { number: "150+", label: "Happy Clients", icon: "😊", delay: "0s" },
     { number: "300+", label: "Projects Delivered", icon: "🚀", delay: "0.1s" },
-    { number: "3+", label: "Years Experience", icon: "⏳", delay: "0.2s" },
-    { number: "24/7", label: "Support Available", icon: "📞", delay: "0.3s" },
+    { number: "24/7", label: "Support Available", icon: "📞", delay: "0.2s" },
+    { number: "₹50L+", label: "Client Revenue Generated", icon: "💰", delay: "0.3s" },
   ];
 
   // Core values
   const values = [
     {
-      icon: "🚀",
-      title: "Innovation Driven",
-      description: "We combine cutting-edge technology with creative strategies to build winning digital campaigns that stand out in the market.",
+      icon: "💰",
+      title: "Affordable Pricing",
+      description: "We provide premium digital marketing services at startup-friendly prices that won't break your budget.",
       delay: "0s"
     },
     {
       icon: "🎯",
       title: "Result-Oriented",
-      description: "Focused on delivering measurable ROI through SEO, performance marketing & data-driven strategies that actually work.",
+      description: "Focused on delivering measurable ROI through SEO, performance marketing & data-driven strategies.",
       delay: "0.1s"
     },
     {
       icon: "🤝",
       title: "Client Partnership",
-      description: "We act as your extended digital team, building long-term relationships focused on your growth and success.",
+      description: "We act as your extended digital team, building long-term relationships focused on your growth.",
       delay: "0.2s"
     },
     {
-      icon: "⭐",
-      title: "Excellence First",
-      description: "Committed to delivering high-quality web development, branding & marketing solutions that exceed expectations.",
+      icon: "⚡",
+      title: "Quick Delivery",
+      description: "Fast turnaround times without compromising on quality. Get your website live in days, not months.",
       delay: "0.3s"
     },
   ];
 
-  // Services with updated pricing and advance payment options
+  // Services we offer
   const services = [
+    {
+      icon: "🌐",
+      title: "Website Development",
+      description: "Professional websites starting from just ₹4,999 with free domain & hosting for 1 year",
+      features: ["WordPress/Shopify", "Custom Development", "E-commerce Solutions", "Responsive Design"]
+    },
     {
       icon: "🔍",
       title: "SEO Services",
-      description: "Get Page 1 Google rankings with our comprehensive SEO strategies and monthly optimization",
-      price: "₹7,999/month",
-      originalPrice: "₹14,999",
-      advancePrice: "₹7,599",
-      advanceOriginalPrice: "₹7,999",
-      features: ["Keyword Research", "On-Page SEO", "Technical SEO", "Monthly Reports", "Rank Tracking", "Content Optimization"],
-      delay: "0s"
+      description: "Get Page 1 Google rankings with our comprehensive SEO strategies",
+      features: ["On-Page SEO", "Technical SEO", "Local SEO", "Monthly Reporting"]
     },
     {
       icon: "📱",
       title: "Social Media Marketing",
-      description: "Complete social media management with 15 creative posts + 2 viral videos monthly",
-      price: "₹4,999/month",
-      originalPrice: "₹12,999",
-      advancePrice: "₹4,749",
-      advanceOriginalPrice: "₹4,999",
-      features: ["Content Creation", "Platform Management", "Performance Analytics", "Strategy Planning", "Hashtag Research", "Engagement Management"],
-      delay: "0.1s"
+      description: "Complete social media management and advertising campaigns",
+      features: ["Content Creation", "Platform Management", "Paid Advertising", "Analytics"]
     },
     {
-      icon: "💻",
-      title: "Website Development",
-      description: "Professional responsive websites that convert visitors to customers with modern design",
-      price: "₹9,999",
-      originalPrice: "₹22,000",
-      advancePrice: "₹9,499",
-      advanceOriginalPrice: "₹9,999",
-      features: ["WordPress/Shopify", "SEO Optimized", "Fast Loading", "Mobile Friendly", "Contact Forms", "1 Year Hosting"],
-      delay: "0.2s"
-    },
-    {
-      icon: "🛒",
-      title: "E-commerce Marketing",
-      description: "Complete Amazon, Flipkart, Meesho store setup & management with product listing",
-      price: "₹5,999",
-      originalPrice: "₹12,999",
-      advancePrice: "₹5,699",
-      advanceOriginalPrice: "₹5,999",
-      features: ["Store Setup", "Product Listing", "Multi-platform", "Sales Optimization", "Inventory Management", "Order Processing"],
-      delay: "0.3s"
+      icon: "🎯",
+      title: "Google & Meta Ads",
+      description: "Targeted advertising campaigns that drive real results",
+      features: ["PPC Management", "Ad Creation", "A/B Testing", "ROI Tracking"]
     }
   ];
 
@@ -129,62 +102,62 @@ const About: React.FC = () => {
   const process = [
     {
       step: "01",
-      title: "Discovery & Strategy",
-      description: "We analyze your business, competitors & goals to create a customized digital marketing strategy tailored to your needs.",
-      icon: "🔍",
+      title: "Consultation & Planning",
+      description: "We understand your business goals and create a customized digital strategy.",
+      icon: "💬",
       delay: "0s"
     },
     {
       step: "02",
-      title: "Planning & Proposal",
-      description: "Detailed project plan with timeline, deliverables & pricing tailored to your budget and business objectives.",
-      icon: "📋",
+      title: "Project Development",
+      description: "Our expert team builds your website and implements marketing strategies.",
+      icon: "⚡",
       delay: "0.2s"
     },
     {
       step: "03",
-      title: "Execution & Implementation",
-      description: "Our expert team implements the strategy with regular updates & transparent communication throughout the process.",
-      icon: "⚡",
+      title: "Quality Testing",
+      description: "Rigorous testing to ensure everything works perfectly before launch.",
+      icon: "✅",
       delay: "0.4s"
     },
     {
       step: "04",
-      title: "Results & Optimization",
-      description: "Continuous monitoring, performance analysis & optimization for maximum ROI and business growth.",
-      icon: "📈",
+      title: "Launch & Support",
+      description: "We launch your project and provide ongoing support for growth.",
+      icon: "🚀",
       delay: "0.6s"
     }
   ];
 
   // Achievements
   const achievements = [
-    { number: "50+", label: "SEO Clients on Page 1", icon: "🏆", delay: "0s" },
-    { number: "100+", label: "Websites Developed", icon: "💻", delay: "0.1s" },
+    { number: "50+", label: "Websites Developed", icon: "💻", delay: "0s" },
+    { number: "100+", label: "SEO Clients", icon: "🔍", delay: "0.1s" },
     { number: "200+", label: "Social Media Campaigns", icon: "📱", delay: "0.2s" },
-    { number: "₹2Cr+", label: "Revenue Generated for Clients", icon: "💰", delay: "0.3s" }
+    { number: "₹2Cr+", label: "Client Revenue Generated", icon: "💰", delay: "0.3s" }
   ];
 
   // Testimonials
   const testimonials = [
     {
-      text: "DiziGrow's SEO services got us on Page 1 of Google in just 3 months! Our organic traffic increased by 300% and leads have been pouring in consistently.",
+      text: "Earning Sharthi developed my business website at just ₹4,999! Professional work and great support. Highly recommended for startups.",
       author: "Rajesh Kumar",
-      company: "Fashion Store Owner",
+      company: "Small Business Owner",
       rating: 5,
       delay: "0s"
     },
     {
-      text: "Professional website development at affordable prices. They delivered exactly what we needed for our restaurant business and our online orders increased by 40%.",
+      text: "Their SEO services got us on Page 1 of Google within 3 months. Our online visibility and leads have increased significantly.",
       author: "Priya Sharma", 
-      company: "Restaurant Business",
+      company: "Local Service Business",
       rating: 5,
       delay: "0.1s"
     },
     {
-      text: "Social media management transformed our online presence. Engagement and sales have never been better! The team is responsive and results-driven.",
+      text: "Affordable social media marketing that actually works. They manage all our platforms and the engagement has been amazing.",
       author: "Amit Patel",
-      company: "E-commerce Seller",
+      company: "E-commerce Store",
       rating: 5,
       delay: "0.2s"
     }
@@ -194,14 +167,14 @@ const About: React.FC = () => {
   const whyChooseUs = [
     {
       icon: "💰",
-      title: "Affordable Pricing",
-      description: "Get professional digital marketing services starting from just ₹4,999/month with no hidden costs.",
+      title: "Startup Friendly Prices",
+      description: "Get premium digital marketing services starting from just ₹4,999. No hidden costs.",
       delay: "0s"
     },
     {
       icon: "⚡",
-      title: "Quick Results",
-      description: "We focus on delivering measurable results within the first 30-60 days of our partnership.",
+      title: "Quick Turnaround",
+      description: "Website development in 3-7 days. Fast delivery without compromising quality.",
       delay: "0.1s"
     },
     {
@@ -213,113 +186,60 @@ const About: React.FC = () => {
     {
       icon: "📊",
       title: "Transparent Reporting",
-      description: "Regular performance reports and analytics to track your ROI and campaign success.",
+      description: "Regular performance reports and analytics to track your ROI.",
       delay: "0.3s"
     },
     {
       icon: "🔄",
       title: "Flexible Packages",
-      description: "Customizable service packages that grow with your business needs and budget.",
+      description: "Customizable service packages that grow with your business needs.",
       delay: "0.4s"
     },
     {
       icon: "🏆",
       title: "Proven Results",
-      description: "150+ satisfied clients and 300+ successful projects delivered across industries.",
+      description: "150+ satisfied clients and 300+ successful projects delivered.",
       delay: "0.5s"
     }
   ];
 
-// Payment handler function
-const handlePayment = async (service: any, isAdvancePayment: boolean = false) => {
-  // Amount calculation
-  const amount = isAdvancePayment
-    ? parseInt(service.advancePrice?.replace(/[^0-9]/g, ''))
-    : parseInt(service.price?.replace(/[^0-9]/g, ''));
-
-  // Use service.name instead of service.title
-  const description = isAdvancePayment
-    ? `${service.name} - Advance Payment (5% OFF)`
-    : service.name;
-
-  try {
-    // ✅ Razorpay Key from env (Vite)
-    const RAZORPAY_KEY_ID = import.meta.env.VITE_RAZORPAY_KEY_ID || "rzp_test_YOUR_KEY_ID";
-
-    // ✅ Razorpay options
-    const options = {
-      key: RAZORPAY_KEY_ID,
-      amount: amount * 100, // Amount in paise
-      currency: "INR",
-      name: "DiziGrow",
-      description: description,
-      image: "https://dizigrow.com/logo.png",
-      handler: function (response: any) {
-        alert(`Payment successful! Payment ID: ${response.razorpay_payment_id}`);
-        // Redirect to success page
-        window.location.href = `/payment-success?payment_id=${response.razorpay_payment_id}&service=${encodeURIComponent(service.name)}`;
-      },
-      prefill: {
-        name: "Customer Name",
-        email: "customer@example.com",
-        contact: "+919876543210"
-      },
-      notes: {
-        service: service.name,
-        type: isAdvancePayment ? "advance" : "regular"
-      },
-      theme: {
-        color: "#8B5CF6"
-      }
-    };
-
-    // ✅ Open Razorpay checkout
-    const razorpay = new (window as any).Razorpay(options);
-    razorpay.open();
-  } catch (error) {
-    console.error("Payment error:", error);
-    alert("Payment failed. Please try again or contact us on WhatsApp.");
-  }
-};
-
-
   // WhatsApp redirect for consultation
-  const handleWhatsAppRedirect = (service: any) => {
-    const message = `Hello DiziGrow! I'm interested in ${service.title} service. Please provide more details.`;
-    window.open(`https://wa.me/919521281509?text=${encodeURIComponent(message)}`, '_blank');
+  const handleWhatsAppRedirect = () => {
+    const message = "Hello Earning Sharthi! I'm interested in your digital marketing services. Please provide more details.";
+    window.open(`https://wa.me/916398799013?text=${encodeURIComponent(message)}`, '_blank');
   };
 
   return (
     <div className="min-h-screen bg-white">
       <Helmet>
-        <title>About DiziGrow | Leading SEO & Web Development Agency in Jaipur</title>
+        <title>About Earning Sharthi | Affordable Digital Marketing Agency</title>
         <meta
           name="description"
-          content="Meet DiziGrow: Jaipur's trusted digital marketing partner. With 150+ clients and 300+ projects, we drive growth with expert SEO (from ₹8,999/mo), web development (₹17,999), and branding. 3+ years of proven experience."
+          content="Earning Sharthi - Your affordable digital marketing partner. Website development from ₹4,999, SEO, social media marketing & Google Ads. 150+ clients. 300+ projects."
         />
         <meta
           name="keywords"
-          content="about DiziGrow, digital marketing agency Jaipur, SEO company Jaipur, web development Jaipur, social media marketing, e-commerce website, affordable SEO services, branding agency"
+          content="digital marketing agency, affordable website development, SEO services, social media marketing, Google Ads, Meta Ads, startup business solutions"
         />
-        <link rel="canonical" href="https://dizigrow.com/about" />
+        <link rel="canonical" href="https://earningsharthi.in/about" />
         <script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",
             "@type": "Organization",
-            "name": "DiziGrow",
-            "url": "https://dizigrow.com",
-            "logo": "https://dizigrow.com/logo.png",
-            "description": "A leading digital marketing agency in Jaipur specializing in SEO, Website Development, and Social Media Marketing.",
+            "name": "Earning Sharthi",
+            "url": "https://earningsharthi.in",
+            "logo": "https://earningsharthi.in/logo.png",
+            "description": "Affordable digital marketing agency providing website development, SEO, and social media marketing services.",
             "address": {
               "@type": "PostalAddress",
-              "addressLocality": "Jaipur",
-              "addressRegion": "Rajasthan",
+              "addressLocality": "Khatima",
+              "addressRegion": "Uttarakhand",
               "addressCountry": "IN"
             },
             "areaServed": "India",
             "founder": {
               "@type": "Person",
-              "name": "Harshit Chaudhary"
+              "name": "Priyanka"
             },
             "employee": teamMembers.map(member => ({
               "@type": "Person",
@@ -327,9 +247,9 @@ const handlePayment = async (service: any, isAdvancePayment: boolean = false) =>
               "jobTitle": member.role
             })),
             "sameAs": [
-              "https://www.linkedin.com/company/109423940",
-              "https://www.instagram.com/dizi_grow/",
-              "https://www.facebook.com/profile.php?id=61581763886467#"
+              "https://www.facebook.com/earningsharthidigital",
+              "https://www.instagram.com/earningsharthi",
+              "https://x.com/earningsharthi"
             ]
           })}
         </script>
@@ -345,18 +265,18 @@ const handlePayment = async (service: any, isAdvancePayment: boolean = false) =>
         
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className="inline-flex items-center bg-yellow-500 text-purple-900 px-6 py-3 rounded-full text-lg font-bold mb-8 animate-bounce">
-            🚀 Jaipur's #1 Digital Marketing Agency
+            🚀 Affordable Digital Marketing Solutions
           </div>
 
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight animate-fade-in-up">
-            About <span className="text-yellow-400">DiziGrow</span>
+            About <span className="text-yellow-400">Earning Sharthi</span>
           </h1>
 
           <p className="text-xl md:text-2xl mb-8 max-w-4xl mx-auto text-purple-100 leading-relaxed animate-fade-in-up delay-300">
-            We are a <strong className="text-yellow-400">full-service digital marketing agency</strong> in Jaipur, 
-            helping <strong>150+ businesses</strong> grow through professional 
-            <strong> SEO, web development, social media marketing</strong> and 
-            <strong> branding services</strong> at affordable prices.
+            We are a <strong className="text-yellow-400">full-service digital marketing agency</strong> providing 
+            <strong> affordable solutions</strong> for startups and businesses. 
+            <strong> Website development from ₹4,999</strong>, SEO, social media marketing, 
+            and <strong>Google/Meta Ads</strong> that deliver real results.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center animate-fade-in-up delay-500">
@@ -364,17 +284,15 @@ const handlePayment = async (service: any, isAdvancePayment: boolean = false) =>
               to="/services"
               className="bg-yellow-500 hover:bg-yellow-600 text-purple-900 px-8 py-4 rounded-lg text-lg font-bold transition-all duration-300 hover:scale-105 flex items-center space-x-2 shadow-2xl shadow-yellow-500/25"
             >
-              <span>Explore Our Services</span>
+              <span>Our Services</span>
             </Link>
-            <a
-              href="https://wa.me/919521281509?text=Hello%20DiziGrow,%20I%20want%20to%20know%20more%20about%20your%20digital%20marketing%20services"
-              target="_blank"
-              rel="noopener noreferrer"
+            <button
+              onClick={handleWhatsAppRedirect}
               className="bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-lg text-lg font-bold transition-all duration-300 hover:scale-105 flex items-center space-x-2 shadow-2xl shadow-green-500/25"
             >
               <span className="text-xl">💚</span>
-              <span>WhatsApp for Consultation</span>
-            </a>
+              <span>Get Free Consultation</span>
+            </button>
           </div>
 
           {/* Stats Preview */}
@@ -402,21 +320,21 @@ const handlePayment = async (service: any, isAdvancePayment: boolean = false) =>
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Our Story</h2>
               <div className="space-y-6">
                 <p className="text-lg text-gray-600 leading-relaxed">
-                  Founded in the heart of Jaipur, <strong className="text-purple-600">DiziGrow</strong> emerged from a simple 
-                  yet powerful vision: to make <em className="text-purple-600">professional digital marketing accessible</em> to 
-                  every business, regardless of size or budget.
+                  Founded in <strong className="text-purple-600">Devbhumi Uttarakhand, Khatima</strong>, 
+                  <strong> Earning Sharthi</strong> emerged with a clear mission: to make 
+                  <em className="text-purple-600"> professional digital marketing accessible and affordable</em> for 
+                  every business, especially startups and small enterprises.
                 </p>
                 <p className="text-lg text-gray-600 leading-relaxed">
-                  Our journey began when our founder, <strong>Harshit Chaudhary</strong>, recognized that many businesses 
-                  were struggling with expensive digital agencies that promised the world but delivered very little. 
-                  We set out to change that by offering <strong>transparent, results-driven services</strong> at prices 
-                  that actually make sense.
+                  Our journey began when we realized that most digital agencies charge exorbitant fees 
+                  that are out of reach for new businesses. We decided to change this by offering 
+                  <strong> premium-quality services at startup-friendly prices</strong>.
                 </p>
                 <p className="text-lg text-gray-600 leading-relaxed">
                   Today, we're proud to have served <strong className="text-purple-600">150+ businesses</strong> across 
-                  India, delivering <strong className="text-purple-600">300+ successful projects</strong> that have 
-                  generated <strong>over ₹2 Crore in revenue</strong> for our clients. From local restaurants to 
-                  e-commerce giants, we've helped businesses of all sizes achieve their digital dreams.
+                  India, delivering <strong className="text-purple-600">300+ successful projects</strong> including 
+                  websites starting from just <strong>₹4,999</strong>, SEO campaigns, and social media 
+                  marketing that have generated <strong>over ₹2 Crore in revenue</strong> for our clients.
                 </p>
               </div>
               
@@ -425,16 +343,14 @@ const handlePayment = async (service: any, isAdvancePayment: boolean = false) =>
                   to="/portfolio"
                   className="bg-purple-600 hover:bg-purple-700 text-white px-6 py-3 rounded-lg font-semibold transition-all duration-300 text-center"
                 >
-                  View Our Work
+                  View Our Portfolio
                 </Link>
-                <a
-                  href="https://wa.me/919521281509"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <button
+                  onClick={handleWhatsAppRedirect}
                   className="border-2 border-purple-600 text-purple-600 hover:bg-purple-600 hover:text-white px-6 py-3 rounded-lg font-semibold transition-all duration-300 text-center"
                 >
-                  Our Success Stories
-                </a>
+                  Discuss Your Project
+                </button>
               </div>
             </div>
             
@@ -460,49 +376,90 @@ const handlePayment = async (service: any, isAdvancePayment: boolean = false) =>
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Our Mission & Vision</h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Driving digital transformation and business growth through innovative strategies and proven methodologies
+              Empowering businesses with affordable digital solutions that drive growth and success
             </p>
           </div>
           
           <div className="grid md:grid-cols-2 gap-8">
             <div className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-500 transform hover:-translate-y-2 animate-fade-in-up">
-              <div className="text-5xl mb-6">🌍</div>
+              <div className="text-5xl mb-6">🎯</div>
               <h3 className="text-2xl font-bold text-gray-900 mb-4">Our Mission</h3>
               <p className="text-gray-600 leading-relaxed text-lg">
-                To empower businesses of all sizes with <strong className="text-purple-600">affordable, results-driven digital marketing solutions</strong>. 
-                We believe every business deserves access to professional 
-                <strong> SEO, web development, and marketing services</strong> that deliver 
-                measurable ROI and sustainable growth.
+                To provide <strong className="text-purple-600">high-quality, affordable digital marketing services</strong> 
+                that help businesses establish and grow their online presence. We believe every business, 
+                regardless of size, deserves access to professional 
+                <strong> website development, SEO, and marketing services</strong>.
               </p>
             </div>
             
             <div className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-500 transform hover:-translate-y-2 animate-fade-in-up delay-200">
-              <div className="text-5xl mb-6">🎯</div>
+              <div className="text-5xl mb-6">🚀</div>
               <h3 className="text-2xl font-bold text-gray-900 mb-4">Our Vision</h3>
               <p className="text-gray-600 leading-relaxed text-lg">
-                To become India's most trusted <strong className="text-purple-600">digital growth partner</strong>, 
-                recognized for delivering exceptional <strong>web development, branding & marketing services</strong> 
-                that help businesses thrive in the digital age. We aim to be the first choice for 
-                businesses seeking reliable digital transformation.
+                To become the <strong className="text-purple-600">most trusted affordable digital marketing partner</strong> 
+                for startups and small businesses across India. We aim to help 
+                <strong> 10,000+ businesses</strong> succeed online through our cost-effective 
+                digital solutions and expert guidance.
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* === CORE VALUES === */}
+      {/* === SERVICES OVERVIEW === */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Our Digital Marketing Services</h2>
+            <p className="text-xl text-gray-600">Comprehensive solutions designed for your business growth</p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {services.map((service, index) => (
+              <div 
+                key={index}
+                className="bg-white border-2 border-gray-100 p-6 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-500 transform hover:-translate-y-2 group animate-fade-in-up"
+                style={{animationDelay: `${index * 0.1}s`}}
+              >
+                <div className="text-4xl mb-4 group-hover:scale-110 transition-transform">{service.icon}</div>
+                <h3 className="text-lg font-bold text-gray-900 mb-2">{service.title}</h3>
+                <p className="text-gray-600 text-sm mb-4 leading-relaxed">{service.description}</p>
+                <div className="space-y-2">
+                  {service.features.map((feature, idx) => (
+                    <div key={idx} className="flex items-center text-gray-700 text-xs">
+                      <span className="text-green-500 mr-2">✓</span>
+                      {feature}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+          
+          <div className="text-center mt-12 animate-fade-in-up">
+            <Link
+              to="/services"
+              className="bg-purple-600 hover:bg-purple-700 text-white px-8 py-4 rounded-lg font-semibold transition-all duration-300 hover:scale-105 inline-flex items-center space-x-2 shadow-lg"
+            >
+              <span>View All Services & Pricing</span>
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* === CORE VALUES === */}
+      <section className="py-20 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Our Core Values</h2>
-            <p className="text-xl text-gray-600">The fundamental principles that guide every decision we make and every service we deliver</p>
+            <p className="text-xl text-gray-600">The principles that guide our work and client relationships</p>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {values.map((value, index) => (
               <div 
                 key={index}
-                className="bg-gray-50 p-6 rounded-2xl hover:shadow-xl transition-all duration-500 transform hover:-translate-y-2 text-center group animate-fade-in-up"
+                className="bg-white p-6 rounded-2xl hover:shadow-xl transition-all duration-500 transform hover:-translate-y-2 text-center group animate-fade-in-up"
                 style={{animationDelay: value.delay}}
               >
                 <div className="text-4xl mb-4 group-hover:scale-110 transition-transform duration-300">{value.icon}</div>
@@ -518,8 +475,8 @@ const handlePayment = async (service: any, isAdvancePayment: boolean = false) =>
       <section className="py-20 bg-gradient-to-br from-purple-50 to-blue-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Why Choose DiziGrow?</h2>
-            <p className="text-xl text-gray-600">Discover what sets us apart from other digital marketing agencies</p>
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Why Choose Earning Sharthi?</h2>
+            <p className="text-xl text-gray-600">Discover what makes us the preferred choice for businesses</p>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -538,99 +495,15 @@ const handlePayment = async (service: any, isAdvancePayment: boolean = false) =>
         </div>
       </section>
 
-      {/* === OUR SERVICES === */}
+      {/* === OUR TEAM === */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Our Digital Marketing Services</h2>
-            <p className="text-xl text-gray-600">Comprehensive solutions designed to drive your business growth</p>
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Meet Our Leadership Team</h2>
+            <p className="text-xl text-gray-600">The passionate professionals behind Earning Sharthi</p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {services.map((service, index) => (
-              <div 
-                key={index}
-                className="bg-white border-2 border-gray-100 p-6 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-500 transform hover:-translate-y-2 group animate-fade-in-up"
-                style={{animationDelay: service.delay}}
-              >
-                <div className="text-4xl mb-4 group-hover:scale-110 transition-transform">{service.icon}</div>
-                <h3 className="text-lg font-bold text-gray-900 mb-2">{service.title}</h3>
-                <p className="text-gray-600 text-sm mb-4 leading-relaxed">{service.description}</p>
-                <div className="space-y-2 mb-4">
-                  {service.features.map((feature, idx) => (
-                    <div key={idx} className="flex items-center text-gray-700 text-xs">
-                      <span className="text-green-500 mr-2">✓</span>
-                      {feature}
-                    </div>
-                  ))}
-                </div>
-                
-                {/* Pricing Section */}
-                <div className="border-t pt-4 space-y-3">
-                  <div className="text-center">
-                    <div className="text-purple-600 font-bold text-lg">{service.price}</div>
-                    <div className="text-gray-500 text-sm line-through">{service.originalPrice}</div>
-                  </div>
-                  
-                  {/* Pay in Advance Option */}
-                  <div className="bg-green-50 border border-green-200 rounded-lg p-3">
-                    <div className="text-center mb-2">
-                      <div className="text-green-700 font-bold text-sm">Pay in Advance</div>
-                      <div className="text-green-600 font-bold">{service.advancePrice}</div>
-                      <div className="text-green-500 text-xs line-through">{service.advanceOriginalPrice}</div>
-                      <div className="text-green-600 text-xs font-semibold">Save 5%</div>
-                    </div>
-                    <button
-                      onClick={() => handlePayment(service, true)}
-                      className="w-full bg-green-600 hover:bg-green-700 text-white py-2 px-4 rounded-lg text-sm font-semibold transition-all duration-300 hover:scale-105 flex items-center justify-center space-x-1"
-                    >
-                      <span>💳</span>
-                      <span>Pay Advance & Save 5%</span>
-                    </button>
-                  </div>
-
-                  {/* Regular Payment Option */}
-                  <button
-                    onClick={() => handlePayment(service, false)}
-                    className="w-full bg-purple-600 hover:bg-purple-700 text-white py-2 px-4 rounded-lg text-sm font-semibold transition-all duration-300 hover:scale-105 flex items-center justify-center space-x-1"
-                  >
-                    <span>💰</span>
-                    <span>Pay Regular Price</span>
-                  </button>
-
-                  {/* WhatsApp Consultation */}
-                  <button
-                    onClick={() => handleWhatsAppRedirect(service)}
-                    className="w-full bg-green-500 hover:bg-green-600 text-white py-2 px-4 rounded-lg text-sm font-semibold transition-all duration-300 hover:scale-105 flex items-center justify-center space-x-1"
-                  >
-                    <span>💚</span>
-                    <span>WhatsApp for Details</span>
-                  </button>
-                </div>
-              </div>
-            ))}
-          </div>
-          
-          <div className="text-center mt-12 animate-fade-in-up">
-            <Link
-              to="/pricing"
-              className="bg-purple-600 hover:bg-purple-700 text-white px-8 py-4 rounded-lg font-semibold transition-all duration-300 hover:scale-105 inline-flex items-center space-x-2 shadow-lg"
-            >
-              <span>View Complete Pricing & Packages</span>
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* === OUR TEAM === */}
-      <section className="py-20 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Meet Our Expert Team</h2>
-            <p className="text-xl text-gray-600">The passionate professionals dedicated to your digital success</p>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {teamMembers.map((member, index) => (
               <div 
                 key={index}
@@ -656,11 +529,11 @@ const handlePayment = async (service: any, isAdvancePayment: boolean = false) =>
       </section>
 
       {/* === OUR PROCESS === */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Our Work Process</h2>
-            <p className="text-xl text-gray-600">A systematic approach that ensures success for every project</p>
+            <p className="text-xl text-gray-600">Simple 4-step process to get your project launched</p>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -709,7 +582,7 @@ const handlePayment = async (service: any, isAdvancePayment: boolean = false) =>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">What Our Clients Say</h2>
-            <p className="text-xl text-gray-600">Real success stories from businesses we've helped transform</p>
+            <p className="text-xl text-gray-600">Real success stories from businesses we've helped grow</p>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -738,10 +611,10 @@ const handlePayment = async (service: any, isAdvancePayment: boolean = false) =>
       {/* === FINAL CTA === */}
       <section className="py-20 bg-gradient-to-r from-purple-600 to-purple-800 text-white">
         <div className="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Ready to Start Your Digital Journey?</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">Ready to Grow Your Business Online?</h2>
           <p className="text-xl mb-8 text-purple-100">
-            Join <strong className="text-yellow-400">150+ successful businesses</strong> that trust DiziGrow for their 
-            digital marketing needs. Let's create something amazing together!
+            Join <strong className="text-yellow-400">150+ successful businesses</strong> that trust Earning Sharthi for their 
+            digital marketing needs. Get started with website development from <strong>₹4,999</strong>!
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -751,32 +624,28 @@ const handlePayment = async (service: any, isAdvancePayment: boolean = false) =>
             >
               <span>Start Your Project</span>
             </Link>
-            <a
-              href="https://wa.me/919521281509?text=Hello%20DiziGrow,%20I%20want%20to%20discuss%20a%20project"
-              target="_blank"
-              rel="noopener noreferrer"
+            <button
+              onClick={handleWhatsAppRedirect}
               className="bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-lg text-lg font-bold transition-all duration-300 hover:scale-105 flex items-center justify-center space-x-2 shadow-2xl"
             >
               <span className="text-xl">💚</span>
               <span>WhatsApp Consultation</span>
-            </a>
+            </button>
           </div>
           
           <p className="text-purple-200 mt-6 text-sm">
-            ✅ Free Strategy Session ✅ 24/7 Support ✅ Money-Back Guarantee
+            ✅ Free Domain & Hosting ✅ 24/7 Support ✅ Money-Back Guarantee ✅ Quick Delivery
           </p>
         </div>
       </section>
 
       {/* Floating WhatsApp Button */}
-      <a
-        href="https://wa.me/919521281509?text=Hello%20DiziGrow,%20I%20visited%20your%20about%20page%20and%20want%20to%20know%20more"
-        target="_blank"
-        rel="noopener noreferrer"
+      <button
+        onClick={handleWhatsAppRedirect}
         className="fixed bottom-6 right-6 z-50 bg-green-500 hover:bg-green-600 text-white p-4 rounded-full shadow-2xl hover:shadow-3xl transition-all duration-300 hover:scale-110 animate-bounce-slow"
       >
         <span className="text-2xl">💚</span>
-      </a>
+      </button>
 
       <style jsx>{`
         @keyframes fade-in-up {

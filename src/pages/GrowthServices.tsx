@@ -31,7 +31,10 @@ import {
   Instagram,
   Facebook,
   Linkedin,
-  Globe as WebsiteIcon
+  Globe as WebsiteIcon,
+  TrendingUp,
+  DollarSign,
+  BadgeCheck
 } from "lucide-react";
 
 // Razorpay types
@@ -451,7 +454,7 @@ const GrowthServices: React.FC = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     
-    const whatsappMessage = `🎯 Growth Services Inquiry - DiziGrow 🎯\n\nName: ${formData.name}\nEmail: ${formData.email}\nPhone: ${formData.phone}\nService: ${formData.service}\nMessage: ${formData.message}`;
+    const whatsappMessage = `🎯 Earning Sharthi Growth Services Inquiry 🎯\n\nName: ${formData.name}\nEmail: ${formData.email}\nPhone: ${formData.phone}\nService: ${formData.service}\nMessage: ${formData.message}`;
     
     const encodedMessage = encodeURIComponent(whatsappMessage);
     window.open(`https://wa.me/91${WHATSAPP_NUMBER}?text=${encodedMessage}`, '_blank');
@@ -463,7 +466,7 @@ const GrowthServices: React.FC = () => {
   const handleSuccessSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     
-    const whatsappMessage = `✅ Growth Services Payment Success - DiziGrow 🎯\n\nPayment Details:\nName: ${successFormData.name}\nEmail: ${successFormData.email}\nUTR Number: ${successFormData.utr}\nService: ${successFormData.service}\nQuantity: ${successFormData.quantity}\nAmount Paid: ₹${successFormData.amount}\nLink: ${successFormData.link}\n\nPlease verify my payment and start the service!`;
+    const whatsappMessage = `✅ Earning Sharthi Payment Success 🎯\n\nPayment Details:\nName: ${successFormData.name}\nEmail: ${successFormData.email}\nUTR Number: ${successFormData.utr}\nService: ${successFormData.service}\nQuantity: ${successFormData.quantity}\nAmount Paid: ₹${successFormData.amount}\nLink: ${successFormData.link}\n\nPlease verify my payment and start the service!`;
     
     const encodedMessage = encodeURIComponent(whatsappMessage);
     window.open(`https://wa.me/91${WHATSAPP_NUMBER}?text=${encodedMessage}`, '_blank');
@@ -515,7 +518,7 @@ const GrowthServices: React.FC = () => {
         key: RAZORPAY_KEY_ID,
         amount: paymentAmount * 100,
         currency: 'INR',
-        name: 'DiziGrow - Growth Services',
+        name: 'Earning Sharthi - Premium Growth Services',
         description: `${selectedService?.name} - Quantity: ${quantity}`,
         image: '/logo.png',
         handler: function (response: any) {
@@ -602,8 +605,8 @@ const GrowthServices: React.FC = () => {
   return (
     <div className="min-h-screen bg-gradient-to-b from-blue-50 via-purple-50 to-pink-50" style={{ fontFamily: "'Haboro Serif', serif" }}>
       <Helmet>
-        <title>Growth Services - Instagram, Facebook, LinkedIn Services | DiziGrow</title>
-        <meta name="description" content="Premium growth services: Instagram followers, likes, views | Facebook services | LinkedIn followers | Website traffic. Boost your social media growth!" />
+        <title>Premium Growth Services - Instagram, Facebook, LinkedIn | Earning Sharthi</title>
+        <meta name="description" content="Premium growth services: Instagram followers, likes, views | Facebook services | LinkedIn followers | Website traffic. Boost your social media growth with Earning Sharthi!" />
         <link href="https://fonts.googleapis.com/css2?family=Haboro+Serif:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
       </Helmet>
 
@@ -669,19 +672,25 @@ const GrowthServices: React.FC = () => {
             </div>
           )}
           
-          <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold mb-4 md:mb-6 leading-tight">
-            {offerExpired ? (
-              <>
-                Premium <span className="text-yellow-300">Growth</span><br />
-                <span className="text-blue-300">Services</span>
-              </>
-            ) : (
-              <>
-                Premium <span className="text-yellow-300">Growth</span><br />
-                <span className="text-blue-300">Services</span>
-              </>
-            )}
-          </h1>
+          <div className="mb-4 md:mb-6">
+            <div className="flex items-center justify-center gap-2 mb-3">
+              <DollarSign className="h-6 w-6 md:h-8 md:w-8 text-yellow-300" />
+              <h1 className="text-2xl md:text-4xl font-bold text-yellow-300">Earning Sharthi</h1>
+            </div>
+            <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold mb-4 md:mb-6 leading-tight">
+              {offerExpired ? (
+                <>
+                  Premium <span className="text-yellow-300">Growth</span><br />
+                  <span className="text-blue-300">Services</span>
+                </>
+              ) : (
+                <>
+                  Premium <span className="text-yellow-300">Growth</span><br />
+                  <span className="text-blue-300">Services</span>
+                </>
+              )}
+            </h2>
+          </div>
           
           <p className="text-lg md:text-xl lg:text-2xl mb-6 md:mb-8 text-purple-100 max-w-4xl mx-auto font-medium">
             {offerExpired ? (
@@ -704,13 +713,52 @@ const GrowthServices: React.FC = () => {
         </div>
       </section>
 
+      {/* Stats Section */}
+      <section className="py-8 md:py-12 bg-white">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+            <div className="text-center p-4 bg-gradient-to-br from-blue-50 to-purple-50 rounded-2xl border-2 border-blue-200">
+              <div className="flex items-center justify-center gap-2 mb-2">
+                <TrendingUp className="h-5 w-5 text-blue-600" />
+                <h3 className="text-xl md:text-2xl font-bold text-gray-900">5000+</h3>
+              </div>
+              <p className="text-sm md:text-base text-gray-600">Happy Clients</p>
+            </div>
+            <div className="text-center p-4 bg-gradient-to-br from-green-50 to-emerald-50 rounded-2xl border-2 border-green-200">
+              <div className="flex items-center justify-center gap-2 mb-2">
+                <BadgeCheck className="h-5 w-5 text-green-600" />
+                <h3 className="text-xl md:text-2xl font-bold text-gray-900">50K+</h3>
+              </div>
+              <p className="text-sm md:text-base text-gray-600">Orders Completed</p>
+            </div>
+            <div className="text-center p-4 bg-gradient-to-br from-purple-50 to-pink-50 rounded-2xl border-2 border-purple-200">
+              <div className="flex items-center justify-center gap-2 mb-2">
+                <Star className="h-5 w-5 text-purple-600" />
+                <h3 className="text-xl md:text-2xl font-bold text-gray-900">4.9/5</h3>
+              </div>
+              <p className="text-sm md:text-base text-gray-600">Customer Rating</p>
+            </div>
+            <div className="text-center p-4 bg-gradient-to-br from-orange-50 to-red-50 rounded-2xl border-2 border-orange-200">
+              <div className="flex items-center justify-center gap-2 mb-2">
+                <Clock className="h-5 w-5 text-orange-600" />
+                <h3 className="text-xl md:text-2xl font-bold text-gray-900">24/7</h3>
+              </div>
+              <p className="text-sm md:text-base text-gray-600">Support</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Services Section */}
       <section id="services" className="py-12 md:py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-8 md:mb-16">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
-              Our <span className="text-blue-500">Growth Services</span>
-            </h2>
+            <div className="flex items-center justify-center gap-2 mb-4">
+              <DollarSign className="h-8 w-8 text-green-600" />
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900">
+                Earning Sharthi <span className="text-blue-500">Services</span>
+              </h2>
+            </div>
             <p className="text-lg md:text-xl text-gray-600">
               Boost your social media presence with our premium growth services
             </p>
@@ -807,14 +855,57 @@ const GrowthServices: React.FC = () => {
         </div>
       </section>
 
+      {/* Why Choose Us Section */}
+      <section className="py-12 md:py-20 bg-gradient-to-br from-blue-50 to-purple-50">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="text-center mb-12 md:mb-16">
+            <div className="flex items-center justify-center gap-2 mb-4">
+              <BadgeCheck className="h-8 w-8 text-green-600" />
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900">
+                Why Choose <span className="text-blue-500">Earning Sharthi</span>?
+              </h2>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+            <div className="bg-white p-6 rounded-2xl border-2 border-green-200 text-center">
+              <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Shield className="h-8 w-8 text-green-600" />
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-3">100% Safe & Secure</h3>
+              <p className="text-gray-600">All our services are completely safe with guaranteed results and secure payment methods.</p>
+            </div>
+
+            <div className="bg-white p-6 rounded-2xl border-2 border-blue-200 text-center">
+              <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Clock className="h-8 w-8 text-blue-600" />
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-3">Fast Delivery</h3>
+              <p className="text-gray-600">Instant start with super fast delivery. Most services begin within minutes of order confirmation.</p>
+            </div>
+
+            <div className="bg-white p-6 rounded-2xl border-2 border-purple-200 text-center">
+              <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Users className="h-8 w-8 text-purple-600" />
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-3">24/7 Support</h3>
+              <p className="text-gray-600">Round-the-clock customer support via WhatsApp and phone calls to assist you anytime.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* CTA Section */}
       <section className="py-12 md:py-16 bg-gradient-to-br from-blue-500 to-purple-500 text-white text-center">
         <div className="max-w-4xl mx-auto px-4">
-          <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-4">
-            Ready to Boost Your Social Media Growth?
-          </h2>
+          <div className="flex items-center justify-center gap-2 mb-4">
+            <DollarSign className="h-8 w-8 text-yellow-300" />
+            <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold">
+              Ready to Boost Your Social Media Growth?
+            </h2>
+          </div>
           <p className="text-lg md:text-xl mb-6">
-            Contact us now and get the best growth services!
+            Contact Earning Sharthi now and get the best growth services!
           </p>
           <div className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center">
             <button 
@@ -840,9 +931,12 @@ const GrowthServices: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
             <div>
-              <h3 className="text-lg md:text-xl font-bold mb-3 md:mb-4 text-blue-400">DiziGrow Growth Services</h3>
+              <div className="flex items-center gap-2 mb-3 md:mb-4">
+                <DollarSign className="h-6 w-6 text-blue-400" />
+                <h3 className="text-lg md:text-xl font-bold text-blue-400">Earning Sharthi</h3>
+              </div>
               <p className="text-gray-400 text-sm md:text-base">
-                Your trusted partner for social media growth and online success.
+                Your trusted partner for social media growth and online success. Premium growth services with guaranteed results.
               </p>
             </div>
             
@@ -855,7 +949,7 @@ const GrowthServices: React.FC = () => {
                 </div>
                 <div className="flex items-center gap-2">
                   <Mail className="h-4 w-4" />
-                  <span>info@dizigrow.com</span>
+                  <span>info@earningsharthi.com</span>
                 </div>
               </div>
             </div>
@@ -881,7 +975,7 @@ const GrowthServices: React.FC = () => {
           
           <div className="border-t border-gray-700 mt-6 md:mt-8 pt-6 md:pt-8 text-center">
             <p className="text-gray-400 text-sm md:text-base">
-              © 2024 DiziGrow Growth Services. All rights reserved.
+              © 2024 Earning Sharthi Premium Growth Services. All rights reserved.
             </p>
           </div>
         </div>
@@ -893,10 +987,14 @@ const GrowthServices: React.FC = () => {
           <div className="bg-white rounded-2xl p-6 max-w-md w-full shadow-2xl border-2 border-purple-300">
             <div className="flex justify-between items-center mb-4">
               <div>
-                <h3 className="text-xl md:text-2xl font-bold text-gray-900 flex items-center gap-2">
-                  <CreditCard className="h-5 w-5 md:h-6 md:w-6 text-purple-500" />
+                <div className="flex items-center gap-2 mb-1">
+                  <DollarSign className="h-5 w-5 text-purple-500" />
+                  <h3 className="text-xl md:text-2xl font-bold text-gray-900">Earning Sharthi</h3>
+                </div>
+                <h4 className="text-lg font-bold text-gray-700 flex items-center gap-2">
+                  <CreditCard className="h-5 w-5 text-purple-500" />
                   Order {selectedService.name}
-                </h3>
+                </h4>
                 <p className="text-purple-600 font-semibold text-sm mt-1">{selectedService.description}</p>
               </div>
               <button onClick={() => setIsPaymentOpen(false)} className="text-gray-500 hover:text-gray-700 p-1 hover:bg-gray-100 rounded-full">
@@ -990,10 +1088,14 @@ const GrowthServices: React.FC = () => {
           <div className="bg-white rounded-2xl p-6 max-w-md w-full shadow-2xl border-2 border-green-300">
             <div className="flex justify-between items-center mb-4">
               <div>
-                <h3 className="text-xl md:text-2xl font-bold text-gray-900 flex items-center gap-2">
+                <div className="flex items-center gap-2 mb-1">
+                  <DollarSign className="h-5 w-5 text-green-500" />
+                  <h3 className="text-xl md:text-2xl font-bold text-gray-900">Earning Sharthi</h3>
+                </div>
+                <h4 className="text-lg font-bold text-gray-700 flex items-center gap-2">
                   <Check className="h-5 w-5 md:h-6 md:w-6 text-green-500" />
                   Payment Successful! 🎉
-                </h3>
+                </h4>
                 <p className="text-green-600 font-semibold text-sm mt-1">Complete your details to start service</p>
               </div>
               <button onClick={() => setIsSuccessFormOpen(false)} className="text-gray-500 hover:text-gray-700 p-1 hover:bg-gray-100 rounded-full">
@@ -1106,9 +1208,11 @@ const GrowthServices: React.FC = () => {
           <div className="bg-white rounded-2xl p-6 max-w-md w-full shadow-2xl border-2 border-purple-300">
             <div className="flex justify-between items-center mb-4">
               <div>
-                <h3 className="text-xl md:text-2xl font-bold text-gray-900">
-                  Get Free Growth Consultation
-                </h3>
+                <div className="flex items-center gap-2 mb-1">
+                  <DollarSign className="h-5 w-5 text-purple-500" />
+                  <h3 className="text-xl md:text-2xl font-bold text-gray-900">Earning Sharthi</h3>
+                </div>
+                <h4 className="text-lg font-bold text-gray-700">Get Free Growth Consultation</h4>
                 <p className="text-purple-600 font-semibold text-sm mt-1">We'll help you choose the right growth service</p>
               </div>
               <button onClick={() => setIsFormOpen(false)} className="text-gray-500 hover:text-gray-700 p-1 hover:bg-gray-100 rounded-full">

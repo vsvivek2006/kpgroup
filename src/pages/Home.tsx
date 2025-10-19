@@ -1,368 +1,241 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet";
+import { ArrowRight, CheckCircle, Star, MessageCircle, Phone, Zap, Shield, Users, TrendingUp } from "lucide-react";
 
 const Home = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
-  const [isVisible, setIsVisible] = useState(false);
 
-  // High Quality Hero Slides without images - using pure gradients
+  // Unique Hero Slides with modern design
   const heroSlides = [
     {
-      title: "Social Media Marketing",
-      subtitle: "Only ₹4,999/month",
-      originalPrice: "₹12,999",
-      description: "Professional Social Media Management - 15 Creative Posts + 2 Viral Videos. Boost Engagement, Increase Followers & Drive Sales on Instagram, Facebook, Twitter & WhatsApp.",
-      badge: "🔥 62% OFF Social Media Marketing",
-      bgGradient: "from-blue-900 via-blue-800 to-purple-700",
-      cta: "Start Social Media Marketing"
+      title: "Launch Your Business Online",
+      highlight: "Website from ₹4,999",
+      tagline: "Professional Website + FREE Domain & Hosting for 1 Year",
+      features: ["Mobile Responsive", "SEO Optimized", "Fast Loading", "1 Year Support"],
+      bg: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
+      cta: "Get Your Website"
     },
     {
-      title: "SEO Services Agency",
-      subtitle: "₹7,999/month - Rank #1 on Google",
-      originalPrice: "₹14,999",
-      description: "Professional SEO Company offering Complete Search Engine Optimization. Keyword Research, On-Page SEO, Technical SEO & Local SEO to Dominate Google Search Results.",
-      badge: "📈 47% OFF SEO Services",
-      bgGradient: "from-green-900 via-green-800 to-blue-700",
-      cta: "Get SEO Quote"
+      title: "Grow with Digital Marketing",
+      highlight: "SEO + Social Media ₹9,999/month",
+      tagline: "Complete Digital Marketing Solutions for Business Growth",
+      features: ["Google Ranking", "Social Media Management", "Lead Generation", "Monthly Reports"],
+      bg: "linear-gradient(135deg, #f093fb 0%, #f5576c 100%)",
+      cta: "Start Growing"
     },
     {
-      title: "Website Development",
-      subtitle: "Starting at ₹9,999",
-      originalPrice: "₹22,000",
-      description: "Professional Web Development creating Fast, Responsive & SEO-Friendly Websites. E-commerce Stores, WordPress Sites & Custom Web Applications for Business Growth.",
-      badge: "💫 55% OFF Website Development",
-      bgGradient: "from-orange-900 via-orange-800 to-red-700",
-      cta: "Get Website Quote"
-    },
-    {
-      title: "E-commerce Marketing",
-      subtitle: "Complete Package ₹5,999",
-      originalPrice: "₹12,999",
-      description: "Complete E-commerce Account Setup - We create and optimize your Amazon, Flipkart, Meesho accounts with professional product listing & sales optimization.",
-      badge: "🚀 54% OFF E-commerce Services",
-      bgGradient: "from-purple-900 via-purple-800 to-purple-600",
-      cta: "Start E-commerce"
+      title: "E-commerce Solutions",
+      highlight: "Online Store ₹14,999",
+      tagline: "Complete E-commerce Store with Payment Gateway & Products",
+      features: ["Product Management", "Payment Gateway", "Order Tracking", "Inventory Management"],
+      bg: "linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)",
+      cta: "Start Selling"
     }
   ];
 
-  // Digital Marketing Services
-  const services = [
+  // Startup Business Solutions - Modern Cards
+  const startupSolutions = [
     {
-      icon: "📱",
-      title: "Social Media Marketing",
-      description: "Complete Social Media Management - 15 Creative Posts + 2 Viral Videos/Reels with trending hashtags & content strategy",
-      price: "₹4,999/month",
-      originalPrice: "₹12,999",
-      platforms: ["Instagram Marketing", "Facebook Ads", "Twitter Marketing", "WhatsApp Business"],
-      link: "/services",
-      popular: true,
-      badge: "62% OFF",
-      keywords: ["social media marketing", "instagram management", "facebook ads"]
-    },
-    {
-      icon: "🔍", 
-      title: "SEO Services Company",
-      description: "Professional Search Engine Optimization - Rank #1 on Google with comprehensive SEO strategy & monthly reporting",
-      price: "₹7,999/month",
-      originalPrice: "₹14,999",
-      platforms: ["Google Ranking", "Keyword Research", "On-Page SEO", "Local SEO"],
-      link: "/services",
+      icon: "💼",
+      title: "Business Website",
+      price: "₹4,999",
+      originalPrice: "₹9,999",
+      description: "Professional Business Website with FREE Domain & Hosting",
+      features: ["1 Year Free Hosting", "Free Domain", "Responsive Design", "SEO Ready"],
       popular: false,
-      badge: "47% OFF",
-      keywords: ["seo services", "google ranking", "search engine optimization"]
+      savings: "50% OFF",
+      badge: "Most Affordable"
     },
     {
       icon: "🛒",
-      title: "E-commerce Marketing",
-      description: "Complete E-commerce Solutions - Amazon, Flipkart, Meesho account setup with product listing & sales optimization",
-      price: "₹5,999",
-      originalPrice: "₹12,999",
-      platforms: ["Amazon Marketing", "Flipkart SEO", "Meesho Store", "Product Listing"],
-      link: "/services",
-      popular: false,
-      badge: "54% OFF",
-      keywords: ["e-commerce marketing", "amazon seller", "flipkart seo"]
-    },
-    {
-      icon: "💻",
-      title: "Website Development Agency",
-      description: "Professional Web Design & Development - Responsive, SEO-friendly websites that convert visitors into customers",
-      price: "₹9,999",
-      originalPrice: "₹22,000", 
-      platforms: ["Website Design", "Web Development", "Shopify Store", "WordPress"],
-      link: "/services",
+      title: "E-commerce Store",
+      price: "₹14,999",
+      originalPrice: "₹29,999",
+      description: "Complete Online Store with Payment Integration",
+      features: ["100+ Products", "Payment Gateway", "Order Management", "1 Year Support"],
       popular: true,
-      badge: "55% OFF",
-      keywords: ["website development", "web design", "responsive website"]
-    }
-  ];
-
-  // Digital Marketing Quick Services
-  const quickServices = [
-    {
-      icon: "📝",
-      title: "Social Media Setup",
-      price: "₹1,999",
-      originalPrice: "₹4,999",
-      description: "Professional Social Media Account Creation",
-      keywords: ["social media setup", "profile creation"]
+      savings: "50% OFF",
+      badge: "BEST VALUE"
     },
     {
-      icon: "🗺️",
-      title: "Google Business Profile",
-      price: "₹999", 
-      originalPrice: "₹2,999",
-      description: "Google My Business Optimization",
-      keywords: ["google business", "local seo"]
+      icon: "🏠",
+      title: "Real Estate Website",
+      price: "₹39,999",
+      originalPrice: "₹79,999",
+      description: "Advanced Property Listing & Management System",
+      features: ["Property Listings", "Lead Management", "Booking System", "Admin Panel"],
+      popular: false,
+      savings: "50% OFF",
+      badge: "Premium"
     },
     {
-      icon: "💬",
-      title: "WhatsApp Business API",
+      icon: "📰",
+      title: "News Portal",
+      price: "₹4,999",
+      originalPrice: "₹9,999",
+      description: "Dynamic News & Blog Publishing Platform",
+      features: ["Unlimited Articles", "Category Management", "Author Panel", "SEO Optimized"],
+      popular: false,
+      savings: "50% OFF",
+      badge: "Great Deal"
+    },
+    {
+      icon: "🎓",
+      title: "School/NGO Website",
+      price: "₹14,999",
+      originalPrice: "₹29,999",
+      description: "Educational Institute or NGO Website Solution",
+      features: ["Student Management", "Event Calendar", "Gallery", "Donation System"],
+      popular: false,
+      savings: "50% OFF",
+      badge: "Special Offer"
+    },
+    {
+      icon: "🔍",
+      title: "Google Business Setup",
       price: "₹999",
       originalPrice: "₹2,499",
-      description: "Business WhatsApp Marketing Setup",
-      keywords: ["whatsapp business", "chat marketing"]
-    },
-    {
-      icon: "🎥",
-      title: "YouTube Channel SEO",
-      price: "₹9,999",
-      originalPrice: "₹19,999",
-      description: "YouTube SEO & Channel Optimization",
-      keywords: ["youtube seo", "video marketing"]
-    },
-    {
-      icon: "🎨",
-      title: "Logo Design Service",
-      price: "₹799",
-      originalPrice: "₹2,999",
-      description: "Professional Logo & Brand Identity",
-      keywords: ["logo design", "brand identity"]
-    },
-    {
-      icon: "📧",
-      title: "Email Marketing",
-      price: "₹4,999", 
-      originalPrice: "₹9,999",
-      description: "Email Campaign Setup & Management",
-      keywords: ["email marketing", "campaign management"]
+      description: "Professional Google Business Profile Optimization",
+      features: ["Profile Creation", "Posts Setup", "Review Management", "Local SEO"],
+      popular: false,
+      savings: "60% OFF",
+      badge: "Quick Service"
     }
   ];
 
-  // Why Choose Our Digital Marketing Agency
-  const features = [
+  // Growth Packages - Modern Design
+  const growthPackages = [
     {
-      icon: "💰",
-      title: "Best Price Digital Marketing",
-      description: "Lowest prices with 50-70% discounts on all digital marketing services",
-      keywords: ["affordable digital marketing", "best price"]
+      name: "STARTUP GROWTH",
+      price: "₹24,999",
+      duration: "one-time",
+      originalPrice: "₹49,998",
+      description: "Perfect for new businesses starting online",
+      features: [
+        "Business Website Development",
+        "Google Business Setup",
+        "Basic SEO Setup",
+        "Social Media Profiles",
+        "3 Months Technical Support",
+        "Free Domain & Hosting (1 Year)"
+      ],
+      popular: false,
+      savings: "₹24,999",
+      color: "from-blue-500 to-blue-600"
     },
     {
-      icon: "⚡", 
-      title: "Fast Results Delivery",
-      description: "Quick campaign setup & fast results without compromising quality",
-      keywords: ["fast results", "quick delivery"]
+      name: "BUSINESS GROWTH",
+      price: "₹49,999",
+      duration: "one-time",
+      originalPrice: "₹99,998",
+      description: "Complete digital presence for growing businesses",
+      features: [
+        "Professional Website",
+        "Advanced SEO (3 Months)",
+        "Social Media Marketing (3 Months)",
+        "Google Ads Setup",
+        "6 Months Support",
+        "Free Domain & Hosting (1 Year)",
+        "Monthly Performance Reports"
+      ],
+      popular: true,
+      savings: "₹49,999",
+      color: "from-purple-500 to-purple-600"
     },
     {
-      icon: "🔄",
-      title: "Unlimited Revisions", 
-      description: "We work until you're 100% satisfied with your marketing results",
-      keywords: ["unlimited revisions", "satisfaction guarantee"]
-    },
-    {
-      icon: "📞",
-      title: "24/7 Marketing Support",
-      description: "Always available for your digital marketing queries & strategy discussions",
-      keywords: ["24/7 support", "marketing support"]
-    },
-    {
-      icon: "🎯",
-      title: "Expert Marketing Team", 
-      description: "Certified digital marketing professionals with proven track record",
-      keywords: ["expert team", "certified professionals"]
-    },
-    {
-      icon: "📈",
-      title: "Data-Driven Results",
-      description: "Focus on delivering measurable ROI & business growth through analytics",
-      keywords: ["data driven", "measurable results"]
+      name: "ENTERPRISE GROWTH",
+      price: "₹89,999",
+      duration: "one-time",
+      originalPrice: "₹1,79,998",
+      description: "Premium solutions for established businesses",
+      features: [
+        "Custom Website Development",
+        "Complete SEO (6 Months)",
+        "Social Media Management (6 Months)",
+        "Google & Meta Ads Management",
+        "12 Months Priority Support",
+        "Free Domain & Hosting (2 Years)",
+        "Dedicated Account Manager"
+      ],
+      popular: false,
+      savings: "₹89,999",
+      color: "from-green-500 to-green-600"
     }
   ];
 
-  // Digital Marketing Portfolio
-  const portfolioProjects = [
+  // Why Choose Us - Modern Icons
+  const whyChooseUs = [
     {
-      title: "Restaurant Digital Marketing",
-      category: "SEO + Social Media Marketing",
-      result: "40% More Online Orders",
-      keywords: ["restaurant seo", "local business marketing"]
+      icon: <Zap className="h-6 w-6 sm:h-8 sm:w-8" />,
+      title: "Lightning Fast Delivery",
+      description: "Get your website live in 3-7 days without compromising quality"
     },
     {
-      title: "Fashion Brand Social Media", 
-      category: "Social Media Marketing Campaign",
-      result: "300% Engagement Growth",
-      keywords: ["fashion marketing", "social media campaign"]
+      icon: <Shield className="h-6 w-6 sm:h-8 sm:w-8" />,
+      title: "1 Year Free Support",
+      description: "We provide complete technical support for 1 year after delivery"
     },
     {
-      title: "Service Business SEO",
-      category: "Local SEO Optimization",
-      result: "Page 1 Google Rankings", 
-      keywords: ["local seo", "service business marketing"]
+      icon: <TrendingUp className="h-6 w-6 sm:h-8 sm:w-8" />,
+      title: "Growth Focused",
+      description: "Every solution is designed to help your business grow online"
     },
     {
-      title: "E-commerce Store Marketing", 
-      category: "Amazon & Flipkart SEO",
-      result: "200% Sales Increase",
-      keywords: ["e-commerce seo", "online sales"]
+      icon: <Users className="h-6 w-6 sm:h-8 sm:w-8" />,
+      title: "Expert Team",
+      description: "Work with certified professionals with 3+ years experience"
     }
   ];
 
-  // Digital Marketing Testimonials
+  // Process Steps
+  const processSteps = [
+    {
+      number: "01",
+      title: "Consultation",
+      description: "Free business analysis and strategy session",
+      icon: "💬"
+    },
+    {
+      number: "02",
+      title: "Planning",
+      description: "Custom project plan with timeline and pricing",
+      icon: "📋"
+    },
+    {
+      number: "03",
+      title: "Development",
+      description: "Professional implementation with regular updates",
+      icon: "⚡"
+    },
+    {
+      number: "04",
+      title: "Launch & Grow",
+      description: "Go live and continue growing with our support",
+      icon: "🚀"
+    }
+  ];
+
+  // Testimonials
   const testimonials = [
     {
       name: "Rajesh Kumar",
-      company: "Fashion Store Owner", 
-      text: "DiziGrow's digital marketing services increased my sales by 300% in just 3 months! Their social media marketing strategy is amazing.",
-      rating: 5,
-      service: "Social Media Marketing",
-      keywords: ["social media success", "sales growth"]
+      business: "Local Restaurant Owner",
+      text: "Got my restaurant website at just ₹4,999! Professional work and great support. Online orders increased by 40%.",
+      rating: 5
     },
     {
       name: "Priya Sharma",
-      company: "Restaurant Business",
-      text: "Professional SEO services that got us on Page 1 of Google. Our online orders increased significantly. Great digital marketing agency!",
-      rating: 5,
-      service: "SEO Services",
-      keywords: ["seo success", "google ranking"]
+      business: "Fashion Boutique",
+      text: "E-commerce store developed in 5 days. Sales started from day one. Excellent service!",
+      rating: 5
     },
     {
-      name: "Amit Patel", 
-      company: "E-commerce Seller",
-      text: "Amazon and Flipkart marketing done perfectly. Sales increased by 200% across all platforms. Best digital marketing company!",
-      rating: 5,
-      service: "E-commerce Marketing",
-      keywords: ["e-commerce success", "multi-platform"]
+      name: "Amit Patel",
+      business: "Real Estate Agent",
+      text: "Professional real estate website with property management. Getting quality leads daily.",
+      rating: 5
     }
-  ];
-
-  // Digital Marketing Pricing Plans
-  const pricingPlans = [
-    {
-      name: "Startup Marketing Package",
-      price: "₹29,999",
-      originalPrice: "₹67,497",
-      description: "Perfect for startups beginning their digital marketing journey",
-      features: ["Basic Social Media", "Website SEO", "Google Business Setup", "3 Months Support"],
-      popular: false,
-      badge: "Save ₹37,498",
-      keywords: ["startup marketing", "basic package"]
-    },
-    {
-      name: "Growth Marketing Package",
-      price: "₹49,999",
-      originalPrice: "₹1,20,000",
-      description: "Ideal for growing businesses ready to scale with digital marketing",
-      features: ["Complete Digital Marketing", "Advanced SEO", "Social Media Ads", "6 Months Support"],
-      popular: true,
-      badge: "Save ₹70,001",
-      keywords: ["growth marketing", "complete package"]
-    },
-    {
-      name: "Enterprise Marketing Package",
-      price: "₹79,999",
-      originalPrice: "₹1,80,000",
-      description: "Complete digital marketing transformation for established businesses",
-      features: ["Premium Digital Marketing", "Custom Strategy", "Multi-platform Ads", "12 Months Support"],
-      popular: false,
-      badge: "Save ₹1,00,001",
-      keywords: ["enterprise marketing", "premium package"]
-    }
-  ];
-
-  // Digital Marketing Stats
-  const stats = [
-    { number: "150+", label: "Happy Clients", icon: "😊", keywords: ["clients", "satisfied customers"] },
-    { number: "300+", label: "Marketing Campaigns", icon: "🚀", keywords: ["campaigns", "projects"] }, 
-    { number: "50-70%", label: "Cost Savings", icon: "💰", keywords: ["savings", "discounts"] },
-    { number: "24/7", label: "Marketing Support", icon: "📞", keywords: ["support", "availability"] }
-  ];
-
-  // Digital Marketing Process
-  const processSteps = [
-    {
-      step: "01",
-      title: "Strategy Consultation",
-      description: "Free digital marketing audit & strategy session",
-      icon: "💬",
-      keywords: ["consultation", "strategy"]
-    },
-    {
-      step: "02",
-      title: "Custom Marketing Plan",
-      description: "Personalized digital marketing plan with timeline",
-      icon: "📋",
-      keywords: ["planning", "custom strategy"]
-    },
-    {
-      step: "03", 
-      title: "Campaign Execution",
-      description: "Professional implementation of marketing campaigns",
-      icon: "⚡",
-      keywords: ["execution", "campaign management"]
-    },
-    {
-      step: "04",
-      title: "Results & Optimization",
-      description: "Continuous monitoring & performance optimization",
-      icon: "🔧",
-      keywords: ["optimization", "results"]
-    }
-  ];
-
-  // Digital Marketing Platforms
-  const platforms = [
-    { name: "Instagram", icon: "📷", color: "bg-gradient-to-r from-pink-500 to-purple-600", keywords: ["instagram marketing"] },
-    { name: "Facebook", icon: "👥", color: "bg-gradient-to-r from-blue-500 to-blue-700", keywords: ["facebook ads"] },
-    { name: "Twitter", icon: "🐦", color: "bg-gradient-to-r from-sky-400 to-sky-600", keywords: ["twitter marketing"] },
-    { name: "YouTube", icon: "🎥", color: "bg-gradient-to-r from-red-500 to-red-700", keywords: ["youtube marketing"] },
-    { name: "Google", icon: "🔍", color: "bg-gradient-to-r from-green-500 to-green-700", keywords: ["google ads", "seo"] },
-    { name: "Amazon", icon: "🛒", color: "bg-gradient-to-r from-orange-400 to-orange-600", keywords: ["amazon marketing"] },
-    { name: "WhatsApp", icon: "💚", color: "bg-gradient-to-r from-green-400 to-green-600", keywords: ["whatsapp marketing"] },
-    { name: "LinkedIn", icon: "💼", color: "bg-gradient-to-r from-blue-600 to-blue-800", keywords: ["linkedin marketing"] }
-  ];
-
-  // New Sections Added
-  const industriesWeServe = [
-    { name: "E-commerce", icon: "🛒", description: "Boost online sales with our e-commerce marketing strategies" },
-    { name: "Restaurants", icon: "🍽️", description: "Increase reservations & online orders with local SEO" },
-    { name: "Healthcare", icon: "🏥", description: "Medical practice marketing & patient acquisition" },
-    { name: "Real Estate", icon: "🏠", description: "Property marketing & lead generation" },
-    { name: "Education", icon: "🎓", description: "Student enrollment & institute branding" },
-    { name: "Fashion", icon: "👗", description: "Fashion brand marketing & social media growth" }
-  ];
-
-  const marketingTools = [
-    { name: "Google Analytics", icon: "📊", description: "Advanced analytics & performance tracking" },
-    { name: "SEO Tools", icon: "🔍", description: "Keyword research & ranking monitoring" },
-    { name: "Social Media Scheduler", icon: "⏰", description: "Automated posting & content calendar" },
-    { name: "Email Marketing Software", icon: "📧", description: "Campaign management & automation" },
-    { name: "Ads Management", icon: "🎯", description: "Google & Facebook ads optimization" },
-    { name: "Competitor Analysis", icon: "🔎", description: "Market research & strategy development" }
-  ];
-
-  const teamMembers = [
-    { name: "SEO Experts", role: "Google Certified Professionals", icon: "👨‍💼" },
-    { name: "Social Media Managers", role: "Content Strategy Specialists", icon: "👩‍💻" },
-    { name: "Web Developers", role: "Full Stack Developers", icon: "👨‍💻" },
-    { name: "Graphic Designers", role: "Creative Design Team", icon: "🎨" }
-  ];
-
-  const awardsRecognition = [
-    { title: "Best Digital Marketing Agency 2024", icon: "🏆" },
-    { title: "Top SEO Service Provider", icon: "⭐" },
-    { title: "Excellence in Social Media Marketing", icon: "📱" },
-    { title: "Best Customer Service Award", icon: "💫" }
   ];
 
   // Auto slide change
@@ -373,98 +246,119 @@ const Home = () => {
     return () => clearInterval(interval);
   }, []);
 
-  useEffect(() => {
-    setIsVisible(true);
-  }, []);
+  const handleWhatsApp = (message = "Hello Earning Sharthi! I want to discuss digital marketing services.") => {
+    window.open(`https://wa.me/916398799013?text=${encodeURIComponent(message)}`, '_blank');
+  };
 
   return (
-    <div className="min-h-screen overflow-hidden">
+    <div className="min-h-screen bg-white overflow-hidden">
       <Helmet>
-        <title>DiziGrow - Best Digital Marketing Agency | SEO, Social Media Marketing Services</title>
-        <meta 
-          name="description" 
-          content="Best Digital Marketing Agency offering Professional SEO Services, Social Media Marketing, Website Development & E-commerce Solutions. Get 50-70% OFF. WhatsApp +91 9521281509"
-        />
-        <meta 
-          name="keywords" 
-          content="digital marketing agency, seo services, social media marketing, website development, google ads, facebook ads, best digital marketing company, affordable digital marketing"
-        />
-        <link rel="canonical" href="https://dizigrow.com" />
-        <meta property="og:title" content="DiziGrow - Best Digital Marketing Agency | SEO & Social Media Marketing" />
-        <meta property="og:description" content="Professional Digital Marketing Agency offering SEO, Social Media Management, Website Development & E-commerce Solutions. 50-70% OFF." />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://dizigrow.com" />
+        <title>Earning Sharthi - Affordable Website Development & Digital Marketing Services</title>
+        <meta name="description" content="Professional website development from ₹4,999 with FREE domain & hosting. E-commerce stores ₹14,999. Complete digital marketing solutions. 150+ happy clients." />
+        <meta name="keywords" content="website development, e-commerce website, digital marketing, seo services, affordable website, business website" />
       </Helmet>
 
-      {/* === HERO SECTION === */}
-      <section className="relative h-screen overflow-hidden">
+      {/* === MODERN HERO SECTION - MOBILE OPTIMIZED === */}
+      <section className="relative min-h-screen sm:h-screen overflow-hidden">
         {heroSlides.map((slide, index) => (
           <div
             key={index}
-            className={`absolute inset-0 transition-all duration-1000 transform ${
-              index === currentSlide 
-                ? 'opacity-100 translate-x-0' 
-                : 'opacity-0 translate-x-full'
-            } bg-gradient-to-br ${slide.bgGradient}`}
+            className={`absolute inset-0 transition-all duration-1000 ease-in-out ${
+              index === currentSlide ? 'opacity-100 scale-100' : 'opacity-0 scale-110'
+            }`}
+            style={{ background: slide.bg }}
           >
-            <div className="relative h-full flex items-center justify-center text-white">
-              <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                <div className={`inline-flex items-center bg-yellow-500 text-purple-900 px-4 py-2 rounded-full text-sm md:text-lg font-bold mb-6 md:mb-8 transform transition-all duration-500 ${
-                  index === currentSlide ? 'animate-bounce' : ''
-                }`}>
-                  {slide.badge}
-                </div>
+            <div className="absolute inset-0 bg-black/20"></div>
+            <div className="relative h-full flex items-center">
+              <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+                <div className="grid lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 items-center">
+                  {/* Left Content - Mobile Optimized */}
+                  <div className="text-white text-center lg:text-left">
+                    <div className="inline-flex items-center bg-white/20 backdrop-blur-sm rounded-full px-3 py-1 sm:px-4 sm:py-2 mb-4 sm:mb-6">
+                      <Star className="h-3 w-3 sm:h-4 sm:w-4 mr-1 sm:mr-2 text-yellow-400" />
+                      <span className="text-xs sm:text-sm font-semibold">Trusted by 150+ Businesses</span>
+                    </div>
+                    
+                    <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-3 sm:mb-4 leading-tight">
+                      {slide.title}
+                      <span className="block text-yellow-400 text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl mt-2 sm:mt-3">
+                        {slide.highlight}
+                      </span>
+                    </h1>
+                    
+                    <p className="text-sm sm:text-base md:text-lg lg:text-xl mb-4 sm:mb-6 lg:mb-8 text-white/90 leading-relaxed">
+                      {slide.tagline}
+                    </p>
 
-                <h1 className={`text-3xl md:text-6xl lg:text-7xl font-bold mb-4 md:mb-6 leading-tight transform transition-all duration-700 ${
-                  index === currentSlide ? 'animate-fade-in-up' : 'opacity-0 translate-y-10'
-                }`}>
-                  {slide.title}
-                  <span className="block text-yellow-400 mt-2 md:mt-4 text-2xl md:text-4xl lg:text-5xl">
-                    {slide.subtitle}
-                  </span>
-                  <span className="block text-white/70 text-xl md:text-2xl mt-2 line-through">
-                    {slide.originalPrice}
-                  </span>
-                </h1>
-                
-                <p className={`text-base md:text-xl mb-6 md:mb-8 max-w-4xl mx-auto text-white/90 leading-relaxed transform transition-all duration-700 delay-300 ${
-                  index === currentSlide ? 'animate-fade-in-up' : 'opacity-0 translate-y-10'
-                }`}>
-                  {slide.description}
-                </p>
-                
-                <div className={`flex flex-col sm:flex-row gap-3 md:gap-4 justify-center items-center transform transition-all duration-700 delay-500 ${
-                  index === currentSlide ? 'animate-fade-in-up' : 'opacity-0 translate-y-10'
-                }`}>
-                  <Link
-                    to="/pricing"
-                    className="bg-gradient-to-r from-yellow-400 to-yellow-500 hover:from-yellow-500 hover:to-yellow-600 text-purple-900 px-6 py-3 md:px-8 md:py-4 rounded-lg text-base md:text-lg font-bold transition-all duration-300 hover:scale-105 flex items-center space-x-2 shadow-2xl shadow-yellow-500/30"
-                  >
-                    <span>💰 {slide.cta}</span>
-                  </Link>
-                  <a
-                    href="https://wa.me/919521281509?text=Hello%20DiziGrow%20Digital%20Marketing%20Agency,%20I%20want%20to%20discuss%20digital%20marketing%20services"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white px-6 py-3 md:px-8 md:py-4 rounded-lg text-base md:text-lg font-bold transition-all duration-300 hover:scale-105 flex items-center space-x-2 shadow-2xl shadow-green-500/30"
-                  >
-                    <span className="text-xl">💚</span>
-                    <span>WhatsApp for 70% OFF</span>
-                  </a>
+                    <div className="grid grid-cols-2 gap-2 sm:gap-3 mb-4 sm:mb-6 lg:mb-8">
+                      {slide.features.map((feature, idx) => (
+                        <div key={idx} className="flex items-center text-white/80 justify-center lg:justify-start">
+                          <CheckCircle className="h-3 w-3 sm:h-4 sm:w-4 md:h-5 md:w-5 mr-1 sm:mr-2 text-green-400 flex-shrink-0" />
+                          <span className="text-xs sm:text-sm md:text-base">{feature}</span>
+                        </div>
+                      ))}
+                    </div>
+
+                    <div className="flex flex-col sm:flex-row gap-2 sm:gap-3 lg:gap-4 justify-center lg:justify-start">
+                      <button
+                        onClick={() => handleWhatsApp(`I'm interested in ${slide.title} - ${slide.highlight}`)}
+                        className="bg-yellow-500 hover:bg-yellow-600 text-gray-900 px-4 py-2 sm:px-5 sm:py-3 lg:px-6 lg:py-4 rounded-lg sm:rounded-xl font-bold text-sm sm:text-base lg:text-lg transition-all duration-300 hover:scale-105 flex items-center justify-center space-x-2 shadow-2xl"
+                      >
+                        <span>🚀 {slide.cta}</span>
+                        <ArrowRight className="h-4 w-4" />
+                      </button>
+                      <button
+                        onClick={() => handleWhatsApp()}
+                        className="border-2 border-white text-white hover:bg-white hover:text-gray-900 px-4 py-2 sm:px-5 sm:py-3 lg:px-6 lg:py-4 rounded-lg sm:rounded-xl font-bold text-sm sm:text-base lg:text-lg transition-all duration-300 flex items-center justify-center space-x-2"
+                      >
+                        <Phone className="h-4 w-4" />
+                        <span className="whitespace-nowrap">Call +91-6398799013</span>
+                      </button>
+                    </div>
+                  </div>
+
+                  {/* Right Content - Hidden on mobile, shown on desktop */}
+                  <div className="hidden lg:block relative">
+                    <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-6 lg:p-8 border border-white/20">
+                      <h3 className="text-xl lg:text-2xl font-bold text-white mb-4">Get Free Consultation</h3>
+                      <div className="space-y-3 lg:space-y-4">
+                        <div className="bg-white/20 rounded-lg p-3 lg:p-4">
+                          <div className="text-white/80 text-sm">Website Development</div>
+                          <div className="text-yellow-400 font-bold text-base lg:text-lg">Starting at ₹4,999</div>
+                        </div>
+                        <div className="bg-white/20 rounded-lg p-3 lg:p-4">
+                          <div className="text-white/80 text-sm">E-commerce Store</div>
+                          <div className="text-yellow-400 font-bold text-base lg:text-lg">Only ₹14,999</div>
+                        </div>
+                        <div className="bg-white/20 rounded-lg p-3 lg:p-4">
+                          <div className="text-white/80 text-sm">Digital Marketing</div>
+                          <div className="text-yellow-400 font-bold text-base lg:text-lg">From ₹9,999/month</div>
+                        </div>
+                      </div>
+                      <button
+                        onClick={() => handleWhatsApp("I want free consultation about website and digital marketing services.")}
+                        className="w-full bg-green-500 hover:bg-green-600 text-white py-3 lg:py-4 rounded-xl font-bold text-base lg:text-lg transition-all duration-300 mt-4 lg:mt-6 flex items-center justify-center space-x-2"
+                      >
+                        <MessageCircle className="h-4 w-4 lg:h-5 lg:w-5" />
+                        <span>💬 WhatsApp Now</span>
+                      </button>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         ))}
 
-        <div className="absolute bottom-4 md:bottom-8 left-1/2 transform -translate-x-1/2 flex space-x-2 md:space-x-3">
+        {/* Slide Indicators - Mobile Optimized */}
+        <div className="absolute bottom-4 sm:bottom-8 left-1/2 transform -translate-x-1/2 flex space-x-2 sm:space-x-3">
           {heroSlides.map((_, index) => (
             <button
               key={index}
               onClick={() => setCurrentSlide(index)}
-              className={`w-2 h-2 md:w-3 md:h-3 rounded-full transition-all duration-300 ${
+              className={`w-2 h-2 sm:w-3 sm:h-3 rounded-full transition-all duration-300 ${
                 index === currentSlide 
-                  ? 'bg-yellow-400 scale-125 shadow-lg shadow-yellow-400/50' 
+                  ? 'bg-yellow-400 scale-125 shadow-lg' 
                   : 'bg-white/50 hover:bg-white/80'
               }`}
             />
@@ -472,316 +366,167 @@ const Home = () => {
         </div>
       </section>
 
-      {/* === STATS SECTION === */}
-      <section className="py-12 md:py-20 bg-gradient-to-r from-purple-600 to-purple-800 text-white">
+      {/* === STARTUP SOLUTIONS - MOBILE OPTIMIZED === */}
+      <section className="py-12 sm:py-16 lg:py-20 bg-gradient-to-br from-gray-50 to-blue-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8">
-            {stats.map((stat, index) => (
-              <div 
-                key={index} 
-                className="text-center p-4 md:p-6 bg-white/10 rounded-lg backdrop-blur-sm transform transition-all duration-500 hover:scale-105"
-              >
-                <div className="text-2xl md:text-4xl mb-2">{stat.icon}</div>
-                <div className="text-xl md:text-3xl font-bold text-yellow-400 mb-1 md:mb-2">{stat.number}</div>
-                <div className="text-white/80 text-xs md:text-sm">{stat.label}</div>
-              </div>
-            ))}
+          <div className="text-center mb-8 sm:mb-12 lg:mb-16">
+            <div className="inline-flex items-center bg-blue-100 text-blue-800 px-3 py-1 sm:px-4 sm:py-2 rounded-full text-xs sm:text-sm font-semibold mb-3 sm:mb-4">
+              🚀 STARTUP BUSINESS SOLUTIONS
+            </div>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-3 sm:mb-4">
+              Launch Your Business <span className="text-blue-600">Online</span>
+            </h2>
+            <p className="text-base sm:text-lg lg:text-xl text-gray-600 max-w-3xl mx-auto px-4">
+              Professional websites and digital solutions at startup-friendly prices. 
+              Everything you need to establish your online presence.
+            </p>
           </div>
-        </div>
-      </section>
 
-      {/* === POPULAR SERVICES === */}
-      <section className="py-12 md:py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-8 md:mb-16">
-            <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-3 md:mb-4">Our Digital Marketing Services</h2>
-            <p className="text-base md:text-xl text-gray-600">Professional Digital Marketing Agency Services with 50-70% Discounts</p>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
-            {services.map((service, index) => (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
+            {startupSolutions.map((solution, index) => (
               <div 
-                key={index} 
-                className={`bg-white rounded-xl md:rounded-2xl shadow-lg hover:shadow-xl transition-all duration-500 border-2 ${
-                  service.popular ? 'border-yellow-400' : 'border-gray-100'
-                } overflow-hidden group hover:transform hover:-translate-y-1 md:hover:-translate-y-2`}
+                key={index}
+                className={`bg-white rounded-xl sm:rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 sm:hover:-translate-y-2 border-2 ${
+                  solution.popular ? 'border-yellow-400 ring-1 sm:ring-2 ring-yellow-200' : 'border-gray-100'
+                } overflow-hidden`}
               >
-                {service.popular && (
-                  <div className="bg-yellow-500 text-purple-900 py-2 px-3 md:px-4 text-center font-bold text-xs md:text-sm">
+                {solution.popular && (
+                  <div className="bg-yellow-500 text-gray-900 py-2 sm:py-3 px-3 sm:px-4 text-center font-bold text-xs sm:text-sm">
                     ⭐ MOST POPULAR
                   </div>
                 )}
                 
-                <div className="p-4 md:p-6">
-                  <div className="text-3xl md:text-4xl mb-3 md:mb-4 group-hover:scale-110 transition-transform duration-300">{service.icon}</div>
-                  <h3 className="text-lg md:text-xl font-bold text-gray-900 mb-2">{service.title}</h3>
-                  <p className="text-gray-600 text-xs md:text-sm mb-3 md:mb-4 leading-relaxed">{service.description}</p>
+                <div className="p-4 sm:p-6">
+                  <div className="flex items-start justify-between mb-3 sm:mb-4">
+                    <div className="text-3xl sm:text-4xl">{solution.icon}</div>
+                    {solution.badge && (
+                      <span className="bg-blue-100 text-blue-800 px-2 py-1 rounded-full text-xs font-bold">
+                        {solution.badge}
+                      </span>
+                    )}
+                  </div>
                   
-                  <div className="flex items-baseline justify-between mb-3 md:mb-4">
-                    <div>
-                      <span className="text-xl md:text-2xl font-bold text-purple-600">{service.price}</span>
-                      <span className="text-xs md:text-sm text-gray-400 line-through block">{service.originalPrice}</span>
-                    </div>
-                    <span className="bg-red-500 text-white px-2 py-1 rounded text-xs font-bold">
-                      {service.badge}
+                  <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-2">{solution.title}</h3>
+                  <p className="text-gray-600 text-sm sm:text-base mb-3 sm:mb-4">{solution.description}</p>
+                  
+                  <div className="flex items-baseline mb-3 sm:mb-4">
+                    <span className="text-xl sm:text-2xl lg:text-3xl font-bold text-gray-900">{solution.price}</span>
+                    <span className="text-sm sm:text-lg text-gray-400 line-through ml-2">{solution.originalPrice}</span>
+                    <span className="bg-red-100 text-red-800 px-2 py-1 rounded text-xs font-bold ml-auto">
+                      {solution.savings}
                     </span>
                   </div>
-                  
-                  <div className="space-y-2">
-                    <Link
-                      to={service.link}
-                      className="w-full bg-purple-600 hover:bg-purple-700 text-white py-2 px-3 md:py-3 md:px-4 rounded-lg font-semibold transition-all duration-300 block text-center text-xs md:text-sm"
-                    >
-                      View Details
-                    </Link>
-                    <a
-                      href={`https://wa.me/919521281509?text=Hello%20DiziGrow,%20I%20want%20${encodeURIComponent(service.title)}`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="w-full bg-green-500 hover:bg-green-600 text-white py-2 px-3 md:py-3 md:px-4 rounded-lg font-semibold transition-all duration-300 block text-center text-xs md:text-sm flex items-center justify-center space-x-2"
-                    >
-                      <span>💚</span>
-                      <span>WhatsApp Quote</span>
-                    </a>
+
+                  <div className="space-y-2 sm:space-y-3 mb-4 sm:mb-6">
+                    {solution.features.map((feature, idx) => (
+                      <div key={idx} className="flex items-center text-gray-700">
+                        <CheckCircle className="h-4 w-4 sm:h-5 sm:w-5 text-green-500 mr-2 sm:mr-3 flex-shrink-0" />
+                        <span className="text-xs sm:text-sm">{feature}</span>
+                      </div>
+                    ))}
                   </div>
+
+                  <button
+                    onClick={() => handleWhatsApp(`I'm interested in ${solution.title} for ${solution.price}`)}
+                    className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white py-2 sm:py-3 px-4 rounded-lg sm:rounded-xl font-semibold text-sm sm:text-base transition-all duration-300 hover:scale-105 flex items-center justify-center space-x-2"
+                  >
+                    <MessageCircle className="h-4 w-4" />
+                    <span>Get This Package</span>
+                  </button>
                 </div>
               </div>
             ))}
           </div>
-        </div>
-      </section>
 
-      {/* === QUICK SERVICES === */}
-      <section className="py-12 md:py-20 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-8 md:mb-16">
-            <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-3 md:mb-4">Quick Digital Marketing Services</h2>
-            <p className="text-base md:text-xl text-gray-600">Get these services done quickly at amazing prices</p>
-          </div>
-          
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3 md:gap-6">
-            {quickServices.map((service, index) => (
-              <div key={index} className="bg-white p-3 md:p-4 rounded-lg shadow-md hover:shadow-lg transition-all text-center group hover:transform hover:-translate-y-1">
-                <div className="text-xl md:text-2xl mb-1 md:mb-2 group-hover:scale-110 transition-transform">{service.icon}</div>
-                <h3 className="font-semibold text-gray-900 text-xs md:text-sm mb-1">{service.title}</h3>
-                <div className="text-purple-600 font-bold text-base md:text-lg mb-1">{service.price}</div>
-                <div className="text-gray-400 text-xs line-through mb-1">{service.originalPrice}</div>
-                <p className="text-gray-600 text-xs">{service.description}</p>
+          <div className="text-center mt-8 sm:mt-12">
+            <div className="bg-white rounded-xl sm:rounded-2xl p-6 sm:p-8 shadow-lg border-2 border-green-200">
+              <h3 className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-900 mb-3 sm:mb-4">
+                🤝 You are starting a business, we will help you.
+              </h3>
+              <p className="text-base sm:text-lg lg:text-xl text-gray-600 mb-4 sm:mb-6">
+                Call now for free consultation and custom solutions
+              </p>
+              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center">
+                <a
+                  href="tel:+916398799013"
+                  className="bg-green-500 hover:bg-green-600 text-white px-4 py-3 sm:px-6 sm:py-4 rounded-lg sm:rounded-xl font-bold text-sm sm:text-base lg:text-lg transition-all duration-300 hover:scale-105 flex items-center space-x-2 w-full sm:w-auto justify-center"
+                >
+                  <Phone className="h-4 w-4 sm:h-5 sm:w-5" />
+                  <span>Call +91-6398799013</span>
+                </a>
+                <button
+                  onClick={() => handleWhatsApp("I want to discuss my business requirements and get a custom solution.")}
+                  className="border-2 border-green-500 text-green-600 hover:bg-green-500 hover:text-white px-4 py-3 sm:px-6 sm:py-4 rounded-lg sm:rounded-xl font-bold text-sm sm:text-base lg:text-lg transition-all duration-300 flex items-center space-x-2 w-full sm:w-auto justify-center"
+                >
+                  <MessageCircle className="h-4 w-4 sm:h-5 sm:w-5" />
+                  <span>WhatsApp Consultation</span>
+                </button>
               </div>
-            ))}
+            </div>
           </div>
         </div>
       </section>
 
-      {/* === WHY CHOOSE US === */}
-      <section className="py-12 md:py-20 bg-white">
+      {/* === GROWTH PACKAGES - MOBILE OPTIMIZED === */}
+      <section className="py-12 sm:py-16 lg:py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-8 md:mb-16">
-            <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-3 md:mb-4">Why Choose Our Digital Marketing Agency?</h2>
-            <p className="text-base md:text-xl text-gray-600">We provide the best value for your marketing investment</p>
+          <div className="text-center mb-8 sm:mb-12 lg:mb-16">
+            <div className="inline-flex items-center bg-purple-100 text-purple-800 px-3 py-1 sm:px-4 sm:py-2 rounded-full text-xs sm:text-sm font-semibold mb-3 sm:mb-4">
+              📈 COMPLETE GROWTH PACKAGES
+            </div>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-3 sm:mb-4">
+              All-in-One <span className="text-purple-600">Growth Solutions</span>
+            </h2>
+            <p className="text-base sm:text-lg lg:text-xl text-gray-600 max-w-3xl mx-auto">
+              Everything you need to establish and grow your business online. 
+              From website development to digital marketing - all in one package.
+            </p>
           </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-            {features.map((feature, index) => (
-              <div key={index} className="text-center group p-4 md:p-6 bg-gray-50 rounded-xl hover:bg-white hover:shadow-lg transition-all duration-300">
-                <div className="bg-gradient-to-r from-purple-600 to-purple-800 text-white p-3 md:p-4 rounded-full w-12 h-12 md:w-16 md:h-16 mx-auto mb-3 md:mb-4 flex items-center justify-center text-xl md:text-2xl group-hover:scale-110 transition-transform">
-                  {feature.icon}
-                </div>
-                <h3 className="text-lg md:text-xl font-semibold text-gray-900 mb-2">{feature.title}</h3>
-                <p className="text-gray-600 text-sm md:text-base">{feature.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
-      {/* === INDUSTRIES WE SERVE === */}
-      <section className="py-12 md:py-20 bg-gradient-to-br from-purple-50 to-blue-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-8 md:mb-16">
-            <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-3 md:mb-4">Industries We Serve</h2>
-            <p className="text-base md:text-xl text-gray-600">We provide specialized digital marketing solutions for various industries</p>
-          </div>
-          
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 md:gap-6">
-            {industriesWeServe.map((industry, index) => (
-              <div key={index} className="bg-white p-4 md:p-6 rounded-xl shadow-md hover:shadow-lg transition-all text-center group hover:transform hover:-translate-y-1">
-                <div className="text-2xl md:text-3xl mb-2 md:mb-3 group-hover:scale-110 transition-transform">{industry.icon}</div>
-                <h3 className="font-semibold text-gray-900 text-sm md:text-base mb-1 md:mb-2">{industry.name}</h3>
-                <p className="text-gray-600 text-xs md:text-sm">{industry.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* === WORK PROCESS === */}
-      <section className="py-12 md:py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-8 md:mb-16">
-            <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-3 md:mb-4">Our Digital Marketing Process</h2>
-            <p className="text-base md:text-xl text-gray-600">Simple 4-step process to get your marketing campaigns running</p>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
-            {processSteps.map((step, index) => (
-              <div key={index} className="text-center">
-                <div className="bg-white rounded-2xl p-4 md:p-6 shadow-lg border-2 border-purple-200 hover:border-purple-400 transition-all duration-300">
-                  <div className="text-3xl md:text-4xl mb-3 md:mb-4">{step.icon}</div>
-                  <div className="text-xl md:text-2xl font-bold text-purple-600 mb-2">{step.step}</div>
-                  <h3 className="text-lg md:text-xl font-bold text-gray-900 mb-2">{step.title}</h3>
-                  <p className="text-gray-600 text-sm md:text-base">{step.description}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* === MARKETING TOOLS === */}
-      <section className="py-12 md:py-20 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-8 md:mb-16">
-            <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-3 md:mb-4">Advanced Marketing Tools</h2>
-            <p className="text-base md:text-xl text-gray-600">We use industry-leading tools to deliver exceptional results</p>
-          </div>
-          
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 md:gap-6">
-            {marketingTools.map((tool, index) => (
-              <div key={index} className="bg-white p-4 md:p-6 rounded-xl shadow-md hover:shadow-lg transition-all text-center group hover:transform hover:-translate-y-1">
-                <div className="text-2xl md:text-3xl mb-2 md:mb-3 group-hover:scale-110 transition-transform">{tool.icon}</div>
-                <h3 className="font-semibold text-gray-900 text-sm md:text-base mb-1 md:mb-2">{tool.name}</h3>
-                <p className="text-gray-600 text-xs md:text-sm">{tool.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* === EXPERT TEAM === */}
-      <section className="py-12 md:py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-8 md:mb-16">
-            <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-3 md:mb-4">Our Expert Marketing Team</h2>
-            <p className="text-base md:text-xl text-gray-600">Certified professionals dedicated to your success</p>
-          </div>
-          
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8">
-            {teamMembers.map((member, index) => (
-              <div key={index} className="text-center">
-                <div className="bg-gradient-to-br from-purple-100 to-pink-100 p-4 md:p-6 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300">
-                  <div className="text-3xl md:text-4xl mb-3 md:mb-4">{member.icon}</div>
-                  <h3 className="font-bold text-gray-900 text-lg md:text-xl mb-1 md:mb-2">{member.name}</h3>
-                  <p className="text-purple-600 text-sm md:text-base">{member.role}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* === PLATFORMS WE COVER === */}
-      <section className="py-12 md:py-20 bg-gradient-to-br from-blue-50 to-purple-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-8 md:mb-16">
-            <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-3 md:mb-4">Digital Platforms We Master</h2>
-            <p className="text-base md:text-xl text-gray-600">We manage your presence across all major digital platforms</p>
-          </div>
-          
-          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-3 md:gap-4">
-            {platforms.map((platform, index) => (
-              <div key={index} className="text-center">
-                <div className={`${platform.color} text-white p-3 md:p-4 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105`}>
-                  <div className="text-xl md:text-2xl mb-1 md:mb-2">{platform.icon}</div>
-                  <div className="text-xs md:text-sm font-semibold">{platform.name}</div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* === AWARDS & RECOGNITION === */}
-      <section className="py-12 md:py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-8 md:mb-16">
-            <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-3 md:mb-4">Awards & Recognition</h2>
-            <p className="text-base md:text-xl text-gray-600">Recognized for excellence in digital marketing services</p>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8">
-            {awardsRecognition.map((award, index) => (
-              <div key={index} className="text-center">
-                <div className="bg-gradient-to-br from-yellow-50 to-orange-50 p-4 md:p-6 rounded-2xl shadow-lg border-2 border-yellow-200">
-                  <div className="text-2xl md:text-3xl mb-2 md:mb-3">{award.icon}</div>
-                  <h3 className="font-semibold text-gray-900 text-sm md:text-base">{award.title}</h3>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* === PORTFOLIO === */}
-      <section className="py-12 md:py-20 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-8 md:mb-16">
-            <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-3 md:mb-4">Our Digital Marketing Success Stories</h2>
-            <p className="text-base md:text-xl text-gray-600">Real projects delivering real results for businesses</p>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
-            {portfolioProjects.map((project, index) => (
-              <div key={index} className="bg-white rounded-xl md:rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 p-4 md:p-6">
-                <h3 className="text-lg md:text-xl font-semibold text-gray-900 mb-2">{project.title}</h3>
-                <p className="text-purple-600 font-medium text-sm md:text-base mb-2">{project.category}</p>
-                <p className="text-green-600 text-sm md:text-base font-semibold">{project.result}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* === PRICING PLANS === */}
-      <section className="py-12 md:py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-8 md:mb-16">
-            <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-3 md:mb-4">Affordable Digital Marketing Packages</h2>
-            <p className="text-base md:text-xl text-gray-600">Choose the perfect package for your business growth</p>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
-            {pricingPlans.map((plan, index) => (
-              <div key={index} className={`bg-white rounded-xl md:rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border-2 ${
-                plan.popular ? 'border-yellow-400 transform hover:-translate-y-2' : 'border-gray-200'
-              } p-4 md:p-8`}>
-                {plan.popular && (
-                  <div className="bg-yellow-500 text-purple-900 py-2 px-3 md:px-4 rounded-full text-center font-bold text-xs md:text-sm mb-4 -mt-6">
-                    MOST POPULAR
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8">
+            {growthPackages.map((pkg, index) => (
+              <div 
+                key={index}
+                className={`relative bg-gradient-to-br ${pkg.color} rounded-2xl sm:rounded-3xl shadow-xl sm:shadow-2xl transform transition-all duration-300 hover:scale-105 ${
+                  pkg.popular ? 'ring-2 sm:ring-4 ring-yellow-400 ring-opacity-50' : ''
+                }`}
+              >
+                {pkg.popular && (
+                  <div className="absolute -top-3 sm:-top-4 left-1/2 transform -translate-x-1/2">
+                    <div className="bg-yellow-500 text-gray-900 px-4 py-1 sm:px-6 sm:py-2 rounded-full font-bold text-xs sm:text-sm">
+                      ⭐ RECOMMENDED
+                    </div>
                   </div>
                 )}
-                <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-2">{plan.name}</h3>
-                <div className="flex items-baseline mb-3 md:mb-4">
-                  <span className="text-2xl md:text-4xl font-bold text-purple-600">{plan.price}</span>
-                  <span className="text-lg text-gray-400 line-through ml-2">{plan.originalPrice}</span>
-                </div>
-                <p className="text-gray-600 text-sm md:text-base mb-4 md:mb-6">{plan.description}</p>
-                <div className="space-y-2 mb-4 md:mb-6">
-                  {plan.features.map((feature, idx) => (
-                    <div key={idx} className="flex items-center text-gray-700 text-sm md:text-base">
-                      <span className="text-green-500 mr-2">✓</span>
-                      {feature}
-                    </div>
-                  ))}
-                </div>
-                <div className="space-y-2">
-                  <Link to="/pricing" className="w-full bg-purple-600 hover:bg-purple-700 text-white py-2 md:py-3 px-4 rounded-lg font-semibold transition-all duration-300 block text-center text-sm md:text-base">
-                    Choose Plan
-                  </Link>
-                  <a href={`https://wa.me/919521281509?text=Hello%20DiziGrow,%20I'm%20interested%20in%20${encodeURIComponent(plan.name)}`} target="_blank" rel="noopener noreferrer" className="w-full bg-green-500 hover:bg-green-600 text-white py-2 md:py-3 px-4 rounded-lg font-semibold transition-all duration-300 block text-center text-sm md:text-base flex items-center justify-center space-x-2">
-                    <span>💚</span>
-                    <span>WhatsApp Now</span>
-                  </a>
+                
+                <div className="p-6 sm:p-8 text-white">
+                  <h3 className="text-xl sm:text-2xl font-bold mb-2">{pkg.name}</h3>
+                  <div className="flex items-baseline mb-3 sm:mb-4">
+                    <span className="text-2xl sm:text-3xl lg:text-4xl font-bold">{pkg.price}</span>
+                    <span className="text-sm sm:text-lg opacity-80 line-through ml-2">{pkg.originalPrice}</span>
+                  </div>
+                  <div className="bg-white/20 rounded-lg px-2 py-1 sm:px-3 sm:py-1 inline-block mb-4 sm:mb-6">
+                    <span className="text-xs sm:text-sm font-semibold">Save {pkg.savings}</span>
+                  </div>
+                  
+                  <p className="text-white/90 text-sm sm:text-base mb-4 sm:mb-6">{pkg.description}</p>
+                  
+                  <div className="space-y-2 sm:space-y-3 mb-6 sm:mb-8">
+                    {pkg.features.map((feature, idx) => (
+                      <div key={idx} className="flex items-start">
+                        <CheckCircle className="h-4 w-4 sm:h-5 sm:w-5 text-green-300 mr-2 sm:mr-3 flex-shrink-0 mt-0.5" />
+                        <span className="text-white/90 text-xs sm:text-sm">{feature}</span>
+                      </div>
+                    ))}
+                  </div>
+
+                  <button
+                    onClick={() => handleWhatsApp(`I'm interested in ${pkg.name} package for ${pkg.price}`)}
+                    className="w-full bg-white text-gray-900 hover:bg-gray-100 py-3 sm:py-4 rounded-lg sm:rounded-xl font-bold text-sm sm:text-base transition-all duration-300 hover:scale-105 flex items-center justify-center space-x-2"
+                  >
+                    <MessageCircle className="h-4 w-4" />
+                    <span>Get This Package</span>
+                  </button>
                 </div>
               </div>
             ))}
@@ -789,27 +534,27 @@ const Home = () => {
         </div>
       </section>
 
-      {/* === TESTIMONIALS === */}
-      <section className="py-12 md:py-20 bg-gray-50">
+      {/* === WHY CHOOSE US - MOBILE OPTIMIZED === */}
+      <section className="py-12 sm:py-16 lg:py-20 bg-gradient-to-br from-gray-900 to-purple-900 text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-8 md:mb-16">
-            <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-3 md:mb-4">What Our Clients Say</h2>
-            <p className="text-base md:text-xl text-gray-600">Don't just take our word for it</p>
+          <div className="text-center mb-8 sm:mb-12 lg:mb-16">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-3 sm:mb-4">
+              Why <span className="text-yellow-400">Earning Sharthi</span>?
+            </h2>
+            <p className="text-base sm:text-lg lg:text-xl text-gray-300 max-w-3xl mx-auto">
+              We're not just another agency. We're your growth partners committed to your success.
+            </p>
           </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
-            {testimonials.map((testimonial, index) => (
-              <div key={index} className="bg-white p-4 md:p-6 rounded-xl md:rounded-2xl shadow-lg border border-gray-200 hover:border-purple-300 transition-all duration-300">
-                <div className="flex items-center mb-3 md:mb-4">
-                  {[...Array(testimonial.rating)].map((_, i) => (
-                    <span key={i} className="text-yellow-400 text-lg">⭐</span>
-                  ))}
-                </div>
-                <p className="text-gray-700 text-sm md:text-base mb-3 md:mb-4 italic">"{testimonial.text}"</p>
-                <div>
-                  <p className="font-semibold text-gray-900 text-base md:text-lg">{testimonial.name}</p>
-                  <p className="text-purple-600 text-sm md:text-base">{testimonial.company}</p>
-                  <p className="text-gray-500 text-xs md:text-sm mt-1">{testimonial.service}</p>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
+            {whyChooseUs.map((item, index) => (
+              <div key={index} className="text-center group">
+                <div className="bg-white/10 backdrop-blur-sm rounded-xl sm:rounded-2xl p-4 sm:p-6 lg:p-8 hover:bg-white/20 transition-all duration-300 transform hover:-translate-y-1 sm:hover:-translate-y-2">
+                  <div className="bg-gradient-to-r from-yellow-400 to-orange-400 text-white p-2 sm:p-3 lg:p-4 rounded-xl sm:rounded-2xl w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 mx-auto mb-3 sm:mb-4 lg:mb-6 flex items-center justify-center group-hover:scale-110 transition-transform">
+                    {item.icon}
+                  </div>
+                  <h3 className="text-base sm:text-lg lg:text-xl font-bold mb-2 sm:mb-3 lg:mb-4">{item.title}</h3>
+                  <p className="text-gray-300 text-xs sm:text-sm lg:text-base leading-relaxed">{item.description}</p>
                 </div>
               </div>
             ))}
@@ -817,71 +562,108 @@ const Home = () => {
         </div>
       </section>
 
-      {/* === FINAL CTA === */}
-      <section className="py-12 md:py-20 bg-gradient-to-r from-purple-600 to-purple-800 text-white">
+      {/* === PROCESS - MOBILE OPTIMIZED === */}
+      <section className="py-12 sm:py-16 lg:py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-8 sm:mb-12 lg:mb-16">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-3 sm:mb-4">
+              How We <span className="text-green-600">Work</span>
+            </h2>
+            <p className="text-base sm:text-lg lg:text-xl text-gray-600 max-w-3xl mx-auto">
+              Simple, transparent process to get your project from idea to launch
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
+            {processSteps.map((step, index) => (
+              <div key={index} className="text-center relative">
+                {index < processSteps.length - 1 && (
+                  <div className="hidden lg:block absolute top-8 sm:top-12 left-1/2 w-full h-0.5 bg-gradient-to-r from-blue-500 to-purple-500 -z-10"></div>
+                )}
+                <div className="bg-gradient-to-br from-blue-50 to-purple-50 rounded-xl sm:rounded-2xl p-4 sm:p-6 lg:p-8 border-2 border-blue-100 hover:border-blue-300 transition-all duration-300">
+                  <div className="text-2xl sm:text-3xl mb-2 sm:mb-3 lg:mb-4">{step.icon}</div>
+                  <div className="text-lg sm:text-xl lg:text-2xl font-bold text-blue-600 mb-1 sm:mb-2">{step.number}</div>
+                  <h3 className="text-base sm:text-lg lg:text-xl font-bold text-gray-900 mb-2 sm:mb-3">{step.title}</h3>
+                  <p className="text-gray-600 text-sm sm:text-base">{step.description}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* === TESTIMONIALS - MOBILE OPTIMIZED === */}
+      <section className="py-12 sm:py-16 lg:py-20 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-8 sm:mb-12 lg:mb-16">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-3 sm:mb-4">
+              What Our <span className="text-purple-600">Clients Say</span>
+            </h2>
+            <p className="text-base sm:text-lg lg:text-xl text-gray-600 max-w-3xl mx-auto">
+              Don't just take our word for it. Here's what businesses like yours have to say.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
+            {testimonials.map((testimonial, index) => (
+              <div key={index} className="bg-white rounded-xl sm:rounded-2xl p-4 sm:p-6 lg:p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 sm:hover:-translate-y-2">
+                <div className="flex items-center mb-3 sm:mb-4">
+                  {[...Array(testimonial.rating)].map((_, i) => (
+                    <Star key={i} className="h-4 w-4 sm:h-5 sm:w-5 text-yellow-400 fill-current" />
+                  ))}
+                </div>
+                <p className="text-gray-700 text-sm sm:text-base lg:text-lg mb-3 sm:mb-4 lg:mb-6 italic">"{testimonial.text}"</p>
+                <div>
+                  <p className="font-bold text-gray-900 text-base sm:text-lg">{testimonial.name}</p>
+                  <p className="text-purple-600 text-sm sm:text-base">{testimonial.business}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* === FINAL CTA - MOBILE OPTIMIZED === */}
+      <section className="py-12 sm:py-16 lg:py-20 bg-gradient-to-r from-purple-600 to-blue-600 text-white">
         <div className="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold mb-3 md:mb-4">Ready to Grow Your Business?</h2>
-          <p className="text-base md:text-xl mb-6 md:mb-8 text-purple-100">Get professional digital marketing services at <span className="text-yellow-400 font-semibold">50-70% OFF</span>. Limited time offer!</p>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-3 sm:mb-4 lg:mb-6">
+            Ready to Start Your <span className="text-yellow-400">Online Journey</span>?
+          </h2>
+          <p className="text-base sm:text-lg lg:text-xl mb-4 sm:mb-6 lg:mb-8 text-white/90">
+            Get your professional website from <strong className="text-yellow-400">₹4,999</strong> with 
+            FREE domain & hosting. Limited time offer!
+          </p>
           
-          <div className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center">
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
+            <button
+              onClick={() => handleWhatsApp("I'm ready to start my website project. Please help me get started.")}
+              className="bg-yellow-500 hover:bg-yellow-600 text-gray-900 px-4 py-3 sm:px-6 sm:py-4 rounded-lg sm:rounded-xl font-bold text-sm sm:text-base lg:text-lg transition-all duration-300 hover:scale-105 flex items-center justify-center space-x-2"
+            >
+              <MessageCircle className="h-4 w-4 sm:h-5 sm:w-5" />
+              <span>Start My Project</span>
+            </button>
             <a
-              href="https://wa.me/919521281509?text=Hello%20DiziGrow%20Digital%20Marketing%20Agency,%20I%20want%20to%20discuss%20your%20services"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-yellow-500 hover:bg-yellow-600 text-purple-900 px-6 py-3 md:px-8 md:py-4 rounded-lg text-base md:text-lg font-bold transition-all duration-300 hover:scale-105 flex items-center justify-center space-x-2"
+              href="tel:+916398799013"
+              className="border-2 border-white text-white hover:bg-white hover:text-gray-900 px-4 py-3 sm:px-6 sm:py-4 rounded-lg sm:rounded-xl font-bold text-sm sm:text-base lg:text-lg transition-all duration-300 flex items-center justify-center space-x-2"
             >
-              <span>💚 WhatsApp for 70% OFF</span>
+              <Phone className="h-4 w-4 sm:h-5 sm:w-5" />
+              <span>Call Now</span>
             </a>
-            <Link
-              to="/pricing"
-              className="bg-green-500 hover:bg-green-600 text-white px-6 py-3 md:px-8 md:py-4 rounded-lg text-base md:text-lg font-bold transition-all duration-300 hover:scale-105 flex items-center justify-center space-x-2"
-            >
-              <span>💰 View All Pricing</span>
-            </Link>
           </div>
           
-          <p className="text-purple-200 mt-4 md:mt-6 text-xs md:text-sm">
-            ✅ Free Consultation ✅ 24/7 Support ✅ Money-Back Guarantee
+          <p className="text-white/80 mt-4 sm:mt-6 lg:mt-8 text-xs sm:text-sm lg:text-lg">
+            ✅ Free Consultation ✅ 1 Year Support ✅ Money-Back Guarantee
           </p>
         </div>
       </section>
 
-      {/* Floating WhatsApp Button */}
-      <a
-        href="https://wa.me/919521281509?text=Hello%20DiziGrow%20Digital%20Marketing%20Agency,%20I%20want%20to%20discuss%20your%20services"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="fixed bottom-4 right-4 md:bottom-6 md:right-6 z-50 bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white p-3 md:p-4 rounded-full shadow-2xl hover:shadow-3xl transition-all duration-300 hover:scale-110 animate-bounce-slow"
+      {/* Floating WhatsApp Button - Mobile Optimized */}
+      <button
+        onClick={() => handleWhatsApp()}
+        className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 bg-green-500 hover:bg-green-600 text-white p-3 sm:p-4 rounded-full shadow-2xl hover:shadow-3xl transition-all duration-300 hover:scale-110 animate-bounce"
       >
-        <span className="text-xl md:text-2xl">💚</span>
-      </a>
-
-      <style jsx>{`
-        @keyframes fade-in-up {
-          from {
-            opacity: 0;
-            transform: translateY(30px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-        @keyframes bounce-slow {
-          0%, 100% { 
-            transform: translateY(0); 
-          }
-          50% { 
-            transform: translateY(-10px); 
-          }
-        }
-        .animate-fade-in-up {
-          animation: fade-in-up 0.8s ease-out both;
-        }
-        .animate-bounce-slow {
-          animation: bounce-slow 2s infinite;
-        }
-      `}</style>
+        <MessageCircle className="h-5 w-5 sm:h-6 sm:w-6" />
+      </button>
     </div>
   );
 };
