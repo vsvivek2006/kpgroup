@@ -10,7 +10,7 @@ const Home = () => {
   const heroSlides = [
     {
       title: "Launch Your Business Online",
-      highlight: "Website from ₹4,999",
+      highlight: "Website from ₹2,199",
       tagline: "Professional Website + FREE Domain & Hosting for 1 Year",
       features: ["Mobile Responsive", "SEO Optimized", "Fast Loading", "1 Year Support"],
       bg: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
@@ -18,7 +18,7 @@ const Home = () => {
     },
     {
       title: "Grow with Digital Marketing",
-      highlight: "SEO + Social Media ₹9,999/month",
+      highlight: "SEO + Social Media ₹2,500/month",
       tagline: "Complete Digital Marketing Solutions for Business Growth",
       features: ["Google Ranking", "Social Media Management", "Lead Generation", "Monthly Reports"],
       bg: "linear-gradient(135deg, #f093fb 0%, #f5576c 100%)",
@@ -26,7 +26,7 @@ const Home = () => {
     },
     {
       title: "E-commerce Solutions",
-      highlight: "Online Store ₹14,999",
+      highlight: "Online Store ₹4,999",
       tagline: "Complete E-commerce Store with Payment Gateway & Products",
       features: ["Product Management", "Payment Gateway", "Order Tracking", "Inventory Management"],
       bg: "linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)",
@@ -50,10 +50,10 @@ const Home = () => {
     {
       icon: "🛒",
       title: "E-commerce Store",
-      price: "₹14,999",
-      originalPrice: "₹29,999",
+      price: "₹4,999",
+      originalPrice: "₹9,999",
       description: "Complete Online Store with Payment Integration",
-      features: ["100+ Products", "Payment Gateway", "Order Management", "1 Year Support"],
+      features: ["10+ Products", "Payment Gateway", "Order Management", "1 Year Support"],
       popular: true,
       savings: "50% OFF",
       badge: "BEST VALUE"
@@ -61,10 +61,10 @@ const Home = () => {
     {
       icon: "🏠",
       title: "Real Estate Website",
-      price: "₹39,999",
-      originalPrice: "₹79,999",
+      price: "₹9,999",
+      originalPrice: "₹19,999",
       description: "Advanced Property Listing & Management System",
-      features: ["Property Listings", "Lead Management", "Booking System", "Admin Panel"],
+      features: ["Property Listings", "Lead Management", "Contact Forms", "Admin Panel"],
       popular: false,
       savings: "50% OFF",
       badge: "Premium"
@@ -82,24 +82,24 @@ const Home = () => {
     },
     {
       icon: "🎓",
-      title: "School/NGO Website",
-      price: "₹14,999",
-      originalPrice: "₹29,999",
-      description: "Educational Institute or NGO Website Solution",
-      features: ["Student Management", "Event Calendar", "Gallery", "Donation System"],
+      title: "School/College Website",
+      price: "₹2,199",
+      originalPrice: "₹4,399",
+      description: "Educational Institute Website Solution",
+      features: ["Student Management", "Event Calendar", "Gallery", "Contact Forms"],
       popular: false,
       savings: "50% OFF",
       badge: "Special Offer"
     },
     {
       icon: "🔍",
-      title: "Google Business Setup",
-      price: "₹999",
-      originalPrice: "₹2,499",
-      description: "Professional Google Business Profile Optimization",
-      features: ["Profile Creation", "Posts Setup", "Review Management", "Local SEO"],
+      title: "SEO Services",
+      price: "₹4,999",
+      originalPrice: "₹9,999",
+      description: "Professional SEO Services for Business Growth",
+      features: ["Website Audit", "Keyword Research", "On-Page SEO", "Monthly Reports"],
       popular: false,
-      savings: "60% OFF",
+      savings: "50% OFF",
       badge: "Quick Service"
     }
   ];
@@ -108,9 +108,9 @@ const Home = () => {
   const growthPackages = [
     {
       name: "STARTUP GROWTH",
-      price: "₹24,999",
+      price: "₹9,999",
       duration: "one-time",
-      originalPrice: "₹49,998",
+      originalPrice: "₹19,998",
       description: "Perfect for new businesses starting online",
       features: [
         "Business Website Development",
@@ -121,14 +121,14 @@ const Home = () => {
         "Free Domain & Hosting (1 Year)"
       ],
       popular: false,
-      savings: "₹24,999",
+      savings: "₹9,999",
       color: "from-blue-500 to-blue-600"
     },
     {
       name: "BUSINESS GROWTH",
-      price: "₹49,999",
+      price: "₹24,999",
       duration: "one-time",
-      originalPrice: "₹99,998",
+      originalPrice: "₹49,998",
       description: "Complete digital presence for growing businesses",
       features: [
         "Professional Website",
@@ -140,14 +140,14 @@ const Home = () => {
         "Monthly Performance Reports"
       ],
       popular: true,
-      savings: "₹49,999",
+      savings: "₹24,999",
       color: "from-purple-500 to-purple-600"
     },
     {
       name: "ENTERPRISE GROWTH",
-      price: "₹89,999",
+      price: "₹49,999",
       duration: "one-time",
-      originalPrice: "₹1,79,998",
+      originalPrice: "₹99,998",
       description: "Premium solutions for established businesses",
       features: [
         "Custom Website Development",
@@ -159,7 +159,7 @@ const Home = () => {
         "Dedicated Account Manager"
       ],
       popular: false,
-      savings: "₹89,999",
+      savings: "₹49,999",
       color: "from-green-500 to-green-600"
     }
   ];
@@ -254,7 +254,7 @@ const Home = () => {
     <div className="min-h-screen bg-white overflow-hidden">
       <Helmet>
         <title>Earning Sharthi - Affordable Website Development & Digital Marketing Services</title>
-        <meta name="description" content="Professional website development from ₹4,999 with FREE domain & hosting. E-commerce stores ₹14,999. Complete digital marketing solutions. 150+ happy clients." />
+        <meta name="description" content="Professional website development from ₹2,199 with FREE domain & hosting. E-commerce stores ₹4,999. Complete digital marketing solutions. 150+ happy clients." />
         <meta name="keywords" content="website development, e-commerce website, digital marketing, seo services, affordable website, business website" />
       </Helmet>
 
@@ -324,15 +324,15 @@ const Home = () => {
                       <div className="space-y-3 lg:space-y-4">
                         <div className="bg-white/20 rounded-lg p-3 lg:p-4">
                           <div className="text-white/80 text-sm">Website Development</div>
-                          <div className="text-yellow-400 font-bold text-base lg:text-lg">Starting at ₹4,999</div>
+                          <div className="text-yellow-400 font-bold text-base lg:text-lg">Starting at ₹2,199</div>
                         </div>
                         <div className="bg-white/20 rounded-lg p-3 lg:p-4">
                           <div className="text-white/80 text-sm">E-commerce Store</div>
-                          <div className="text-yellow-400 font-bold text-base lg:text-lg">Only ₹14,999</div>
+                          <div className="text-yellow-400 font-bold text-base lg:text-lg">Only ₹4,999</div>
                         </div>
                         <div className="bg-white/20 rounded-lg p-3 lg:p-4">
                           <div className="text-white/80 text-sm">Digital Marketing</div>
-                          <div className="text-yellow-400 font-bold text-base lg:text-lg">From ₹9,999/month</div>
+                          <div className="text-yellow-400 font-bold text-base lg:text-lg">From ₹2,500/month</div>
                         </div>
                       </div>
                       <button
@@ -630,7 +630,7 @@ const Home = () => {
             Ready to Start Your <span className="text-yellow-400">Online Journey</span>?
           </h2>
           <p className="text-base sm:text-lg lg:text-xl mb-4 sm:mb-6 lg:mb-8 text-white/90">
-            Get your professional website from <strong className="text-yellow-400">₹4,999</strong> with 
+            Get your professional website from <strong className="text-yellow-400">₹2,199</strong> with 
             FREE domain & hosting. Limited time offer!
           </p>
           
