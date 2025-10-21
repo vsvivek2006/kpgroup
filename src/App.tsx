@@ -16,7 +16,7 @@ import Privacy from './pages/Privacy';
 import NotFound from './pages/NotFound';
 import Offer from './pages/Offer';
 import GrowthServices from './pages/GrowthServices';
-import Careers from './pages/Careers'; // ✅ Careers page import kiya
+import Careers from './pages/Careers';
 
 function App() {
   return (
@@ -71,7 +71,7 @@ function App() {
             <Route path="/portfolio" element={<Portfolio />} />
             <Route path="/pricing" element={<Pricing />} />
             <Route path="/contact" element={<Contact />} />
-            <Route path="/careers" element={<Careers />} /> {/* ✅ Careers page route add kiya */}
+            <Route path="/careers" element={<Careers />} />
             <Route path="/onboarding-agreement" element={<OnboardingAgreement />} />
             <Route path="/terms" element={<Terms />} />
             <Route path="/privacy" element={<Privacy />} />
