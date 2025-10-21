@@ -76,7 +76,7 @@ const Pricing: React.FC = () => {
   const [originalAmount, setOriginalAmount] = useState<number>(0);
   const [activeTab, setActiveTab] = useState<string>('website');
 
-  const RAZORPAY_KEY_ID = 'rzp_live_ROjWHHKbSiP7Al';
+  const RAZORPAY_KEY_ID = 'rzp_live_RW4McqKd7aRTOo';
 
   // Payment Handler
   const handlePayment = async (amount: number, serviceName: string): Promise<void> => {
