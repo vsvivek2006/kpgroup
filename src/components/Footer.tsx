@@ -287,7 +287,7 @@ const Footer: React.FC = () => {
             © {year} <span className="text-yellow-300">EARNING SHARTHI</span>. All rights reserved.
           </p>
           <p className="text-gray-400 text-md mb-4">
-            Made with 💖 in India | Empowering Businesses Digitally
+            Made with 💖 in India | Vivek Singh 
           </p>
           
           {/* Service Highlights */}
