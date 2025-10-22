@@ -91,7 +91,7 @@ const Pricing: React.FC = () => {
         description: `${serviceName} - Advance Payment`,
         handler: function(response: any) {
           alert(`🎉 Payment Successful! Payment ID: ${response.razorpay_payment_id}`);
-          window.location.href = `https://wa.me/919521281509?text=Payment Successful for ${serviceName}. Payment ID: ${response.razorpay_payment_id}`;
+          window.location.href = `https://wa.me/916398799013?text=Payment Successful for ${serviceName}. Payment ID: ${response.razorpay_payment_id}`;
         },
         prefill: {
           name: 'Customer Name',
@@ -1332,7 +1332,7 @@ const Pricing: React.FC = () => {
                   className="bg-yellow-500 text-gray-900 hover:bg-yellow-600 px-8 py-3 rounded-xl font-bold transition-all hover:scale-105 flex items-center justify-center gap-2"
                 >
                   <Phone className="h-5 w-5" />
-                  Call Now: +91 9521281509
+                  Call Now: +91-6398799013
                 </a>
               </div>
             </div>
@@ -1364,7 +1364,7 @@ const Pricing: React.FC = () => {
               className="bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-xl text-lg font-bold transition-all hover:scale-105 flex items-center justify-center space-x-2 shadow-lg"
             >
               <Phone className="h-6 w-6" />
-              <span>📞 Call: +91 9521281509</span>
+              <span>📞 Call: +91-6398799013</span>
             </a>
           </div>
           <div className="mt-6 flex flex-wrap items-center justify-center gap-6 text-blue-200">
