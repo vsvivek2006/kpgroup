@@ -10,7 +10,7 @@ const Home = () => {
   const heroSlides = [
     {
       title: "Launch Your Business Online",
-      highlight: "Website from ₹2,199",
+      highlight: "Website from ₹2,500",
       tagline: "Professional Website + FREE Domain & Hosting for 1 Year",
       features: ["Mobile Responsive", "SEO Optimized", "Fast Loading", "1 Year Support"],
       bg: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
@@ -83,8 +83,8 @@ const Home = () => {
     {
       icon: "🎓",
       title: "School/College Website",
-      price: "₹2,199",
-      originalPrice: "₹4,399",
+      price: "₹2,500",
+      originalPrice: "₹5,000",
       description: "Educational Institute Website Solution",
       features: ["Student Management", "Event Calendar", "Gallery", "Contact Forms"],
       popular: false,
