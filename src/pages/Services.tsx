@@ -26,7 +26,9 @@ import {
   Facebook,
   MousePointer,
   Brush,
-  Phone
+  Phone,
+  Palette,
+  Megaphone
 } from 'lucide-react';
 
 interface ServiceFeature {
@@ -276,6 +278,30 @@ const Services: React.FC = () => {
             { text: 'Authentic promotions' },
             { text: 'Measurable results' }
           ]
+        },
+        // NEW SERVICE: Social Media Post Design
+        {
+          icon: <Palette className="h-8 w-8" />,
+          name: 'Social Media Post Design',
+          description: 'Professional and engaging social media post designs for all platforms',
+          features: [
+            { text: '15+ Creative Post Designs Monthly' },
+            { text: 'Platform-Specific Design (Instagram, Facebook, Twitter)' },
+            { text: 'Brand-Consistent Visual Identity' },
+            { text: 'Custom Graphics & Illustrations' },
+            { text: 'Engaging Story/Reel Designs' },
+            { text: 'Quick Turnaround (24-48 hours)' },
+            { text: 'Unlimited Revisions' },
+            { text: 'All Source Files Provided' }
+          ],
+          benefits: [
+            { text: 'Professional looking posts' },
+            { text: 'Increased engagement rates' },
+            { text: 'Consistent brand identity' },
+            { text: 'Time-saving solution' }
+          ],
+          popular: true,
+          badge: 'TRENDING'
         }
       ]
     },
@@ -327,6 +353,28 @@ const Services: React.FC = () => {
             { text: 'High ROI' },
             { text: 'Automated campaigns' },
             { text: 'Measurable results' }
+          ]
+        },
+        // NEW SERVICE: Social Media Advertising
+        {
+          icon: <Megaphone className="h-8 w-8" />,
+          name: 'Social Media Advertising',
+          description: 'Targeted social media ads on Meta, Instagram, and other platforms',
+          features: [
+            { text: 'Platform-Specific Ad Campaigns' },
+            { text: 'Advanced Audience Targeting' },
+            { text: 'Ad Creative Design & Optimization' },
+            { text: 'A/B Testing & Performance Analysis' },
+            { text: 'Conversion Tracking Setup' },
+            { text: 'Retargeting Campaign Strategy' },
+            { text: 'Monthly Performance Reports' },
+            { text: 'ROI Optimization' }
+          ],
+          benefits: [
+            { text: 'Precise audience targeting' },
+            { text: 'Cost-effective advertising' },
+            { text: 'Increased brand visibility' },
+            { text: 'Measurable campaign results' }
           ]
         }
       ]
@@ -426,6 +474,7 @@ const Services: React.FC = () => {
   ];
 
   const whatsappUrl = 'https://wa.me/919521281509?text=Hello%20Earningsharthi,%20I%20want%20to%20discuss';
+  const phoneNumber = '+91-6398799013';
 
   const currentCategory = serviceCategories.find(cat => cat.id === activeTab) || serviceCategories[0];
 
@@ -644,11 +693,11 @@ const Services: React.FC = () => {
               <span>💬 Get Free Consultation</span>
             </a>
             <a
-              href="tel:+919521281509"
+              href={`tel:${phoneNumber.replace(/-/g, '')}`}
               className="bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-xl text-lg font-bold transition-all hover:scale-105 flex items-center justify-center space-x-2 shadow-lg"
             >
               <Phone className="h-6 w-6" />
-              <span>📞 Call: +91 9521281509</span>
+              <span>📞 Call: {phoneNumber}</span>
             </a>
           </div>
         </div>
@@ -680,6 +729,22 @@ const Services: React.FC = () => {
               <MessageCircle className="h-5 w-5" />
               <span>Start a Project</span>
             </a>
+          </div>
+          
+          {/* Contact Info */}
+          <div className="mt-12 bg-white rounded-2xl shadow-lg p-8 max-w-md mx-auto">
+            <h3 className="text-2xl font-bold text-gray-900 mb-4">Contact Us</h3>
+            <div className="space-y-3 text-lg">
+              <p className="flex items-center justify-center gap-2 text-gray-700">
+                <Phone className="h-5 w-5 text-green-500" />
+                <a href={`tel:${phoneNumber.replace(/-/g, '')}`} className="hover:text-blue-600">
+                  {phoneNumber}
+                </a>
+              </p>
+              <p className="text-gray-600 text-sm">
+                Available 9:00 AM - 8:00 PM, Monday to Saturday
+              </p>
+            </div>
           </div>
         </div>
       </section>
