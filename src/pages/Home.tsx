@@ -324,7 +324,7 @@ const Home = () => {
                       <div className="space-y-3 lg:space-y-4">
                         <div className="bg-white/20 rounded-lg p-3 lg:p-4">
                           <div className="text-white/80 text-sm">Website Development</div>
-                          <div className="text-yellow-400 font-bold text-base lg:text-lg">Starting at ₹2,199</div>
+                          <div className="text-yellow-400 font-bold text-base lg:text-lg">Starting at ₹2,500</div>
                         </div>
                         <div className="bg-white/20 rounded-lg p-3 lg:p-4">
                           <div className="text-white/80 text-sm">E-commerce Store</div>
