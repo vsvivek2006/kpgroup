@@ -242,6 +242,46 @@ const Footer: React.FC = () => {
           </div>
         </div>
 
+        {/* Partner Logos Section */}
+        <div className="bg-gradient-to-r from-purple-900/40 to-pink-900/40 rounded-2xl p-8 border border-purple-400/20 mb-12">
+          <h3 className="text-2xl font-bold text-center text-yellow-300 mb-8">Our Trusted Partners & Payment Gateways</h3>
+          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6 items-center justify-items-center">
+            {[
+              { name: "MSME", logo: "/msme.logo.png", alt: "MSME India" },
+              { name: "Startup India", logo: "/startupindian.logo.png", alt: "Startup India" },
+              { name: "Meta", logo: "/meta.logo.png", alt: "Meta Business" },
+              { name: "Google", logo: "/google.logo.png", alt: "Google Partner" },
+              { name: "PhonePe", logo: "/phonepay.logo.png", alt: "PhonePe Payments" },
+              { name: "Razorpay", logo: "/razorpay.logo.png", alt: "Razorpay" },
+              { name: "CCAvenue", logo: "/ccavenu.logo.png", alt: "CCAvenue" },
+              { name: "PayPal", logo: "/paypal.logo.png", alt: "PayPal" },
+              { name: "Stripe", logo: "/stripe.logo.png", alt: "Stripe" },
+              { name: "UPI", logo: "/upi.logo.png", alt: "UPI India" },
+              { name: "Visa", logo: "/visa.logo.png", alt: "Visa" },
+              { name: "Mastercard", logo: "/mastercard.logo.png", alt: "Mastercard" }
+            ].map((partner, index) => (
+              <div 
+                key={index} 
+                className="bg-white/10 p-4 rounded-xl border border-white/10 hover:border-yellow-400/30 transition-all duration-300 hover:scale-105 hover:bg-white/15 group"
+              >
+                <img 
+                  src={partner.logo} 
+                  alt={partner.alt}
+                  className="h-12 w-auto object-contain filter brightness-0 invert opacity-80 group-hover:opacity-100 group-hover:brightness-100 group-hover:invert-0 transition-all duration-300"
+                  onError={(e) => {
+                    const target = e.currentTarget;
+                    target.style.display = 'none';
+                    const fallback = document.createElement('div');
+                    fallback.className = 'h-12 w-20 bg-gradient-to-r from-blue-500 to-purple-600 rounded flex items-center justify-center text-white text-xs font-bold text-center px-2';
+                    fallback.textContent = partner.name;
+                    target.parentNode?.insertBefore(fallback, target);
+                  }}
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+
         {/* CTA Section */}
         <div className="text-center mb-12">
           <div className="bg-gradient-to-r from-purple-600 to-pink-600 rounded-2xl p-8 border-2 border-yellow-400/30 shadow-2xl">
