@@ -60,6 +60,16 @@ interface ServiceCategory {
 const Services: React.FC = () => {
   const [activeTab, setActiveTab] = useState<string>('website');
 
+  // Constants for contact information
+  const WHATSAPP_NUMBER = '916398799013';
+  const PHONE_NUMBER = '+91-6398799013';
+  const WHATSAPP_BASE_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=`;
+
+  // WhatsApp message function
+  const getWhatsAppUrl = (message: string): string => {
+    return `${WHATSAPP_BASE_URL}${encodeURIComponent(message)}`;
+  };
+
   // ✅ SERVICES ARRAY MATCHING PRICING PAGE STRUCTURE
   const serviceCategories: ServiceCategory[] = [
     {
@@ -473,9 +483,6 @@ const Services: React.FC = () => {
     }
   ];
 
-  const whatsappUrl = 'https://wa.me/919521281509?text=Hello%20Earningsharthi,%20I%20want%20to%20discuss';
-  const phoneNumber = '+91-6398799013';
-
   const currentCategory = serviceCategories.find(cat => cat.id === activeTab) || serviceCategories[0];
 
   return (
@@ -651,7 +658,7 @@ const Services: React.FC = () => {
                     <ArrowRight className="h-4 w-4" />
                   </Link>
                   <a
-                    href={`${whatsappUrl}%20${encodeURIComponent(service.name)}%20service`}
+                    href={getWhatsAppUrl(`Hello Earningsharthi, I want to discuss ${service.name} service`)}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex-1 bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white py-3 px-6 rounded-xl font-semibold transition-all flex items-center justify-center space-x-2 text-center shadow-lg hover:shadow-xl"
@@ -684,7 +691,7 @@ const Services: React.FC = () => {
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
-              href={`${whatsappUrl}%20the%20right%20service%20for%20my%20business`}
+              href={getWhatsAppUrl("Hello Earningsharthi, I want to discuss the right service for my business")}
               target="_blank"
               rel="noopener noreferrer"
               className="bg-yellow-500 hover:bg-yellow-600 text-blue-900 px-8 py-4 rounded-xl text-lg font-bold transition-all hover:scale-105 flex items-center justify-center space-x-2 shadow-lg"
@@ -693,11 +700,11 @@ const Services: React.FC = () => {
               <span>💬 Get Free Consultation</span>
             </a>
             <a
-              href={`tel:${phoneNumber.replace(/-/g, '')}`}
+              href={`tel:${PHONE_NUMBER.replace(/-/g, '')}`}
               className="bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-xl text-lg font-bold transition-all hover:scale-105 flex items-center justify-center space-x-2 shadow-lg"
             >
               <Phone className="h-6 w-6" />
-              <span>📞 Call: {phoneNumber}</span>
+              <span>📞 Call: {PHONE_NUMBER}</span>
             </a>
           </div>
         </div>
@@ -721,7 +728,7 @@ const Services: React.FC = () => {
               <ArrowRight className="h-5 w-5" />
             </Link>
             <a
-              href={`${whatsappUrl}%20starting%20a%20project`}
+              href={getWhatsAppUrl("Hello Earningsharthi, I want to start a project")}
               target="_blank"
               rel="noopener noreferrer"
               className="bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white px-8 py-4 rounded-xl text-lg font-bold transition-all hover:scale-105 flex items-center justify-center space-x-2 shadow-lg"
@@ -737,8 +744,8 @@ const Services: React.FC = () => {
             <div className="space-y-3 text-lg">
               <p className="flex items-center justify-center gap-2 text-gray-700">
                 <Phone className="h-5 w-5 text-green-500" />
-                <a href={`tel:${phoneNumber.replace(/-/g, '')}`} className="hover:text-blue-600">
-                  {phoneNumber}
+                <a href={`tel:${PHONE_NUMBER.replace(/-/g, '')}`} className="hover:text-blue-600">
+                  {PHONE_NUMBER}
                 </a>
               </p>
               <p className="text-gray-600 text-sm">
