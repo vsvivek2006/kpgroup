@@ -77,6 +77,8 @@ const Pricing: React.FC = () => {
   const [activeTab, setActiveTab] = useState<string>('website');
 
   const RAZORPAY_KEY_ID = 'rzp_live_RW4McqKd7aRTOo';
+  const WHATSAPP_NUMBER = '916398799013'; // Updated WhatsApp number
+  const PHONE_NUMBER = '+91-6398799013'; // Updated phone number
 
   // Payment Handler
   const handlePayment = async (amount: number, serviceName: string): Promise<void> => {
@@ -91,7 +93,8 @@ const Pricing: React.FC = () => {
         description: `${serviceName} - Advance Payment`,
         handler: function(response: any) {
           alert(`🎉 Payment Successful! Payment ID: ${response.razorpay_payment_id}`);
-          window.location.href = `https://wa.me/916398799013?text=Payment Successful for ${serviceName}. Payment ID: ${response.razorpay_payment_id}`;
+          const message = `Payment Successful for ${serviceName}. Payment ID: ${response.razorpay_payment_id}`;
+          window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`, '_blank');
         },
         prefill: {
           name: 'Customer Name',
@@ -825,8 +828,12 @@ const Pricing: React.FC = () => {
 
   const scheduleConsultation = (): void => {
     const consultationMessage = `🎯 I want to schedule a Free Digital Marketing Consultation!\n\nPlease share available time slots for a 30-minute video call.`;
-    const encodedMessage = encodeURIComponent(consultationMessage);
-    window.open(`https://wa.me/919521281509?text=${encodedMessage}`, '_blank');
+    window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(consultationMessage)}`, '_blank');
+  };
+
+  // WhatsApp message function
+  const getWhatsAppUrl = (message: string): string => {
+    return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
   };
 
   return (
@@ -984,7 +991,7 @@ const Pricing: React.FC = () => {
                               💳 Pay Advance - Save 5%
                             </button>
                             <a
-                              href={`https://wa.me/919521281509?text=Hello Earningsharthi, I want ${service.category} - ${plan.name} plan`}
+                              href={getWhatsAppUrl(`Hello Earningsharthi, I want ${service.category} - ${plan.name} plan`)}
                               target="_blank"
                               rel="noopener noreferrer"
                               className="w-full bg-green-500 hover:bg-green-600 text-white py-2 px-4 rounded-xl font-medium transition-colors block text-center"
@@ -1055,7 +1062,7 @@ const Pricing: React.FC = () => {
                               💳 Pay Advance
                             </button>
                             <a
-                              href={`https://wa.me/919521281509?text=Hello Earningsharthi, I want ${service.category} - ${plan.name} plan`}
+                              href={getWhatsAppUrl(`Hello Earningsharthi, I want ${service.category} - ${plan.name} plan`)}
                               target="_blank"
                               rel="noopener noreferrer"
                               className="w-full bg-green-500 hover:bg-green-600 text-white py-2 px-4 rounded-lg font-medium transition-colors block text-center text-sm"
@@ -1141,7 +1148,7 @@ const Pricing: React.FC = () => {
                         💳 Pay Advance - Save 5%
                       </button>
                       <a
-                        href={`https://wa.me/919521281509?text=Hello Earningsharthi, I want SEO Service - ${service.name} plan`}
+                        href={getWhatsAppUrl(`Hello Earningsharthi, I want SEO Service - ${service.name} plan`)}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="w-full bg-green-500 hover:bg-green-600 text-white py-2 px-6 rounded-xl font-medium transition-colors block text-center"
@@ -1234,7 +1241,7 @@ const Pricing: React.FC = () => {
                               💳 Pay Advance - Save 5%
                             </button>
                             <a
-                              href={`https://wa.me/919521281509?text=Hello Earningsharthi, I want ${service.category} - ${plan.name} plan`}
+                              href={getWhatsAppUrl(`Hello Earningsharthi, I want ${service.category} - ${plan.name} plan`)}
                               target="_blank"
                               rel="noopener noreferrer"
                               className="w-full bg-green-500 hover:bg-green-600 text-white py-2 px-4 rounded-xl font-medium transition-colors block text-center"
@@ -1296,7 +1303,7 @@ const Pricing: React.FC = () => {
                       💳 Pay Advance - Save 5%
                     </button>
                     <a
-                      href={`https://wa.me/919521281509?text=Hello Earningsharthi, I want ${service.name} service`}
+                      href={getWhatsAppUrl(`Hello Earningsharthi, I want ${service.name} service`)}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="w-full bg-green-500 hover:bg-green-600 text-white py-2 px-4 rounded-xl font-medium transition-colors block text-center"
@@ -1328,11 +1335,11 @@ const Pricing: React.FC = () => {
                   Schedule Free Call
                 </button>
                 <a
-                  href="tel:+919521281509"
+                  href={`tel:${PHONE_NUMBER.replace(/-/g, '')}`}
                   className="bg-yellow-500 text-gray-900 hover:bg-yellow-600 px-8 py-3 rounded-xl font-bold transition-all hover:scale-105 flex items-center justify-center gap-2"
                 >
                   <Phone className="h-5 w-5" />
-                  Call Now: +91-6398799013
+                  Call Now: {PHONE_NUMBER}
                 </a>
               </div>
             </div>
@@ -1351,7 +1358,7 @@ const Pricing: React.FC = () => {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
-              href="https://wa.me/919521281509?text=Hello Earningsharthi, I want to discuss digital marketing services for my business"
+              href={getWhatsAppUrl("Hello Earningsharthi, I want to discuss digital marketing services for my business")}
               target="_blank"
               rel="noopener noreferrer"
               className="bg-yellow-500 hover:bg-yellow-600 text-blue-900 px-8 py-4 rounded-xl text-lg font-bold transition-all hover:scale-105 flex items-center justify-center space-x-2 shadow-lg"
@@ -1360,11 +1367,11 @@ const Pricing: React.FC = () => {
               <span>💬 WhatsApp for 70% OFF</span>
             </a>
             <a
-              href="tel:+919521281509"
+              href={`tel:${PHONE_NUMBER.replace(/-/g, '')}`}
               className="bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-xl text-lg font-bold transition-all hover:scale-105 flex items-center justify-center space-x-2 shadow-lg"
             >
               <Phone className="h-6 w-6" />
-              <span>📞 Call: +91-6398799013</span>
+              <span>📞 Call: {PHONE_NUMBER}</span>
             </a>
           </div>
           <div className="mt-6 flex flex-wrap items-center justify-center gap-6 text-blue-200">
@@ -1428,7 +1435,7 @@ const Pricing: React.FC = () => {
               </button>
 
               <a
-                href={`https://wa.me/919521281509?text=Hello Earningsharthi, I want to discuss ${paymentService} before payment`}
+                href={getWhatsAppUrl(`Hello Earningsharthi, I want to discuss ${paymentService} before payment`)}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-full bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white py-2 md:py-3 rounded-xl font-bold transition-all hover:scale-105 text-center block border-2 border-blue-300 text-sm md:text-base flex items-center justify-center gap-2"
