@@ -3,7 +3,7 @@
 
   <!-- Home -->
   <url>
-    <loc>https://dizigrow.com/</loc>
+    <loc>https://www.earningsharthi.in/</loc>
     <lastmod>2025-09-28</lastmod>
     <priority>1.0</priority>
     <changefreq>daily</changefreq>
@@ -11,7 +11,7 @@
 
   <!-- About -->
   <url>
-    <loc>https://dizigrow.com/about</loc>
+    <loc>https://www.earningsharthi.in/about</loc>
     <lastmod>2025-09-28</lastmod>
     <priority>0.8</priority>
     <changefreq>daily</changefreq>
@@ -19,7 +19,7 @@
 
   
     <url>
-    <loc>https://dizigrow.com/growth-services</loc>
+    <loc>https://www.earningsharthi.in/growth-services</loc>
     <lastmod>2025-09-28</lastmod>
     <priority>0.8</priority>
     <changefreq>daily</changefreq>
@@ -27,14 +27,14 @@
 
   <!-- Services -->
   <url>
-    <loc>https://dizigrow.com/services</loc>
+    <loc>https://www.earningsharthi.in/services</loc>
     <lastmod>2025-09-28</lastmod>
     <priority>0.8</priority>
     <changefreq>daily</changefreq>
   </url>
 
 <url>
-    <loc>https://dizigrow.com/offer</loc>
+    <loc>https://www.earningsharthi.in/offer</loc>
     <lastmod>2025-09-28</lastmod>
     <priority>0.8</priority>
     <changefreq>daily</changefreq>
@@ -42,7 +42,7 @@
 
   <!-- Pricing -->
   <url>
-    <loc>https://dizigrow.com/pricing</loc>
+    <loc>https://www.earningsharthi.in/pricing</loc>
     <lastmod>2025-09-28</lastmod>
     <priority>0.8</priority>
     <changefreq>weekly</changefreq>
@@ -50,7 +50,7 @@
 
   <!-- Portfolio -->
   <url>
-    <loc>https://dizigrow.com/portfolio</loc>
+    <loc>https://www.earningsharthi.in/portfolio</loc>
     <lastmod>2025-09-28</lastmod>
     <priority>0.7</priority>
     <changefreq>weekly</changefreq>
@@ -58,7 +58,7 @@
 
   <!-- Contact -->
   <url>
-    <loc>https://dizigrow.com/contact</loc>
+    <loc>https://www.earningsharthi.in/contact</loc>
     <lastmod>2025-09-28</lastmod>
     <priority>0.6</priority>
     <changefreq>yearly</changefreq>
@@ -66,30 +66,23 @@
 
   <!-- Legal Pages -->
   <url>
-    <loc>https://dizigrow.com/terms</loc>
+    <loc>https://www.earningsharthi.in/terms</loc>
     <lastmod>2025-09-28</lastmod>
     <priority>0.7</priority>
     <changefreq>yearly</changefreq>
   </url>
   <url>
-    <loc>https://dizigrow.com/privacy</loc>
+    <loc>https://www.earningsharthi.in/privacy</loc>
     <lastmod>2025-09-28</lastmod>
     <priority>0.7</priority>
     <changefreq>yearly</changefreq>
   </url>
   <url>
-    <loc>https://dizigrow.com/onboarding-agreement</loc>
+    <loc>https://www.earningsharthi.in/onboarding-agreement</loc>
     <lastmod>2025-09-28</lastmod>
     <priority>0.7</priority>
     <changefreq>yearly</changefreq>
   </url>
 
-  <!-- FAQ -->
-  <url>
-    <loc>https://dizigrow.com/faq</loc>
-    <lastmod>2025-09-28</lastmod>
-    <priority>0.6</priority>
-    <changefreq>weekly</changefreq>
-  </url>
 
 </urlset>
