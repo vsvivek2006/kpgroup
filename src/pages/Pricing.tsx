@@ -506,9 +506,9 @@ const Pricing: React.FC = () => {
       plans: [
         {
           name: 'STANDARD',
-          price: '₹2,199',
+          price: '₹2,500',
           originalPrice: '₹8,000',
-          currentPrice: 2199,
+          currentPrice: 2500,
           popular: true,
           badge: 'BEST VALUE',
           features: [
