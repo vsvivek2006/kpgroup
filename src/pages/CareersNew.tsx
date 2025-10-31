@@ -3,7 +3,7 @@ import { Helmet } from "react-helmet";
 import { 
   Briefcase, 
   MapPin, 
-  Clock, 
+  Clock,
   DollarSign, 
   Users, 
   Award, 
