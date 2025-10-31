@@ -16,7 +16,7 @@ import Privacy from './pages/Privacy';
 import NotFound from './pages/NotFound';
 import Offer from './pages/Offer';
 import GrowthServices from './pages/GrowthServices';
-import Careers from './pages/Careers';
+import CareersNew from './pages/CareersNew';
 
 function App() {
   return (
@@ -26,9 +26,19 @@ function App() {
         {/* Primary Meta Tags */}
         <title>Earningsharthi - Digital Marketing & Web Development Company in Uttarakhand</title>
         <meta name="description" content="Earningsharthi provides professional digital marketing, branding, and web development services in Khatima, Uttarakhand. Grow your business online with our expert solutions." />
-        <meta name="keywords" content="digital marketing, web development, branding, SEO, social media marketing, e-commerce, Khatima, Uttarakhand, India, website design, logo design" />
+        <meta name="keywords" content="digital marketing, web development, branding, SEO, social media marketing, e-commerce, Khatima, Uttarakhand, India, website design, logo design, careers, jobs, hiring" />
         <meta name="author" content="Earningsharthi" />
-        
+
+        {/* Careers Page Meta Tags */}
+        <meta name="careers" content="Explore career opportunities at Earningsharthi. Join our team of digital marketing and web development professionals in Uttarakhand." />
+        <meta property="og:title" content="Careers at Earningsharthi - Join Our Team" />
+        <meta property="og:description" content="Explore open positions and career opportunities at Earningsharthi, a leading digital marketing and web development company in Uttarakhand." />
+        <meta property="og:url" content="https://earningsharthi.in/careers" />
+        <meta property="og:image" content="https://earningsharthi.in/og-image-careers.jpg" />
+        <meta property="twitter:title" content="Careers at Earningsharthi - Join Our Team" />
+        <meta property="twitter:description" content="Explore open positions and career opportunities at Earningsharthi, a leading digital marketing and web development company in Uttarakhand." />
+        <meta property="twitter:image" content="https://earningsharthi.in/og-image-careers.jpg" />
+
         {/* Open Graph / Facebook */}
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://earningsharthi.in/" />
@@ -76,6 +86,8 @@ function App() {
             <Route path="/privacy" element={<Privacy />} />
             <Route path="/growth-services" element={<GrowthServices />} />
             <Route path="/offer" element={<Offer />} />
+            <Route path="/careers" element={<CareersNew />} />
+
             
             {/* ✅ PAYMENT SUCCESS PAGE */}
             <Route path="/payment/success" element={
