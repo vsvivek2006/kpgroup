@@ -158,6 +158,7 @@ const Footer: React.FC = () => {
                   { name: "Services", path: "/services" },
                   { name: "Growth", path: "/growth-services" },
                   { name: "Portfolio", path: "/portfolio" },
+                  { name: "Pricing", path: "/pricing" },
                   { name: "Careers", path: "/careers" },
                   { name: "Contact", path: "/contact" },
                 ].map((item) => (
