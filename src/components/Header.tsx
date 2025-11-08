@@ -1,6 +1,6 @@
 import React from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
-import { Menu, X, Home, Users, Settings, TrendingUp, Briefcase, Phone } from "lucide-react";
+import { Menu, X, Home, Users, Settings, TrendingUp, Briefcase, Phone, CreditCard } from "lucide-react";
 
 type NavItem = { 
   name: string; 
@@ -33,6 +33,11 @@ const primaryNav: NavItem[] = [
     name: "Portfolio", 
     href: "/portfolio",
     icon: <Briefcase className="h-4 w-4" />
+  },
+  { 
+    name: "Pricing", 
+    href: "/pricing",
+    icon: <CreditCard className="h-4 w-4" />
   },
   { 
     name: "Careers", 
