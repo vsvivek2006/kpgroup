@@ -34,7 +34,8 @@ import {
   Globe as WebsiteIcon,
   TrendingUp,
   DollarSign,
-  BadgeCheck
+  BadgeCheck,
+  Link as LinkIcon
 } from "lucide-react";
 
 // Razorpay types
@@ -94,7 +95,7 @@ const GrowthServices: React.FC = () => {
 
   // ✅ Environment variables
   const RAZORPAY_KEY_ID = import.meta.env.VITE_RAZORPAY_KEY_ID;
-  const WHATSAPP_NUMBER = "9341436937";
+  const WHATSAPP_NUMBER = "6398799013";
 
   // Instagram Services (Prices doubled as requested)
   const instagramServices: Service[] = [
@@ -306,18 +307,77 @@ const GrowthServices: React.FC = () => {
     }
   ];
 
-  // Website Traffic Services (Prices doubled)
+  // Website Traffic Services (Updated as requested)
   const websiteServices: Service[] = [
     {
       id: "web-traffic",
-      name: "Website Organic Traffic",
-      price: 60, // Doubled from 20.24
-      min: 100,
+      name: "Website Organic Traffic - Worldwide",
+      price: 109, // Updated price
+      min: 1000,
       max: 100000,
-      description: "Organic website traffic from real sources",
-      features: ["Organic Traffic", "Real Visitors", "Safe Referral"],
+      description: "Organic website traffic from worldwide real sources",
+      features: ["Worldwide Traffic", "Real Visitors", "Safe Referral", "Organic Growth"],
       icon: <Globe className="h-6 w-6" />,
       category: "website"
+    },
+    {
+      id: "android-traffic",
+      name: "Android Phone Traffic - Worldwide",
+      price: 99, // Updated price
+      min: 1000,
+      max: 100000,
+      description: "Real Android phone traffic from worldwide sources",
+      features: ["Android Devices", "Worldwide Traffic", "Real Visitors", "Mobile Optimized"],
+      icon: <Phone className="h-6 w-6" />,
+      category: "website"
+    },
+    {
+      id: "desktop-traffic",
+      name: "Desktop Traffic - Worldwide",
+      price: 149, // Updated price
+      min: 1000,
+      max: 100000,
+      description: "Desktop computer traffic from worldwide sources",
+      features: ["Desktop Devices", "Worldwide Traffic", "Real Visitors", "High Quality"],
+      icon: <Globe className="h-6 w-6" />,
+      category: "website"
+    },
+    {
+      id: "ios-traffic",
+      name: "iOS Traffic - Worldwide",
+      price: 299, // Updated price
+      min: 1000,
+      max: 100000,
+      description: "Premium iOS device traffic from worldwide sources",
+      features: ["iOS Devices", "Premium Traffic", "Worldwide", "High Quality"],
+      icon: <Phone className="h-6 w-6" />,
+      category: "website"
+    }
+  ];
+
+  // SEO Backlinks Services (New Section)
+  const seoServices: Service[] = [
+    {
+      id: "seo-backlinks-basic",
+      name: "SEO Backlinks - Basic Package",
+      price: 3, // Price per backlink
+      min: 1,
+      max: 1000,
+      description: "High-quality basic SEO backlinks for better ranking",
+      features: ["High Quality Backlinks", "Better SEO Ranking", "Safe & Natural", "Google Approved"],
+      icon: <LinkIcon className="h-6 w-6" />,
+      category: "seo"
+    },
+    {
+      id: "seo-backlinks-premium",
+      name: "SEO Backlinks - Premium Package",
+      price: 699, // Special price for 300 backlinks
+      min: 300,
+      max: 300,
+      description: "Premium SEO backlinks package - Limited Time Offer!",
+      features: ["300 Premium Backlinks", "DR 50+ Websites", "Instant Indexing", "Lifetime Support"],
+      icon: <LinkIcon className="h-6 w-6" />,
+      category: "seo"
     }
   ];
 
@@ -326,7 +386,8 @@ const GrowthServices: React.FC = () => {
     ...instagramServices,
     ...facebookServices,
     ...linkedinServices,
-    ...websiteServices
+    ...websiteServices,
+    ...seoServices
   ];
 
   // Category-wise services
@@ -334,7 +395,8 @@ const GrowthServices: React.FC = () => {
     instagram: instagramServices,
     facebook: facebookServices,
     linkedin: linkedinServices,
-    website: websiteServices
+    website: websiteServices,
+    seo: seoServices
   };
 
   // Initialize timers from localStorage
@@ -422,7 +484,7 @@ const GrowthServices: React.FC = () => {
   };
 
   const calculatePrice = (service: Service, qty: number) => {
-    const pricePerUnit = service.price / 1000;
+    const pricePerUnit = service.price / (service.id.includes('seo-backlinks-premium') ? 300 : 1000);
     let total = pricePerUnit * qty;
     
     // Apply flash sale discount
@@ -486,7 +548,7 @@ const GrowthServices: React.FC = () => {
     setQuantity(service.min);
     const calculatedAmount = calculatePrice(service, service.min);
     setPaymentAmount(calculatedAmount);
-    setOriginalAmount(Math.round((service.price / 1000) * service.min));
+    setOriginalAmount(Math.round((service.price / (service.id.includes('seo-backlinks-premium') ? 300 : 1000)) * service.min));
     setPaymentService(service.name);
     setIsPaymentOpen(true);
   };
@@ -497,7 +559,7 @@ const GrowthServices: React.FC = () => {
       setQuantity(clampedQuantity);
       const calculatedAmount = calculatePrice(selectedService, clampedQuantity);
       setPaymentAmount(calculatedAmount);
-      setOriginalAmount(Math.round((selectedService.price / 1000) * clampedQuantity));
+      setOriginalAmount(Math.round((selectedService.price / (selectedService.id.includes('seo-backlinks-premium') ? 300 : 1000)) * clampedQuantity));
     }
   };
 
@@ -599,14 +661,15 @@ const GrowthServices: React.FC = () => {
     { id: "instagram", name: "Instagram", icon: <Instagram className="h-5 w-5" />, color: "bg-gradient-to-r from-pink-500 to-purple-500" },
     { id: "facebook", name: "Facebook", icon: <Facebook className="h-5 w-5" />, color: "bg-gradient-to-r from-blue-500 to-blue-700" },
     { id: "linkedin", name: "LinkedIn", icon: <Linkedin className="h-5 w-5" />, color: "bg-gradient-to-r from-blue-600 to-blue-800" },
-    { id: "website", name: "Website Traffic", icon: <WebsiteIcon className="h-5 w-5" />, color: "bg-gradient-to-r from-green-500 to-green-700" }
+    { id: "website", name: "Website Traffic", icon: <WebsiteIcon className="h-5 w-5" />, color: "bg-gradient-to-r from-green-500 to-green-700" },
+    { id: "seo", name: "SEO Growth", icon: <LinkIcon className="h-5 w-5" />, color: "bg-gradient-to-r from-orange-500 to-red-500" }
   ];
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-blue-50 via-purple-50 to-pink-50" style={{ fontFamily: "'Haboro Serif', serif" }}>
       <Helmet>
-        <title>Premium Growth Services - Instagram, Facebook, LinkedIn | Earning Sharthi</title>
-        <meta name="description" content="Premium growth services: Instagram followers, likes, views | Facebook services | LinkedIn followers | Website traffic. Boost your social media growth with Earning Sharthi!" />
+        <title>Premium Growth Services - Instagram, Facebook, LinkedIn, SEO | Earning Sharthi</title>
+        <meta name="description" content="Premium growth services: Instagram followers, likes, views | Facebook services | LinkedIn followers | Website traffic | SEO Backlinks. Boost your social media growth with Earning Sharthi!" />
         <link href="https://fonts.googleapis.com/css2?family=Haboro+Serif:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
       </Helmet>
 
@@ -694,7 +757,7 @@ const GrowthServices: React.FC = () => {
           
           <p className="text-lg md:text-xl lg:text-2xl mb-6 md:mb-8 text-purple-100 max-w-4xl mx-auto font-medium">
             {offerExpired ? (
-              "Get the best growth services for Instagram, Facebook, LinkedIn and more!"
+              "Get the best growth services for Instagram, Facebook, LinkedIn, SEO and more!"
             ) : (
               "Boost your social media presence with our premium growth services at unbeatable prices!"
             )}
@@ -792,6 +855,13 @@ const GrowthServices: React.FC = () => {
                   </div>
                 )}
                 
+                {/* Special badge for SEO Premium Package */}
+                {service.id === 'seo-backlinks-premium' && (
+                  <div className="absolute -top-2 -left-2 bg-red-500 text-white px-4 py-2 rounded-full text-sm font-bold rotate-12 shadow-lg z-10 animate-pulse">
+                    🔥 HOT DEAL
+                  </div>
+                )}
+                
                 <div className="flex items-start justify-between mb-4">
                   <div className="flex items-center gap-3">
                     <div className="p-2 bg-blue-100 rounded-lg text-blue-600">
@@ -805,13 +875,38 @@ const GrowthServices: React.FC = () => {
                 </div>
 
                 <div className="mb-4">
-                  <div className="text-2xl font-bold text-gray-900 mb-2">
-                    ₹{service.price.toFixed(2)} / 1000
-                  </div>
-                  {!offerExpired && isFlashSale && (
-                    <div className="text-green-600 font-semibold text-sm">
-                      Flash Sale: ₹{(service.price * 0.8).toFixed(2)} / 1000
+                  {service.id === 'seo-backlinks-premium' ? (
+                    <>
+                      <div className="flex items-center gap-2 mb-2">
+                        <div className="text-2xl font-bold text-gray-900">
+                          ₹{service.price}
+                        </div>
+                        <div className="text-lg text-gray-500 line-through">
+                          ₹2999
+                        </div>
+                        <div className="text-sm font-bold text-green-600 bg-green-100 px-2 py-1 rounded">
+                          Save 77%
+                        </div>
+                      </div>
+                      <div className="text-sm text-gray-600">
+                        For 300 Premium Backlinks
+                      </div>
+                    </>
+                  ) : service.id.includes('seo-backlinks-basic') ? (
+                    <div className="text-2xl font-bold text-gray-900 mb-2">
+                      ₹{service.price} / backlink
                     </div>
+                  ) : (
+                    <>
+                      <div className="text-2xl font-bold text-gray-900 mb-2">
+                        ₹{service.price} / 1000
+                      </div>
+                      {!offerExpired && isFlashSale && (
+                        <div className="text-green-600 font-semibold text-sm">
+                          Flash Sale: ₹{(service.price * 0.8).toFixed(2)} / 1000
+                        </div>
+                      )}
+                    </>
                   )}
                 </div>
 
@@ -832,14 +927,18 @@ const GrowthServices: React.FC = () => {
                         ? 'bg-blue-500 hover:bg-blue-600 text-white' 
                         : isFlashSale
                           ? 'bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white'
-                          : 'bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600 text-white'
+                          : service.id === 'seo-backlinks-premium'
+                            ? 'bg-gradient-to-r from-red-500 to-orange-500 hover:from-red-600 hover:to-orange-600 text-white'
+                            : 'bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600 text-white'
                     }`}
                   >
                     {offerExpired 
                       ? 'Order Now' 
                       : isFlashSale 
                         ? '⚡ Grab 20% OFF Now!' 
-                        : 'Order Now'
+                        : service.id === 'seo-backlinks-premium'
+                          ? '🔥 Grab 77% OFF Now!'
+                          : 'Order Now'
                     }
                   </button>
                   <button 
@@ -1008,7 +1107,7 @@ const GrowthServices: React.FC = () => {
                 <label className="block text-sm font-medium text-gray-700 mb-2">Quantity</label>
                 <div className="flex items-center gap-3">
                   <button 
-                    onClick={() => handleQuantityChange(quantity - 100)}
+                    onClick={() => handleQuantityChange(quantity - (selectedService.id.includes('seo-backlinks-premium') ? 300 : 100))}
                     disabled={quantity <= selectedService.min}
                     className="w-10 h-10 rounded-lg bg-gray-100 flex items-center justify-center disabled:opacity-50"
                   >
@@ -1023,7 +1122,7 @@ const GrowthServices: React.FC = () => {
                     className="flex-1 px-3 py-2 border border-gray-300 rounded-lg text-center"
                   />
                   <button 
-                    onClick={() => handleQuantityChange(quantity + 100)}
+                    onClick={() => handleQuantityChange(quantity + (selectedService.id.includes('seo-backlinks-premium') ? 300 : 100))}
                     disabled={quantity >= selectedService.max}
                     className="w-10 h-10 rounded-lg bg-gray-100 flex items-center justify-center disabled:opacity-50"
                   >
@@ -1037,22 +1136,25 @@ const GrowthServices: React.FC = () => {
 
               {/* Price Display */}
               <div className={`p-4 rounded-xl border-2 ${
-                isFlashSale && !offerExpired ? 'bg-purple-50 border-purple-200' : 'bg-green-50 border-green-200'
+                isFlashSale && !offerExpired ? 'bg-purple-50 border-purple-200' : 
+                selectedService.id === 'seo-backlinks-premium' ? 'bg-red-50 border-red-200' : 'bg-green-50 border-green-200'
               }`}>
                 <div className="text-center">
                   <div className={`text-2xl md:text-3xl font-bold mb-2 ${
-                    isFlashSale && !offerExpired ? 'text-purple-600' : 'text-green-600'
+                    isFlashSale && !offerExpired ? 'text-purple-600' : 
+                    selectedService.id === 'seo-backlinks-premium' ? 'text-red-600' : 'text-green-600'
                   }`}>
                     ₹{paymentAmount.toLocaleString()}
                   </div>
                   <div className="font-semibold text-sm md:text-base">
-                    {isFlashSale && !offerExpired ? 'Flash Sale 20% OFF!' : 'Total Amount'}
+                    {isFlashSale && !offerExpired ? 'Flash Sale 20% OFF!' : 
+                     selectedService.id === 'seo-backlinks-premium' ? '77% OFF Premium Package!' : 'Total Amount'}
                   </div>
-                  {isFlashSale && !offerExpired && (
+                  {(isFlashSale && !offerExpired) || selectedService.id === 'seo-backlinks-premium' ? (
                     <div className="text-gray-500 text-sm line-through mt-1">
                       Original: ₹{originalAmount.toLocaleString()}
                     </div>
-                  )}
+                  ) : null}
                   <div className="text-gray-600 text-sm mt-1">
                     {quantity.toLocaleString()} {selectedService.name}
                   </div>
@@ -1064,7 +1166,9 @@ const GrowthServices: React.FC = () => {
                 className={`w-full py-3 md:py-4 rounded-xl font-bold transition-all hover:scale-105 flex items-center justify-center gap-2 md:gap-3 text-base md:text-lg shadow-lg ${
                   isFlashSale && !offerExpired
                     ? 'bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white'
-                    : 'bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600 text-white'
+                    : selectedService.id === 'seo-backlinks-premium'
+                      ? 'bg-gradient-to-r from-red-500 to-orange-500 hover:from-red-600 hover:to-orange-600 text-white'
+                      : 'bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600 text-white'
                 }`}
               >
                 <CreditCard className="h-4 w-4 md:h-5 md:w-5" />
@@ -1268,7 +1372,7 @@ const GrowthServices: React.FC = () => {
                   <option value="">Select a growth service</option>
                   {allServices.map(service => (
                     <option key={service.id} value={service.name}>
-                      {service.name} - ₹{service.price}/1000
+                      {service.name} - {service.id.includes('seo-backlinks-premium') ? '₹699 for 300' : service.id.includes('seo-backlinks-basic') ? '₹3 per backlink' : `₹${service.price}/1000`}
                     </option>
                   ))}
                 </select>
