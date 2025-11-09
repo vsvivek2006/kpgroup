@@ -1025,60 +1025,7 @@ const GrowthServices: React.FC = () => {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="bg-gray-900 text-white py-8 md:py-12">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
-            <div>
-              <div className="flex items-center gap-2 mb-3 md:mb-4">
-                <DollarSign className="h-6 w-6 text-blue-400" />
-                <h3 className="text-lg md:text-xl font-bold text-blue-400">Earning Sharthi</h3>
-              </div>
-              <p className="text-gray-400 text-sm md:text-base">
-                Your trusted partner for social media growth and online success. Premium growth services with guaranteed results.
-              </p>
-            </div>
-            
-            <div>
-              <h4 className="text-base md:text-lg font-bold mb-3 md:mb-4">Contact Info</h4>
-              <div className="space-y-2 text-sm md:text-base text-gray-400">
-                <div className="flex items-center gap-2">
-                  <Phone className="h-4 w-4" />
-                  <span>+91 {WHATSAPP_NUMBER}</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Mail className="h-4 w-4" />
-                  <span>info@earningsharthi.com</span>
-                </div>
-              </div>
-            </div>
-            
-            <div>
-              <h4 className="text-base md:text-lg font-bold mb-3 md:mb-4">Connect With Us</h4>
-              <div className="flex gap-3">
-                <button 
-                  onClick={() => window.open(`https://wa.me/91${WHATSAPP_NUMBER}`, '_blank')}
-                  className="bg-green-500 hover:bg-green-600 p-2 rounded-lg transition-colors"
-                >
-                  <MessageCircle className="h-4 w-4 md:h-5 md:w-5" />
-                </button>
-                <button 
-                  onClick={() => window.open(`tel:+91${WHATSAPP_NUMBER}`, '_blank')}
-                  className="bg-blue-500 hover:bg-blue-600 p-2 rounded-lg transition-colors"
-                >
-                  <Phone className="h-4 w-4 md:h-5 md:w-5" />
-                </button>
-              </div>
-            </div>
-          </div>
-          
-          <div className="border-t border-gray-700 mt-6 md:mt-8 pt-6 md:pt-8 text-center">
-            <p className="text-gray-400 text-sm md:text-base">
-              © 2024 Earning Sharthi Premium Growth Services. All rights reserved.
-            </p>
-          </div>
-        </div>
-      </footer>
+
 
       {/* Payment Modal */}
       {isPaymentOpen && selectedService && (
