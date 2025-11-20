@@ -21,8 +21,19 @@ import CareersNew from './pages/CareersNew';
 function App() {
   return (
     <Router>
-      {/* Global SEO + GA4 */}
+      {/* Google Tag Manager */}
       <Helmet>
+        {/* GTM Script */}
+        <script>
+          {`
+            (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+            })(window,document,'script','dataLayer','GTM-MQWHT9DZ');
+          `}
+        </script>
+        
         {/* Primary Meta Tags */}
         <title>Earningsharthi - Digital Marketing & Web Development Company in Uttarakhand</title>
         <meta name="description" content="Earningsharthi provides professional digital marketing, branding, and web development services in Khatima, Uttarakhand. Grow your business online with our expert solutions." />
@@ -70,6 +81,16 @@ function App() {
         {/* ✅ Razorpay Script for Payment Functionality */}
         <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
       </Helmet>
+
+      {/* GTM Noscript - for browsers without JavaScript */}
+      <noscript>
+        <iframe 
+          src="https://www.googletagmanager.com/ns.html?id=GTM-MQWHT9DZ"
+          height="0" 
+          width="0" 
+          style={{display: 'none', visibility: 'hidden'}}
+        />
+      </noscript>
 
       <div className="min-h-screen bg-gray-50">
         <Header />
@@ -162,4 +183,5 @@ function App() {
     </Router>
   );
 }
+
 export default App;
