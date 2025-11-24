@@ -1,6 +1,6 @@
 import React from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
-import { Menu, X, Home, Users, Settings, TrendingUp, Briefcase, Phone, CreditCard } from "lucide-react";
+import { Menu, X, Home, Search, Building2, Phone, CreditCard, LogIn, UserPlus } from "lucide-react";
 
 type NavItem = { 
   name: string; 
@@ -15,34 +15,24 @@ const primaryNav: NavItem[] = [
     icon: <Home className="h-4 w-4" />
   },
   { 
-    name: "About", 
-    href: "/about",
-    icon: <Users className="h-4 w-4" />
+    name: "Buy", 
+    href: "/buy",
+    icon: <Search className="h-4 w-4" />
   },
   { 
-    name: "Services", 
-    href: "/services",
-    icon: <Settings className="h-4 w-4" />
-  },
-  { 
-    name: "Growth", 
-    href: "/growth-services",
-    icon: <TrendingUp className="h-4 w-4" />
-  },
-  { 
-    name: "Portfolio", 
-    href: "/portfolio",
-    icon: <Briefcase className="h-4 w-4" />
-  },
-  { 
-    name: "Pricing", 
-    href: "/pricing",
+    name: "Sell", 
+    href: "/sell",
     icon: <CreditCard className="h-4 w-4" />
   },
   { 
-    name: "Careers", 
-    href: "/careers",
-    icon: <Users className="h-4 w-4" />
+    name: "Properties", 
+    href: "/properties",
+    icon: <Building2 className="h-4 w-4" />
+  },
+  { 
+    name: "Packages", 
+    href: "/packages",
+    icon: <CreditCard className="h-4 w-4" />
   },
   { 
     name: "Contact", 
@@ -63,8 +53,8 @@ const Header: React.FC = () => {
   const linkBase = "px-4 py-3 rounded-lg font-medium transition-all duration-300 flex items-center gap-2";
   const navClass = ({ isActive }: { isActive: boolean }) =>
     isActive
-      ? `${linkBase} bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-lg transform scale-105`
-      : `${linkBase} text-gray-700 hover:bg-gradient-to-r hover:from-blue-50 hover:to-purple-50 hover:text-blue-600 hover:shadow-md`;
+      ? `${linkBase} bg-gradient-to-r from-green-600 to-blue-600 text-white shadow-lg transform scale-105`
+      : `${linkBase} text-gray-700 hover:bg-gradient-to-r hover:from-green-50 hover:to-blue-50 hover:text-green-700 hover:shadow-md`;
 
   return (
     <header className="bg-white/95 backdrop-blur-lg shadow-xl sticky top-0 z-50 border-b border-gray-200/60">
@@ -75,13 +65,13 @@ const Header: React.FC = () => {
             <Link 
               to="/" 
               className="flex items-center space-x-4 hover:scale-105 transition-transform duration-300" 
-              aria-label="Earningsharthi Home"
+              aria-label="KPrealtors Group Home"
             >
               {/* Logo Image */}
               <div className="flex-shrink-0">
                 <img 
                   src="/logo.png" 
-                  alt="Earningsharthi Logo" 
+                  alt="KPrealtors Group Logo" 
                   className="h-14 w-14 object-contain drop-shadow-md"
                   onError={(e) => {
                     // Fallback if logo doesn't load
@@ -93,14 +83,17 @@ const Header: React.FC = () => {
               {/* Brand Name */}
               <div className="flex flex-col">
                 <span 
-                  className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent"
+                  className="text-3xl font-bold bg-gradient-to-r from-green-600 to-blue-700 bg-clip-text text-transparent"
                   style={{ 
                     fontFamily: '"Haboro Serif", serif',
                     fontWeight: 700,
                     letterSpacing: '-0.025em'
                   }}
                 >
-                  Earningsharthi
+                  KPrealtors
+                </span>
+                <span className="text-xs text-gray-500 font-medium -mt-1">
+                  PROPERTY EXPERTS
                 </span>
               </div>
             </Link>
@@ -119,13 +112,31 @@ const Header: React.FC = () => {
                 <span className="font-semibold">{item.name}</span>
               </NavLink>
             ))}
+            
+            {/* Auth Buttons */}
+            <div className="flex items-center gap-2 ml-4 pl-4 border-l border-gray-200">
+              <Link
+                to="/login"
+                className="flex items-center gap-2 px-4 py-2 rounded-lg font-semibold text-gray-700 hover:bg-gray-100 transition-all duration-300 hover:scale-105"
+              >
+                <LogIn className="h-4 w-4" />
+                Login
+              </Link>
+              <Link
+                to="/signup"
+                className="flex items-center gap-2 px-4 py-2 rounded-lg font-semibold bg-gradient-to-r from-green-500 to-blue-600 text-white shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
+              >
+                <UserPlus className="h-4 w-4" />
+                Sign Up
+              </Link>
+            </div>
           </div>
 
           {/* Mobile menu button */}
           <div className="lg:hidden">
             <button
               onClick={() => setIsOpen((v) => !v)}
-              className="inline-flex items-center justify-center p-3 rounded-2xl text-gray-700 hover:text-blue-600 hover:bg-gradient-to-r hover:from-blue-50 hover:to-purple-50 focus:outline-none transition-all duration-300"
+              className="inline-flex items-center justify-center p-3 rounded-2xl text-gray-700 hover:text-green-600 hover:bg-gradient-to-r hover:from-green-50 hover:to-blue-50 focus:outline-none transition-all duration-300"
               aria-label="Toggle menu"
               aria-expanded={isOpen}
             >
@@ -149,8 +160,8 @@ const Header: React.FC = () => {
                   className={({ isActive }) =>
                     `block px-4 py-4 rounded-2xl text-lg font-semibold transition-all duration-300 transform hover:scale-105 ${
                       isActive
-                        ? "bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-lg"
-                        : "text-gray-700 hover:bg-gradient-to-r hover:from-blue-50 hover:to-purple-50 hover:text-blue-600 hover:shadow-md"
+                        ? "bg-gradient-to-r from-green-600 to-blue-600 text-white shadow-lg"
+                        : "text-gray-700 hover:bg-gradient-to-r hover:from-green-50 hover:to-blue-50 hover:text-green-700 hover:shadow-md"
                     }`
                   }
                   onClick={() => setIsOpen(false)}
@@ -161,6 +172,26 @@ const Header: React.FC = () => {
                   </div>
                 </NavLink>
               ))}
+              
+              {/* Mobile Auth Buttons */}
+              <div className="pt-4 border-t border-gray-200 space-y-3">
+                <Link
+                  to="/login"
+                  className="flex items-center gap-3 px-4 py-4 rounded-2xl text-lg font-semibold text-gray-700 hover:bg-gray-100 transition-all duration-300"
+                  onClick={() => setIsOpen(false)}
+                >
+                  <LogIn className="h-5 w-5" />
+                  Login
+                </Link>
+                <Link
+                  to="/signup"
+                  className="flex items-center gap-3 px-4 py-4 rounded-2xl text-lg font-semibold bg-gradient-to-r from-green-500 to-blue-600 text-white shadow-lg transition-all duration-300"
+                  onClick={() => setIsOpen(false)}
+                >
+                  <UserPlus className="h-5 w-5" />
+                  Sign Up
+                </Link>
+              </div>
             </div>
           </div>
         )}

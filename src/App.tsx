@@ -6,17 +6,17 @@ import Footer from './components/Footer';
 import WhatsAppFloat from './components/WhatsAppFloat';
 import Home from './pages/Home';
 import About from './pages/About';
-import Services from './pages/Services';
-import Portfolio from './pages/Portfolio';
-import Pricing from './pages/Pricing';
 import Contact from './pages/Contact';
 import Terms from './pages/Terms'; 
-import OnboardingAgreement from './pages/OnboardingAgreement'; 
 import Privacy from './pages/Privacy';
 import NotFound from './pages/NotFound';
 import Offer from './pages/Offer';
-import GrowthServices from './pages/GrowthServices';
-import CareersNew from './pages/CareersNew';
+import Buy from './pages/Buy';
+import Sell from './pages/Sell';
+import Packages from './pages/Packages';
+import Dashboard from './pages/Dashboard';
+import Login from './pages/Login';
+import Signup from './pages/Signup';
 
 function App() {
   return (
@@ -98,16 +98,19 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
-            <Route path="/services" element={<Services />} />
-            <Route path="/portfolio" element={<Portfolio />} />
-            <Route path="/pricing" element={<Pricing />} />
+
             <Route path="/contact" element={<Contact />} />
-            <Route path="/onboarding-agreement" element={<OnboardingAgreement />} />
             <Route path="/terms" element={<Terms />} />
             <Route path="/privacy" element={<Privacy />} />
-            <Route path="/growth-services" element={<GrowthServices />} />
             <Route path="/offer" element={<Offer />} />
-            <Route path="/careers" element={<CareersNew />} />
+            <Route path="/buy" element={<Buy />} />
+            <Route path="/sell" element={<Sell />} />
+            <Route path="/packages" element={<Packages />} />
+            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/signup" element={<Signup />} />
+            
+
 
             
             {/* ✅ PAYMENT SUCCESS PAGE */}

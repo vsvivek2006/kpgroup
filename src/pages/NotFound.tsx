@@ -10,26 +10,26 @@ const NotFound: React.FC = () => {
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100">
       {/* ✅ SEO Component */}
       <Helmet>
-        <title>404 - Page Not Found | Earningsharthi - Digital Marketing Agency</title>
+        <title>404 - Page Not Found | Property Experts - Real Estate Services</title>
         <meta
           name="description"
-          content="Oops! The page you're looking for doesn't exist. Explore Earningsharthi's digital marketing services or return to homepage for growth solutions."
+          content="Oops! The page you're looking for doesn't exist. Explore Property Experts' real estate services or return to homepage for property solutions."
         />
         <meta name="robots" content="noindex, nofollow" />
-        <link rel="canonical" href="https://earningsharthi.in/404" />
+        <link rel="canonical" href="https://propertyexperts.com/404" />
 
         {/* Open Graph */}
-        <meta property="og:title" content="404 - Page Not Found | Earningsharthi" />
-        <meta property="og:description" content="Page not found. Explore our digital marketing services or return to Earningsharthi homepage." />
+        <meta property="og:title" content="404 - Page Not Found | Property Experts" />
+        <meta property="og:description" content="Page not found. Explore our real estate services or return to Property Experts homepage." />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://earningsharthi.in/404" />
-        <meta property="og:image" content="https://earningsharthi.in/og-image.jpg" />
+        <meta property="og:url" content="https://propertyexperts.com/404" />
+        <meta property="og:image" content="https://propertyexperts.com/og-image.jpg" />
 
         {/* Twitter Card */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="404 - Page Not Found | Earningsharthi" />
-        <meta name="twitter:description" content="The page you are looking for is missing. Explore Earningsharthi digital marketing services." />
-        <meta name="twitter:image" content="https://earningsharthi.in/og-image.jpg" />
+        <meta name="twitter:title" content="404 - Page Not Found | Property Experts" />
+        <meta name="twitter:description" content="The page you are looking for is missing. Explore Property Experts real estate services." />
+        <meta name="twitter:image" content="https://propertyexperts.com/og-image.jpg" />
 
         {/* JSON-LD */}
         <script type="application/ld+json">
@@ -37,12 +37,12 @@ const NotFound: React.FC = () => {
             "@context": "https://schema.org",
             "@type": "WebPage",
             "name": "404 - Page Not Found",
-            "url": "https://earningsharthi.in/404",
-            "description": "Oops! The page you're looking for doesn't exist. Explore Earningsharthi digital marketing services.",
+            "url": "https://propertyexperts.com/404",
+            "description": "Oops! The page you're looking for doesn't exist. Explore Property Experts real estate services.",
             "publisher": {
               "@type": "Organization",
-              "name": "Earningsharthi",
-              "url": "https://earningsharthi.in"
+              "name": "Property Experts",
+              "url": "https://propertyexperts.com"
             }
           })}
         </script>
@@ -67,10 +67,10 @@ const NotFound: React.FC = () => {
           </div>
           
           <h1 className="text-4xl md:text-5xl font-bold mb-4">
-            Page Lost in Digital Space
+            Property Page Not Found
           </h1>
           <p className="text-xl text-blue-100 max-w-2xl mx-auto leading-relaxed">
-            Don't worry! While this page is playing hide and seek, let us help you find what you're looking for.
+            Don't worry! While this property page is unavailable, let us help you find your dream home.
           </p>
         </div>
       </section>
@@ -114,7 +114,7 @@ const NotFound: React.FC = () => {
               <div>
                 <p className="text-blue-800 font-medium">Quick Navigation Tip</p>
                 <p className="text-blue-600 text-sm">
-                  Use our main menu to explore Services, Case Studies, Pricing, or contact our digital experts.
+                  Use our main menu to explore Properties, Services, Packages, or contact our property experts.
                 </p>
               </div>
             </div>
@@ -127,47 +127,47 @@ const NotFound: React.FC = () => {
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
               <Link
-                to="/services"
+                to="/buy"
                 className="group block rounded-2xl border border-gray-200 bg-white p-6 shadow-sm hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2"
               >
                 <div className="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center mb-4 group-hover:bg-blue-600 transition-colors">
-                  <TrendingUp className="h-6 w-6 text-blue-600 group-hover:text-white" />
+                  <Home className="h-6 w-6 text-blue-600 group-hover:text-white" />
                 </div>
-                <h3 className="font-bold text-gray-900 text-lg mb-2">Our Services</h3>
-                <p className="text-gray-600 text-sm">SEO, Social Media, PPC &amp; Web Development</p>
+                <h3 className="font-bold text-gray-900 text-lg mb-2">Buy Property</h3>
+                <p className="text-gray-600 text-sm">Find your dream home from premium listings</p>
               </Link>
               
               <Link
-                to="/portfolio"
+                to="/sell"
                 className="group block rounded-2xl border border-gray-200 bg-white p-6 shadow-sm hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2"
               >
                 <div className="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center mb-4 group-hover:bg-green-600 transition-colors">
-                  <Briefcase className="h-6 w-6 text-green-600 group-hover:text-white" />
+                  <TrendingUp className="h-6 w-6 text-green-600 group-hover:text-white" />
                 </div>
-                <h3 className="font-bold text-gray-900 text-lg mb-2">Case Studies</h3>
-                <p className="text-gray-600 text-sm">Success stories &amp; client results</p>
+                <h3 className="font-bold text-gray-900 text-lg mb-2">Sell Property</h3>
+                <p className="text-gray-600 text-sm">Get the best price for your property</p>
               </Link>
               
               <Link
-                to="/pricing"
+                to="/packages"
                 className="group block rounded-2xl border border-gray-200 bg-white p-6 shadow-sm hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2"
               >
                 <div className="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center mb-4 group-hover:bg-purple-600 transition-colors">
-                  <TrendingUp className="h-6 w-6 text-purple-600 group-hover:text-white" />
+                  <Briefcase className="h-6 w-6 text-purple-600 group-hover:text-white" />
                 </div>
-                <h3 className="font-bold text-gray-900 text-lg mb-2">Pricing Plans</h3>
-                <p className="text-gray-600 text-sm">Affordable packages for growth</p>
+                <h3 className="font-bold text-gray-900 text-lg mb-2">Our Packages</h3>
+                <p className="text-gray-600 text-sm">Premium property services packages</p>
               </Link>
               
               <Link
-                to="/about"
+                to="/browse"
                 className="group block rounded-2xl border border-gray-200 bg-white p-6 shadow-sm hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2"
               >
                 <div className="w-12 h-12 bg-orange-100 rounded-xl flex items-center justify-center mb-4 group-hover:bg-orange-600 transition-colors">
-                  <Users className="h-6 w-6 text-orange-600 group-hover:text-white" />
+                  <Search className="h-6 w-6 text-orange-600 group-hover:text-white" />
                 </div>
-                <h3 className="font-bold text-gray-900 text-lg mb-2">About Us</h3>
-                <p className="text-gray-600 text-sm">Meet the digital marketing experts</p>
+                <h3 className="font-bold text-gray-900 text-lg mb-2">Browse Properties</h3>
+                <p className="text-gray-600 text-sm">Explore all available properties</p>
               </Link>
             </div>
           </div>
@@ -175,23 +175,23 @@ const NotFound: React.FC = () => {
           {/* Enhanced Help Section */}
           <div className="bg-gradient-to-r from-blue-600 to-blue-700 rounded-3xl p-8 lg:p-10 text-white text-center">
             <h2 className="text-2xl lg:text-3xl font-bold mb-4">
-              Need Immediate Assistance?
+              Need Property Assistance?
             </h2>
             <p className="text-blue-100 text-lg mb-6 max-w-2xl mx-auto">
-              Our digital marketing experts are here to help you find what you're looking for and drive your business growth.
+              Our property experts are here to help you find your dream home or get the best value for your property.
             </p>
             
             <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
               <a
-                href="tel:+919521281509"
+                href="tel:+919876543210"
                 className="inline-flex items-center gap-3 px-6 py-3 bg-white text-blue-600 rounded-xl font-semibold hover:bg-gray-100 transition-colors shadow-lg"
               >
                 <Phone className="h-5 w-5" />
-                +91 9521281509
+                +91 9876543210
               </a>
               
               <a
-                href="https://wa.me/919521281509?text=Hello%20Earningsharthi,%20I%20need%20help%20with%20digital%20marketing%20services."
+                href="https://wa.me/919876543210?text=Hello%20Property%20Experts,%20I%20need%20help%20with%20property%20services."
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-3 px-6 py-3 bg-green-500 text-white rounded-xl font-semibold hover:bg-green-600 transition-colors shadow-lg"
@@ -210,7 +210,7 @@ const NotFound: React.FC = () => {
           <div className="mt-12 text-center">
             <p className="text-gray-600 mb-4">Quick Links</p>
             <div className="flex flex-wrap justify-center gap-4">
-              {['Services', 'Portfolio', 'Blog', 'Testimonials', 'Careers', 'Contact'].map((item) => (
+              {['Buy', 'Sell', 'Packages', 'About', 'Contact', 'Login'].map((item) => (
                 <Link
                   key={item}
                   to={`/${item.toLowerCase()}`}

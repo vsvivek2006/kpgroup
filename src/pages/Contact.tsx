@@ -31,33 +31,33 @@ const Contact = () => {
     // Simulate form processing
     await new Promise(resolve => setTimeout(resolve, 1000));
     
-    const whatsappMessage = `Hello Earning Sharthi! 
+    const whatsappMessage = `Hello Property Experts! 
 
-*🎯 New Project Inquiry*
+*🏠 New Property Inquiry*
 
 *Name:* ${formData.fullName}
 *Email:* ${formData.email}
 *Phone:* ${formData.phone}
 *Service Interested:* ${formData.service}
-*Project Details:* ${formData.message}
+*Requirements:* ${formData.message}
 
-I'm excited to discuss my project with you and get started!`;
+I'm interested in your property services and would like to know more!`;
 
-    const whatsappUrl = `https://wa.me/916398799013?text=${encodeURIComponent(whatsappMessage)}`;
+    const whatsappUrl = `https://wa.me/919876543210?text=${encodeURIComponent(whatsappMessage)}`;
     window.open(whatsappUrl, '_blank');
     setIsSubmitting(false);
   };
 
   const services = [
-    'Website Development',
-    'E-commerce Store',
-    'SEO Services',
-    'Social Media Marketing',
-    'Google & Meta Ads',
-    'Branding & Logo Design',
-    'Digital Marketing Package',
-    'Custom Software Development',
-    'Mobile App Development',
+    'Buy Property',
+    'Sell Property',
+    'Property Consultation',
+    'Home Loan Assistance',
+    'Legal Documentation',
+    'Property Valuation',
+    'Investment Advisory',
+    'Rental Services',
+    'Commercial Property',
     'Other Service'
   ];
 
@@ -65,26 +65,26 @@ I'm excited to discuss my project with you and get started!`;
     {
       icon: <Phone className="h-7 w-7" />,
       title: 'Call Us Now',
-      content: '+91 6398799013',
-      link: 'tel:+916398799013',
-      description: 'Available 24/7 for urgent queries',
-      color: 'from-green-500 to-green-600'
+      content: '+91 9876543210',
+      link: 'tel:+919876543210',
+      description: 'Available 24/7 for property queries',
+      color: 'from-blue-500 to-blue-600'
     },
     {
       icon: <Mail className="h-7 w-7" />,
       title: 'Email Us',
-      content: 'info@earningsharthi.in',
-      link: 'mailto:info@earningsharthi.in',
+      content: 'info@propertyexperts.com',
+      link: 'mailto:info@propertyexperts.com',
       description: 'Response within 2 hours',
       color: 'from-blue-500 to-blue-600'
     },
     {
       icon: <MapPin className="h-7 w-7" />,
-      title: 'Visit Us',
-      content: 'Khatima, Uttarakhand',
+      title: 'Visit Office',
+      content: 'Mumbai, India',
       link: '#',
-      description: 'Digital agency serving globally',
-      color: 'from-purple-500 to-purple-600'
+      description: 'Property consultancy serving nationwide',
+      color: 'from-blue-500 to-blue-600'
     },
     {
       icon: <Clock className="h-7 w-7" />,
@@ -92,65 +92,65 @@ I'm excited to discuss my project with you and get started!`;
       content: '24/7 Support',
       link: '#',
       description: 'Always available for our clients',
-      color: 'from-orange-500 to-orange-600'
+      color: 'from-blue-500 to-blue-600'
     }
   ];
 
   const features = [
     {
       icon: <Zap className="h-8 w-8" />,
-      title: 'Lightning Fast Response',
+      title: 'Quick Response',
       description: 'Get instant replies on WhatsApp within minutes'
     },
     {
       icon: <Shield className="h-8 w-8" />,
-      title: '100% Secure',
-      description: 'Your information is safe and confidential'
+      title: 'Trusted Service',
+      description: 'Verified properties with legal documentation'
     },
     {
       icon: <Users className="h-8 w-8" />,
       title: 'Expert Team',
-      description: 'Work with certified digital marketing professionals'
+      description: 'Professional property consultants & legal experts'
     },
     {
       icon: <Star className="h-8 w-8" />,
-      title: 'Proven Results',
-      description: '150+ successful projects delivered'
+      title: 'Proven Track Record',
+      description: '500+ happy property transactions'
     }
   ];
 
   return (
     <div className="min-h-screen bg-gray-50">
       <Helmet>
-        <title>Contact Earning Sharthi | Website Development & Digital Marketing Agency</title>
+        <title>Contact Property Experts | Real Estate Services & Property Consultation</title>
         <meta
           name="description"
-          content="Get in touch with Earning Sharthi for professional website development, SEO services, and digital marketing solutions. Start your project today!"
+          content="Get in touch with Property Experts for buying, selling, and property consultation services. Find your dream home today!"
         />
         <meta
           name="keywords"
-          content="contact Earning Sharthi, website development, digital marketing, SEO services, social media marketing, web design agency"
+          content="contact property experts, real estate services, buy property, sell property, property consultation, home loan"
         />
       </Helmet>
       
       {/* Enhanced Hero Section */}
-      <section className="relative bg-gradient-to-br from-purple-900 via-purple-800 to-purple-600 text-white py-24 overflow-hidden">
+      <section className="relative bg-gradient-to-br from-blue-900 via-blue-800 to-blue-600 text-white py-24 overflow-hidden">
         <div className="absolute inset-0">
-          <div className="absolute top-0 left-0 w-96 h-96 bg-purple-300 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse"></div>
-          <div className="absolute top-0 right-0 w-96 h-96 bg-yellow-300 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse animation-delay-2000"></div>
+          <div className="absolute top-0 left-0 w-96 h-96 bg-blue-300 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse"></div>
+          <div className="absolute top-0 right-0 w-96 h-96 bg-indigo-300 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse animation-delay-2000"></div>
         </div>
         
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className={`text-center transition-all duration-1000 transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
             <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
-              Let's Create <span className="text-yellow-400">Magic</span> Together
+              Find Your <span className="text-yellow-400">Dream Home</span>
             </h1>
-            <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto text-purple-100 leading-relaxed">
-              Ready to transform your business? Share your vision, and we'll build the digital solution that drives your success.
+            <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto text-blue-100 leading-relaxed">
+              Ready to buy, sell, or invest in property? Our expert consultants are here to guide you every step of the way.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <a
-                href="https://wa.me/916398799013?text=Hello%20Earning%20Sharthi!%20I%20want%20to%20discuss%20my%20project%20and%20get%20started."
+                href="https://wa.me/919876543210?text=Hello%20Property%20Experts!%20I%20want%20to%20discuss%20property%20requirements."
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-xl text-lg font-bold transition-all duration-300 hover:scale-105 hover:shadow-2xl flex items-center space-x-3 shadow-lg"
@@ -160,9 +160,9 @@ I'm excited to discuss my project with you and get started!`;
               </a>
               <a
                 href="#contact-form"
-                className="border-2 border-white text-white hover:bg-white hover:text-purple-600 px-8 py-4 rounded-xl text-lg font-bold transition-all duration-300 flex items-center space-x-3"
+                className="border-2 border-white text-white hover:bg-white hover:text-blue-600 px-8 py-4 rounded-xl text-lg font-bold transition-all duration-300 flex items-center space-x-3"
               >
-                <span>📝 Fill Project Form</span>
+                <span>📝 Fill Property Form</span>
               </a>
             </div>
           </div>
@@ -174,18 +174,18 @@ I'm excited to discuss my project with you and get started!`;
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-              Why Choose <span className="text-purple-600">Earning Sharthi</span>?
+              Why Choose <span className="text-blue-600">Property Experts</span>?
             </h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              We're not just another agency - we're your growth partners
+              Your trusted partner in real estate journey
             </p>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {features.map((feature, index) => (
               <div key={index} className="text-center group">
-                <div className="bg-gradient-to-br from-purple-50 to-blue-50 rounded-2xl p-8 hover:shadow-xl transition-all duration-500 transform hover:-translate-y-2">
-                  <div className="bg-gradient-to-r from-purple-600 to-purple-800 text-white p-4 rounded-2xl w-16 h-16 mx-auto mb-6 flex items-center justify-center group-hover:scale-110 transition-transform">
+                <div className="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl p-8 hover:shadow-xl transition-all duration-500 transform hover:-translate-y-2">
+                  <div className="bg-gradient-to-r from-blue-600 to-blue-800 text-white p-4 rounded-2xl w-16 h-16 mx-auto mb-6 flex items-center justify-center group-hover:scale-110 transition-transform">
                     {feature.icon}
                   </div>
                   <h3 className="text-xl font-bold text-gray-900 mb-3">{feature.title}</h3>
@@ -205,10 +205,10 @@ I'm excited to discuss my project with you and get started!`;
             <div className="bg-white rounded-3xl shadow-2xl p-8 lg:p-12">
               <div className="text-center mb-8">
                 <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-                  Start Your <span className="text-purple-600">Project</span>
+                  Start Your <span className="text-blue-600">Property Journey</span>
                 </h2>
                 <p className="text-lg text-gray-600">
-                  Fill this form and we'll connect within 30 minutes with a custom proposal
+                  Fill this form and we'll connect within 30 minutes with best options
                 </p>
               </div>
 
@@ -225,7 +225,7 @@ I'm excited to discuss my project with you and get started!`;
                       value={formData.fullName}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-4 border border-gray-300 rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-300"
+                      className="w-full px-4 py-4 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300"
                       placeholder="Enter your full name"
                     />
                   </div>
@@ -241,7 +241,7 @@ I'm excited to discuss my project with you and get started!`;
                       value={formData.phone}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-4 border border-gray-300 rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-300"
+                      className="w-full px-4 py-4 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300"
                       placeholder="+91 XXX XXX XXXX"
                     />
                   </div>
@@ -258,7 +258,7 @@ I'm excited to discuss my project with you and get started!`;
                     value={formData.email}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-4 border border-gray-300 rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-300"
+                    className="w-full px-4 py-4 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300"
                     placeholder="your@email.com"
                   />
                 </div>
@@ -273,7 +273,7 @@ I'm excited to discuss my project with you and get started!`;
                     value={formData.service}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-4 border border-gray-300 rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-300"
+                    className="w-full px-4 py-4 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300"
                   >
                     <option value="">Select your required service</option>
                     {services.map((service, index) => (
@@ -286,7 +286,7 @@ I'm excited to discuss my project with you and get started!`;
 
                 <div className="space-y-2">
                   <label htmlFor="message" className="block text-sm font-semibold text-gray-700">
-                    Project Details *
+                    Property Requirements *
                   </label>
                   <textarea
                     id="message"
@@ -295,15 +295,15 @@ I'm excited to discuss my project with you and get started!`;
                     onChange={handleChange}
                     required
                     rows={6}
-                    className="w-full px-4 py-4 border border-gray-300 rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-300 resize-none"
-                    placeholder="Tell us about your project, goals, timeline, and any specific requirements..."
+                    className="w-full px-4 py-4 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 resize-none"
+                    placeholder="Tell us about your property requirements, budget, preferred location, type of property, timeline..."
                   />
                 </div>
 
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className={`w-full bg-gradient-to-r from-purple-600 to-purple-800 hover:from-purple-700 hover:to-purple-900 text-white px-8 py-5 rounded-xl text-lg font-bold transition-all duration-300 hover:scale-105 hover:shadow-xl flex items-center justify-center space-x-3 ${
+                  className={`w-full bg-gradient-to-r from-blue-600 to-blue-800 hover:from-blue-700 hover:to-blue-900 text-white px-8 py-5 rounded-xl text-lg font-bold transition-all duration-300 hover:scale-105 hover:shadow-xl flex items-center justify-center space-x-3 ${
                     isSubmitting ? 'opacity-50 cursor-not-allowed' : ''
                   }`}
                 >
@@ -315,13 +315,13 @@ I'm excited to discuss my project with you and get started!`;
                   ) : (
                     <>
                       <Send className="h-5 w-5" />
-                      <span>🚀 Send Project Details</span>
+                      <span>🚀 Send Requirements</span>
                     </>
                   )}
                 </button>
 
                 <p className="text-sm text-gray-500 text-center">
-                  📞 We'll call you within 30 minutes to discuss your project in detail
+                  📞 We'll call you within 30 minutes to discuss your property needs
                 </p>
               </form>
             </div>
@@ -330,10 +330,10 @@ I'm excited to discuss my project with you and get started!`;
             <div className="space-y-8">
               <div>
                 <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-                  Get In <span className="text-purple-600">Touch</span>
+                  Get In <span className="text-blue-600">Touch</span>
                 </h2>
                 <p className="text-lg text-gray-600 mb-8 leading-relaxed">
-                  We're here to help you succeed. Choose the most convenient way to reach out, and let's start building something amazing together.
+                  We're here to help you find your perfect property. Choose the most convenient way to reach out, and let's start your property journey together.
                 </p>
               </div>
 
@@ -372,7 +372,7 @@ I'm excited to discuss my project with you and get started!`;
                 {/* Social Links */}
                 <div className="flex space-x-4 mb-8">
                   <a
-                    href="https://wa.me/916398799013"
+                    href="https://wa.me/919876543210"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex-1 bg-green-500 hover:bg-green-600 text-white p-4 rounded-xl transition-all duration-300 hover:scale-105 flex items-center justify-center space-x-2 group"
@@ -381,7 +381,7 @@ I'm excited to discuss my project with you and get started!`;
                     <span className="font-semibold">WhatsApp</span>
                   </a>
                   <a
-                    href="https://www.instagram.com/earningsharthi"
+                    href="https://www.instagram.com/propertyexperts"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex-1 bg-gradient-to-r from-pink-500 to-pink-600 hover:from-pink-600 hover:to-pink-700 text-white p-4 rounded-xl transition-all duration-300 hover:scale-105 flex items-center justify-center space-x-2 group"
@@ -408,19 +408,19 @@ I'm excited to discuss my project with you and get started!`;
                     </div>
                     <div className="flex items-center text-sm">
                       <span className="w-2 h-2 bg-green-500 rounded-full mr-3"></span>
-                      Phone: 24/7 for urgent project discussions
+                      Phone: 24/7 for urgent property inquiries
                     </div>
                   </div>
                 </div>
               </div>
 
               {/* Trust Badges */}
-              <div className="bg-gradient-to-br from-purple-50 to-blue-50 rounded-2xl p-6 border border-purple-200">
-                <h4 className="font-semibold text-purple-800 mb-4 text-lg">Why Clients Trust Us</h4>
+              <div className="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl p-6 border border-blue-200">
+                <h4 className="font-semibold text-blue-800 mb-4 text-lg">Why Clients Trust Us</h4>
                 <div className="grid grid-cols-2 gap-4 text-sm">
                   <div className="flex items-center space-x-2">
                     <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                    <span className="text-gray-700">150+ Projects</span>
+                    <span className="text-gray-700">500+ Properties</span>
                   </div>
                   <div className="flex items-center space-x-2">
                     <div className="w-2 h-2 bg-green-500 rounded-full"></div>
@@ -428,11 +428,11 @@ I'm excited to discuss my project with you and get started!`;
                   </div>
                   <div className="flex items-center space-x-2">
                     <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                    <span className="text-gray-700">50-70% Savings</span>
+                    <span className="text-gray-700">Legal Verification</span>
                   </div>
                   <div className="flex items-center space-x-2">
                     <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                    <span className="text-gray-700">Money Back Guarantee</span>
+                    <span className="text-gray-700">Best Price Guarantee</span>
                   </div>
                 </div>
               </div>
@@ -446,42 +446,42 @@ I'm excited to discuss my project with you and get started!`;
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-              Frequently Asked <span className="text-purple-600">Questions</span>
+              Frequently Asked <span className="text-blue-600">Questions</span>
             </h2>
             <p className="text-xl text-gray-600">
-              Everything you need to know before starting your project
+              Everything you need to know about our property services
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {[
               {
-                question: "How quickly can you start my project?",
-                answer: "We can typically start within 24 hours! For urgent projects, we offer same-day onboarding and kickoff."
+                question: "How quickly can you find properties for me?",
+                answer: "We can typically show you suitable properties within 24 hours! For urgent requirements, same-day property visits available."
               },
               {
-                question: "Do you provide ongoing support?",
-                answer: "Yes! We provide 30 days free support after project completion, plus affordable monthly maintenance plans."
+                question: "Do you provide legal documentation support?",
+                answer: "Yes! We provide complete legal verification and documentation support for all property transactions."
               },
               {
-                question: "What's your pricing structure?",
-                answer: "We offer transparent pricing starting from ₹4,999 for websites. Custom quotes based on project scope with 50-70% savings."
+                question: "What areas do you cover?",
+                answer: "We serve major cities across India including Mumbai, Delhi, Bangalore, Hyderabad, Pune, and more."
               },
               {
-                question: "Can I see your previous work?",
-                answer: "Absolutely! Check our portfolio section with 150+ successful projects and client testimonials."
+                question: "Can I see property photos and videos?",
+                answer: "Absolutely! We provide high-quality photos, 360° virtual tours, and video walkthroughs of all properties."
               },
               {
-                question: "Do you work with startups?",
-                answer: "Yes! We specialize in helping startups with affordable packages and scalable solutions."
+                question: "Do you help with home loans?",
+                answer: "Yes! We have tie-ups with major banks and offer complete home loan assistance with best interest rates."
               },
               {
-                question: "What payment methods do you accept?",
-                answer: "We accept UPI, bank transfer, credit cards, and offer flexible payment plans for larger projects."
+                question: "What are your service charges?",
+                answer: "We offer transparent pricing with no hidden charges. Service fees start from 1% depending on property value."
               }
             ].map((faq, index) => (
               <div key={index} className="bg-gray-50 rounded-2xl p-6 hover:shadow-lg transition-all duration-300 group">
-                <h3 className="font-bold text-gray-900 mb-3 text-lg group-hover:text-purple-600 transition-colors">
+                <h3 className="font-bold text-gray-900 mb-3 text-lg group-hover:text-blue-600 transition-colors">
                   {faq.question}
                 </h3>
                 <p className="text-gray-600 leading-relaxed">
@@ -494,39 +494,39 @@ I'm excited to discuss my project with you and get started!`;
       </section>
 
       {/* Final CTA */}
-      <section className="py-20 bg-gradient-to-r from-purple-900 via-purple-800 to-purple-700 text-white relative overflow-hidden">
+      <section className="py-20 bg-gradient-to-r from-blue-900 via-blue-800 to-blue-700 text-white relative overflow-hidden">
         <div className="absolute inset-0">
-          <div className="absolute top-0 left-0 w-96 h-96 bg-purple-400 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse"></div>
-          <div className="absolute bottom-0 right-0 w-96 h-96 bg-yellow-400 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse animation-delay-2000"></div>
+          <div className="absolute top-0 left-0 w-96 h-96 bg-blue-400 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse"></div>
+          <div className="absolute bottom-0 right-0 w-96 h-96 bg-indigo-400 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse animation-delay-2000"></div>
         </div>
         
         <div className="relative max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
           <h2 className="text-4xl md:text-6xl font-bold mb-6">
-            Ready to <span className="text-yellow-400">Begin</span>?
+            Ready to Find Your <span className="text-yellow-400">Dream Home</span>?
           </h2>
-          <p className="text-xl md:text-2xl mb-8 text-purple-100 leading-relaxed">
-            Don't let your ideas wait. Let's turn your vision into reality starting today!
+          <p className="text-xl md:text-2xl mb-8 text-blue-100 leading-relaxed">
+            Don't wait for the perfect property. Let's find it together starting today!
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
-              href="https://wa.me/916398799013?text=Hello%20Earning%20Sharthi!%20I'm%20ready%20to%20start%20my%20project%20right%20now!"
+              href="https://wa.me/919876543210?text=Hello%20Property%20Experts!%20I'm%20ready%20to%20find%20my%20dream%20property!"
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-yellow-500 hover:bg-yellow-600 text-purple-900 px-8 py-5 rounded-xl text-lg font-bold transition-all duration-300 hover:scale-105 hover:shadow-2xl flex items-center justify-center space-x-3"
+              className="bg-yellow-500 hover:bg-yellow-600 text-blue-900 px-8 py-5 rounded-xl text-lg font-bold transition-all duration-300 hover:scale-105 hover:shadow-2xl flex items-center justify-center space-x-3"
             >
               <MessageCircle className="h-6 w-6" />
-              <span>🚀 Start Instant Chat</span>
+              <span>🚀 Start Property Search</span>
             </a>
             <a
-              href="tel:+916398799013"
-              className="border-2 border-white hover:bg-white hover:text-purple-600 px-8 py-5 rounded-xl text-lg font-bold transition-all duration-300 flex items-center justify-center space-x-3"
+              href="tel:+919876543210"
+              className="border-2 border-white hover:bg-white hover:text-blue-600 px-8 py-5 rounded-xl text-lg font-bold transition-all duration-300 flex items-center justify-center space-x-3"
             >
               <Phone className="h-6 w-6" />
               <span>📞 Call Now</span>
             </a>
           </div>
-          <p className="mt-6 text-purple-200 text-lg">
-            ⚡ Free consultation & project estimate included
+          <p className="mt-6 text-blue-200 text-lg">
+            ⚡ Free property consultation & site visits included
           </p>
         </div>
       </section>

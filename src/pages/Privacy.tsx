@@ -17,7 +17,7 @@ const Privacy: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
           <h1 className="text-4xl md:text-5xl font-bold mb-3">Privacy Policy & Policies</h1>
           <p className="text-blue-100 text-lg md:text-xl">
-            How Earningsharthi collects, uses, protects your information and our business policies.
+            How Property Experts collects, uses, protects your information and our business policies.
           </p>
           <p className="text-sm text-blue-200 mt-2">Last updated: {lastUpdated}</p>
           
@@ -64,10 +64,10 @@ const Privacy: React.FC = () => {
             {/* Intro */}
             <div>
               <p className="text-lg leading-relaxed">
-                This Privacy Policy explains how <strong>Earningsharthi</strong> ("we", "us", "our") collects,
+                This Privacy Policy explains how <strong>Property Experts</strong> ("we", "us", "our") collects,
                 uses, discloses, and safeguards personal information when you visit our website, engage
-                with our digital marketing campaigns, or use our services. By using our website/services,
-                you agree to this Policy. If you do not agree, please discontinue use.
+                with our property services, or use our platform. By using our website/services, you agree 
+                to this Policy. If you do not agree, please discontinue use.
               </p>
               <div className="mt-4 bg-blue-50 border border-blue-200 rounded-xl p-4">
                 <div className="flex items-start">
@@ -95,32 +95,32 @@ const Privacy: React.FC = () => {
               <ul className="list-disc pl-6 space-y-3">
                 <li className="flex items-start">
                   <span className="text-blue-500 mr-2">•</span>
-                  <span><strong>Identity & Contact:</strong> name, email, phone, company, role.</span>
+                  <span><strong>Personal & Contact:</strong> name, email, phone, address, identification documents.</span>
                 </li>
                 <li className="flex items-start">
                   <span className="text-blue-500 mr-2">•</span>
-                  <span><strong>Business & Content:</strong> project brief, brand assets you share.</span>
+                  <span><strong>Property Details:</strong> property location, specifications, photos, ownership documents.</span>
                 </li>
                 <li className="flex items-start">
                   <span className="text-blue-500 mr-2">•</span>
-                  <span><strong>Technical:</strong> IP address, device/browser info, pages viewed, referrer URLs, session data.</span>
+                  <span><strong>Financial Information:</strong> income details, bank statements for loan processing.</span>
                 </li>
                 <li className="flex items-start">
                   <span className="text-blue-500 mr-2">•</span>
-                  <span><strong>Usage & Analytics:</strong> interactions with pages, forms, CTAs; events/pixels (GA4, Meta, etc.).</span>
+                  <span><strong>Technical:</strong> IP address, device/browser info, pages viewed, session data.</span>
                 </li>
                 <li className="flex items-start">
                   <span className="text-blue-500 mr-2">•</span>
-                  <span><strong>Marketing:</strong> preferences, consent, campaign engagement (opens, clicks, conversions).</span>
+                  <span><strong>Usage & Analytics:</strong> property searches, preferences, interactions with listings.</span>
                 </li>
                 <li className="flex items-start">
                   <span className="text-blue-500 mr-2">•</span>
-                  <span><strong>Payment/Commercial:</strong> invoices, transaction metadata (processed via third-party gateways; we do not store card data).</span>
+                  <span><strong>Payment Information:</strong> transaction details (processed via secure gateways).</span>
                 </li>
               </ul>
               <div className="mt-4 bg-gray-50 p-4 rounded-lg border border-gray-200">
                 <p className="text-sm text-gray-600">
-                  Sensitive personal data is not intentionally collected. Please avoid sharing it.
+                  Sensitive personal data is collected only when necessary for property transactions and with explicit consent.
                 </p>
               </div>
             </div>
@@ -134,15 +134,15 @@ const Privacy: React.FC = () => {
               <ul className="list-disc pl-6 space-y-3">
                 <li className="flex items-start">
                   <span className="text-blue-500 mr-2">•</span>
-                  <span><strong>Direct:</strong> forms, emails, WhatsApp, calls, meetings.</span>
+                  <span><strong>Direct:</strong> registration forms, property listings, consultations, calls.</span>
                 </li>
                 <li className="flex items-start">
                   <span className="text-blue-500 mr-2">•</span>
-                  <span><strong>Automated:</strong> cookies, tags, analytics, pixels.</span>
+                  <span><strong>Automated:</strong> website analytics, cookies, property search patterns.</span>
                 </li>
                 <li className="flex items-start">
                   <span className="text-blue-500 mr-2">•</span>
-                  <span><strong>Third-Party:</strong> ad platforms, CRM or lead gen tools you connect/provide.</span>
+                  <span><strong>Third-Party:</strong> property portals, verification services, financial institutions.</span>
                 </li>
               </ul>
             </div>
@@ -154,26 +154,26 @@ const Privacy: React.FC = () => {
                 Cookies & Similar Technologies
               </h2>
               <p className="mb-4 text-gray-700">
-                We use cookies, pixels, and tags to enable site functionality, remember preferences,
-                analyze performance, and measure/optimize campaigns.
+                We use cookies to enhance user experience, remember preferences, analyze property search patterns,
+                and provide personalized property recommendations.
               </p>
               <ul className="list-disc pl-6 space-y-3">
                 <li className="flex items-start">
                   <span className="text-blue-500 mr-2">•</span>
-                  <span><strong>Essential:</strong> required for core functionality.</span>
+                  <span><strong>Essential:</strong> required for core functionality and secure transactions.</span>
                 </li>
                 <li className="flex items-start">
                   <span className="text-blue-500 mr-2">•</span>
-                  <span><strong>Analytics:</strong> GA4/GTM events, traffic sources, on-site behavior.</span>
+                  <span><strong>Analytics:</strong> understand user behavior and improve property recommendations.</span>
                 </li>
                 <li className="flex items-start">
                   <span className="text-blue-500 mr-2">•</span>
-                  <span><strong>Marketing:</strong> remarketing/conversion pixels (e.g., Google Ads, Meta).</span>
+                  <span><strong>Marketing:</strong> show relevant property listings and services.</span>
                 </li>
               </ul>
               <div className="mt-4 bg-gray-50 p-4 rounded-lg border border-gray-200">
                 <p className="text-sm text-gray-600">
-                  You can manage cookies via your browser settings. Some features may not work without certain cookies.
+                  You can manage cookies via your browser settings. Some property search features may not work without certain cookies.
                 </p>
               </div>
             </div>
@@ -187,27 +187,27 @@ const Privacy: React.FC = () => {
               <ul className="list-disc pl-6 space-y-3">
                 <li className="flex items-start">
                   <span className="text-blue-500 mr-2">•</span>
-                  <span>Provide, operate, and improve our website and services.</span>
+                  <span>Facilitate property buying, selling, and rental transactions.</span>
                 </li>
                 <li className="flex items-start">
                   <span className="text-blue-500 mr-2">•</span>
-                  <span>Respond to inquiries, proposals, and support requests.</span>
+                  <span>Provide personalized property recommendations and alerts.</span>
                 </li>
                 <li className="flex items-start">
                   <span className="text-blue-500 mr-2">•</span>
-                  <span>Plan, execute, and optimize campaigns; measure performance/ROI.</span>
+                  <span>Process property documentation and legal verifications.</span>
                 </li>
                 <li className="flex items-start">
                   <span className="text-blue-500 mr-2">•</span>
-                  <span>Personalize experiences and recommend relevant services.</span>
+                  <span>Assist with home loan applications and financial services.</span>
                 </li>
                 <li className="flex items-start">
                   <span className="text-blue-500 mr-2">•</span>
-                  <span>Security, fraud prevention, troubleshooting, and diagnostics.</span>
+                  <span>Security, fraud prevention, and regulatory compliance.</span>
                 </li>
                 <li className="flex items-start">
                   <span className="text-blue-500 mr-2">•</span>
-                  <span>Legal compliance and enforcement of our Terms/Agreement.</span>
+                  <span>Customer support and service improvements.</span>
                 </li>
               </ul>
             </div>
@@ -221,24 +221,24 @@ const Privacy: React.FC = () => {
               <ul className="list-disc pl-6 space-y-3">
                 <li className="flex items-start">
                   <span className="text-blue-500 mr-2">•</span>
-                  <span><strong>Consent:</strong> marketing communications, non-essential cookies.</span>
+                  <span><strong>Consent:</strong> marketing communications, property alerts.</span>
                 </li>
                 <li className="flex items-start">
                   <span className="text-blue-500 mr-2">•</span>
-                  <span><strong>Contract:</strong> to deliver services requested/paid for.</span>
+                  <span><strong>Contract:</strong> to facilitate property transactions and services.</span>
                 </li>
                 <li className="flex items-start">
                   <span className="text-blue-500 mr-2">•</span>
-                  <span><strong>Legitimate Interest:</strong> analytics, security, product improvement.</span>
+                  <span><strong>Legitimate Interest:</strong> property recommendations, service improvements.</span>
                 </li>
                 <li className="flex items-start">
                   <span className="text-blue-500 mr-2">•</span>
-                  <span><strong>Legal Obligation:</strong> taxation, accounting, compliance.</span>
+                  <span><strong>Legal Obligation:</strong> property registration, KYC compliance, taxation.</span>
                 </li>
               </ul>
               <div className="mt-4 bg-gray-50 p-4 rounded-lg border border-gray-200">
                 <p className="text-sm text-gray-600">
-                  You may withdraw consent at any time (see "Your Rights" below).
+                  You may withdraw consent for marketing communications at any time.
                 </p>
               </div>
             </div>
@@ -255,28 +255,32 @@ const Privacy: React.FC = () => {
               <ul className="list-disc pl-6 space-y-3">
                 <li className="flex items-start">
                   <span className="text-blue-500 mr-2">•</span>
-                  <span><strong>Processors/Vendors:</strong> hosting, CDN, analytics (GA4/GTM), ad platforms (Google, Meta), CRM/email tools, payment gateways, project tools.</span>
+                  <span><strong>Property Partners:</strong> brokers, developers, legal authorities for transaction completion.</span>
                 </li>
                 <li className="flex items-start">
                   <span className="text-blue-500 mr-2">•</span>
-                  <span><strong>Partners/Sub-contractors:</strong> only as needed for agreed work, under confidentiality and DP terms.</span>
+                  <span><strong>Financial Institutions:</strong> banks, NBFCs for loan processing with consent.</span>
                 </li>
                 <li className="flex items-start">
                   <span className="text-blue-500 mr-2">•</span>
-                  <span><strong>Legal/Compliance:</strong> when required by law or to protect rights/safety.</span>
+                  <span><strong>Legal Authorities:</strong> as required by property laws and regulations.</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-blue-500 mr-2">•</span>
+                  <span><strong>Service Providers:</strong> payment gateways, document verification services.</span>
                 </li>
               </ul>
             </div>
 
-            {/* International transfer */}
+            {/* Data Security */}
             <div className="border-l-4 border-blue-500 pl-6">
               <h2 className="text-2xl font-bold text-gray-900 mb-4 flex items-center">
                 <span className="bg-blue-100 text-blue-600 w-8 h-8 rounded-full flex items-center justify-center text-sm mr-3">7</span>
-                International Transfers
+                Data Security
               </h2>
               <p className="text-gray-700">
-                Vendors may process data in other countries. We take reasonable steps to ensure appropriate
-                safeguards (e.g., contractual protections) consistent with applicable law.
+                We implement robust security measures including encryption, access controls, and secure 
+                data storage to protect your personal and financial information during property transactions.
               </p>
             </div>
 
@@ -287,127 +291,54 @@ const Privacy: React.FC = () => {
                 Data Retention
               </h2>
               <p className="text-gray-700">
-                We retain data only for as long as necessary for the purposes above or as required by law.
-                Typical retention: marketing contacts up to 24 months of last interaction; project records
-                aligned with statutory/accounting obligations.
-              </p>
-            </div>
-
-            {/* Security */}
-            <div className="border-l-4 border-blue-500 pl-6">
-              <h2 className="text-2xl font-bold text-gray-900 mb-4 flex items-center">
-                <span className="bg-blue-100 text-blue-600 w-8 h-8 rounded-full flex items-center justify-center text-sm mr-3">9</span>
-                Security
-              </h2>
-              <p className="text-gray-700">
-                We use reasonable technical and organizational measures to protect data (access controls,
-                encryption in transit, least-privilege practices). No system is 100% secure; please share
-                credentials via secure methods (password managers).
-              </p>
-            </div>
-
-            {/* Children */}
-            <div className="border-l-4 border-blue-500 pl-6">
-              <h2 className="text-2xl font-bold text-gray-900 mb-4 flex items-center">
-                <span className="bg-blue-100 text-blue-600 w-8 h-8 rounded-full flex items-center justify-center text-sm mr-3">10</span>
-                Children's Privacy
-              </h2>
-              <p className="text-gray-700">
-                Our services are intended for business users. We do not knowingly collect data from
-                children under applicable age thresholds.
+                We retain property transaction data as required by law (typically 8+ years). 
+                Marketing data is retained for 24 months from last interaction unless deleted upon request.
               </p>
             </div>
 
             {/* Your rights */}
             <div className="border-l-4 border-blue-500 pl-6">
               <h2 className="text-2xl font-bold text-gray-900 mb-4 flex items-center">
-                <span className="bg-blue-100 text-blue-600 w-8 h-8 rounded-full flex items-center justify-center text-sm mr-3">11</span>
+                <span className="bg-blue-100 text-blue-600 w-8 h-8 rounded-full flex items-center justify-center text-sm mr-3">9</span>
                 Your Rights
               </h2>
-              <p className="mb-4 text-gray-700">
-                Subject to law, you may have the right to: access, correct, update, delete, restrict or
-                object to processing, withdraw consent, and request data portability.
-              </p>
               <ul className="list-disc pl-6 space-y-3">
                 <li className="flex items-start">
                   <span className="text-blue-500 mr-2">•</span>
-                  <span><strong>Access/Correction:</strong> get a copy of your data or ask us to fix inaccuracies.</span>
+                  <span><strong>Access/Correction:</strong> access your data and correct inaccuracies.</span>
                 </li>
                 <li className="flex items-start">
                   <span className="text-blue-500 mr-2">•</span>
-                  <span><strong>Deletion ("Right to be Forgotten"):</strong> request erasure where legally permitted.</span>
+                  <span><strong>Deletion:</strong> request deletion where legally permitted.</span>
                 </li>
                 <li className="flex items-start">
                   <span className="text-blue-500 mr-2">•</span>
-                  <span><strong>Consent Management:</strong> opt-out of marketing or withdraw cookie consent.</span>
+                  <span><strong>Consent Management:</strong> opt-out of marketing communications.</span>
                 </li>
                 <li className="flex items-start">
                   <span className="text-blue-500 mr-2">•</span>
-                  <span><strong>Objection/Restriction:</strong> where we rely on legitimate interests.</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-blue-500 mr-2">•</span>
-                  <span><strong>Portability:</strong> receive data in a commonly used format where feasible.</span>
+                  <span><strong>Data Portability:</strong> receive your data in usable format.</span>
                 </li>
               </ul>
-              <div className="mt-4 bg-gray-50 p-4 rounded-lg border border-gray-200">
-                <p className="text-sm text-gray-600">
-                  We may verify your identity before actioning requests and may retain limited data as required by law.
-                </p>
-              </div>
             </div>
 
-            {/* How to exercise */}
+            {/* Contact */}
             <div className="border-l-4 border-blue-500 pl-6">
               <h2 className="text-2xl font-bold text-gray-900 mb-4 flex items-center">
-                <span className="bg-blue-100 text-blue-600 w-8 h-8 rounded-full flex items-center justify-center text-sm mr-3">12</span>
-                How to Contact / Exercise Rights
+                <span className="bg-blue-100 text-blue-600 w-8 h-8 rounded-full flex items-center justify-center text-sm mr-3">10</span>
+                Contact Information
               </h2>
               <p className="text-gray-700">
-                Email <a className="text-blue-700 underline font-medium" href="mailto:info@earningsharthi.in">info@earningsharthi.in</a> or call{" "}
-                <a className="text-blue-700 underline font-medium" href="tel:+916398799013">+91 6398799013</a>. We aim to respond within 7 business days.
+                For privacy concerns or to exercise your rights, contact:
               </p>
               <div className="mt-4 bg-gray-50 p-4 rounded-lg border border-gray-200">
                 <p className="text-sm text-gray-600">
-                  Address: Earningsharthi, Khatima, Uttarakhand, India
+                  <strong>Property Experts</strong><br/>
+                  Email: <a href="mailto:info@propertyexperts.com" className="text-blue-600 underline">info@propertyexperts.com</a><br/>
+                  Phone: <a href="tel:+919876543210" className="text-blue-600 underline">+91 9876543210</a><br/>
+                  Response Time: 3-5 business days
                 </p>
               </div>
-            </div>
-
-            {/* Marketing choices */}
-            <div className="border-l-4 border-blue-500 pl-6">
-              <h2 className="text-2xl font-bold text-gray-900 mb-4 flex items-center">
-                <span className="bg-blue-100 text-blue-600 w-8 h-8 rounded-full flex items-center justify-center text-sm mr-3">13</span>
-                Marketing Preferences
-              </h2>
-              <p className="text-gray-700">
-                You can unsubscribe from emails using the footer link or by contacting us. For ads
-                preferences, adjust settings in Google/Meta or your device's ad settings.
-              </p>
-            </div>
-
-            {/* Third-party links */}
-            <div className="border-l-4 border-blue-500 pl-6">
-              <h2 className="text-2xl font-bold text-gray-900 mb-4 flex items-center">
-                <span className="bg-blue-100 text-blue-600 w-8 h-8 rounded-full flex items-center justify-center text-sm mr-3">14</span>
-                Third-Party Websites
-              </h2>
-              <p className="text-gray-700">
-                Our site may link to external sites we do not control. Their privacy practices apply to
-                their content and services.
-              </p>
-            </div>
-
-            {/* Changes */}
-            <div className="border-l-4 border-blue-500 pl-6">
-              <h2 className="text-2xl font-bold text-gray-900 mb-4 flex items-center">
-                <span className="bg-blue-100 text-blue-600 w-8 h-8 rounded-full flex items-center justify-center text-sm mr-3">15</span>
-                Changes to This Policy
-              </h2>
-              <p className="text-gray-700">
-                We may update this Policy from time to time. Material changes will be posted here with an
-                updated "Last updated" date. Continued use signifies acceptance.
-              </p>
             </div>
 
             {/* Summary card */}
@@ -416,36 +347,21 @@ const Privacy: React.FC = () => {
               <ul className="list-disc pl-6 space-y-3 text-sm text-gray-700">
                 <li className="flex items-start">
                   <span className="text-blue-500 mr-2">•</span>
-                  <span>We collect contact, usage/analytics, and project data to deliver & improve services.</span>
+                  <span>We collect data necessary for property transactions and services.</span>
                 </li>
                 <li className="flex items-start">
                   <span className="text-blue-500 mr-2">•</span>
-                  <span>We use cookies/pixels (GA4, Google/Meta) with consent and provide opt-outs.</span>
+                  <span>Your information is shared only with authorized parties for transaction completion.</span>
                 </li>
                 <li className="flex items-start">
                   <span className="text-blue-500 mr-2">•</span>
-                  <span>We don't sell personal data; we share with vetted processors/vendors as needed.</span>
+                  <span>Robust security measures protect your personal and financial data.</span>
                 </li>
                 <li className="flex items-start">
                   <span className="text-blue-500 mr-2">•</span>
-                  <span>You have rights to access, correct, delete, object/restrict, and withdraw consent.</span>
+                  <span>You have rights to access, correct, and delete your personal information.</span>
                 </li>
               </ul>
-            </div>
-
-            {/* Disclaimer */}
-            <div className="bg-yellow-50 p-6 rounded-xl border border-yellow-200">
-              <div className="flex items-start">
-                <svg className="w-5 h-5 text-yellow-600 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L4.082 16.5c-.77.833.192 2.5 1.732 2.5z" />
-                </svg>
-                <div className="ml-3">
-                  <p className="text-xs text-yellow-800">
-                    <strong>Disclaimer:</strong> This template is for general guidance and not legal advice. 
-                    Please review with legal counsel if needed.
-                  </p>
-                </div>
-              </div>
             </div>
           </div>
         </section>
@@ -462,15 +378,14 @@ const Privacy: React.FC = () => {
               <div className="border-l-4 border-green-500 pl-6">
                 <h3 className="text-2xl font-bold text-gray-900 mb-4">General Refund Policy</h3>
                 <p className="text-gray-700 mb-4">
-                  At Earningsharthi, we strive to deliver exceptional digital marketing services. 
-                  Due to the nature of digital services and the resources invested immediately upon 
-                  project commencement, we have the following refund policy:
+                  At Property Experts, we are committed to providing excellent real estate services. 
+                  Due to the nature of property transactions and consulting services, we have the following refund policy:
                 </p>
                 <ul className="list-disc pl-6 space-y-3 text-gray-700">
-                  <li>Full refunds are available only if requested within 24 hours of payment and before any work has commenced</li>
-                  <li>Once work has started, refunds are provided on a pro-rata basis for work not yet completed</li>
-                  <li>No refunds are provided for completed work or delivered deliverables</li>
-                  <li>Setup fees and third-party costs are non-refundable</li>
+                  <li>Consultation fees are refundable if cancelled 24 hours before scheduled appointment</li>
+                  <li>Property listing fees are non-refundable once property is listed on portals</li>
+                  <li>Documentation and legal service fees are non-refundable after work commencement</li>
+                  <li>Package services refunded on pro-rata basis for services not rendered</li>
                 </ul>
               </div>
 
@@ -480,29 +395,29 @@ const Privacy: React.FC = () => {
                 
                 <div className="space-y-6">
                   <div className="bg-gray-50 p-4 rounded-lg">
-                    <h4 className="font-semibold text-gray-900 mb-2">Digital Marketing Services</h4>
+                    <h4 className="font-semibold text-gray-900 mb-2">Property Consultation</h4>
                     <ul className="list-disc pl-6 space-y-2 text-gray-700 text-sm">
-                      <li>Monthly retainers: Refund for unused portion of the month if cancelled before the 15th</li>
-                      <li>Campaign management: No refunds for ad spend or platform fees</li>
-                      <li>Performance-based services: Refunds considered only if service level agreements are not met</li>
+                      <li>100% refund if cancelled 24+ hours before appointment</li>
+                      <li>50% refund if cancelled less than 24 hours before</li>
+                      <li>No refund after consultation completion</li>
                     </ul>
                   </div>
 
                   <div className="bg-gray-50 p-4 rounded-lg">
-                    <h4 className="font-semibold text-gray-900 mb-2">Web Development</h4>
+                    <h4 className="font-semibold text-gray-900 mb-2">Property Listing Services</h4>
                     <ul className="list-disc pl-6 space-y-2 text-gray-700 text-sm">
-                      <li>50% refund if project cancelled during design phase</li>
-                      <li>25% refund if project cancelled during development phase</li>
-                      <li>No refund after project completion and delivery</li>
+                      <li>Full refund before property is listed on any portal</li>
+                      <li>50% refund after listing but before 7 days</li>
+                      <li>No refund after 7 days of listing</li>
                     </ul>
                   </div>
 
                   <div className="bg-gray-50 p-4 rounded-lg">
-                    <h4 className="font-semibold text-gray-900 mb-2">Branding & Design</h4>
+                    <h4 className="font-semibold text-gray-900 mb-2">Legal & Documentation</h4>
                     <ul className="list-disc pl-6 space-y-2 text-gray-700 text-sm">
-                      <li>Refund available only if no concepts have been presented</li>
-                      <li>Once concepts are presented and reviewed, only partial refunds considered</li>
-                      <li>No refunds after final design approval</li>
+                      <li>No refund once document preparation has started</li>
+                      <li>Government/statutory fees are non-refundable</li>
+                      <li>Partial refund if work is incomplete due to client unavailability</li>
                     </ul>
                   </div>
                 </div>
@@ -514,7 +429,7 @@ const Privacy: React.FC = () => {
                 <div className="space-y-4 text-gray-700">
                   <p>To request a refund, please contact us with:</p>
                   <ul className="list-disc pl-6 space-y-2">
-                    <li>Your project details and invoice number</li>
+                    <li>Your service details and invoice number</li>
                     <li>Reason for refund request</li>
                     <li>Any supporting documentation</li>
                   </ul>
@@ -530,7 +445,7 @@ const Privacy: React.FC = () => {
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
                   <a 
-                    href="mailto:info@earningsharthi.in"
+                    href="mailto:info@propertyexperts.com"
                     className="bg-white text-blue-600 px-6 py-3 rounded-lg font-semibold hover:bg-blue-50 transition-colors duration-300 flex items-center"
                   >
                     <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -539,7 +454,7 @@ const Privacy: React.FC = () => {
                     Email Us
                   </a>
                   <a 
-                    href="tel:+916398799013"
+                    href="tel:+919876543210"
                     className="border-2 border-white text-white px-6 py-3 rounded-lg font-semibold hover:bg-white hover:text-blue-600 transition-colors duration-300 flex items-center"
                   >
                     <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -565,14 +480,14 @@ const Privacy: React.FC = () => {
               <div className="border-l-4 border-orange-500 pl-6">
                 <h3 className="text-2xl font-bold text-gray-900 mb-4">General Cancellation Policy</h3>
                 <p className="text-gray-700 mb-4">
-                  We understand that circumstances may change. Our cancellation policy is designed to be 
-                  fair to both parties while ensuring we can maintain the quality of our services.
+                  We understand that property plans may change. Our cancellation policy is designed to be 
+                  fair while ensuring we can provide quality services to all our clients.
                 </p>
                 <ul className="list-disc pl-6 space-y-3 text-gray-700">
-                  <li>Project-based services can be cancelled with written notice</li>
-                  <li>Completed work up to the cancellation date remains billable</li>
-                  <li>Retainer services require 7-day written notice for cancellation</li>
-                  <li>Setup fees and third-party costs are non-refundable upon cancellation</li>
+                  <li>Service cancellations require written notice via email</li>
+                  <li>Completed services up to cancellation date remain billable</li>
+                  <li>Package services can be cancelled with applicable charges</li>
+                  <li>Government/statutory fees are non-refundable upon cancellation</li>
                 </ul>
               </div>
 
@@ -582,31 +497,29 @@ const Privacy: React.FC = () => {
                 
                 <div className="space-y-6">
                   <div className="bg-gray-50 p-4 rounded-lg">
-                    <h4 className="font-semibold text-gray-900 mb-2">Monthly Retainer Services</h4>
+                    <h4 className="font-semibold text-gray-900 mb-2">Property Consultation</h4>
                     <ul className="list-disc pl-6 space-y-2 text-gray-700 text-sm">
-                      <li>7-day written notice required for cancellation</li>
-                      <li>Services continue until the end of the current billing cycle</li>
-                      <li>No prorated refunds for partial months</li>
-                      <li>All deliverables and work completed up to cancellation date remain our property</li>
+                      <li>Free cancellation 24+ hours before appointment</li>
+                      <li>50% charge for cancellations within 24 hours</li>
+                      <li>Full charge for no-shows without prior notice</li>
                     </ul>
                   </div>
 
                   <div className="bg-gray-50 p-4 rounded-lg">
-                    <h4 className="font-semibold text-gray-900 mb-2">Project-Based Work</h4>
+                    <h4 className="font-semibold text-gray-900 mb-2">Property Listing Services</h4>
                     <ul className="list-disc pl-6 space-y-2 text-gray-700 text-sm">
-                      <li>Cancellation accepted with written notice</li>
-                      <li>Client responsible for payment of all work completed up to cancellation date</li>
-                      <li>Any upfront payments for work not yet started may be refunded</li>
-                      <li>All project materials and work completed remain our property until full payment</li>
+                      <li>Can be cancelled before property goes live on portals</li>
+                      <li>50% cancellation fee after listing is active</li>
+                      <li>Listing removal takes 3-5 business days</li>
                     </ul>
                   </div>
 
                   <div className="bg-gray-50 p-4 rounded-lg">
-                    <h4 className="font-semibold text-gray-900 mb-2">Emergency Cancellation</h4>
+                    <h4 className="font-semibold text-gray-900 mb-2">Legal & Documentation Services</h4>
                     <ul className="list-disc pl-6 space-y-2 text-gray-700 text-sm">
-                      <li>We reserve the right to cancel services for non-payment</li>
-                      <li>Services may be suspended for policy violations</li>
-                      <li>Repeated missed payments may result in service termination</li>
+                      <li>Cancellation possible before document preparation starts</li>
+                      <li>Partial refund based on work completed</li>
+                      <li>Government fees and charges are non-refundable</li>
                     </ul>
                   </div>
                 </div>
@@ -618,12 +531,12 @@ const Privacy: React.FC = () => {
                 <div className="space-y-4 text-gray-700">
                   <p>To cancel services, please:</p>
                   <ul className="list-disc pl-6 space-y-2">
-                    <li>Send written notice to info@earningsharthi.in</li>
-                    <li>Include your account/project details</li>
+                    <li>Send written notice to info@propertyexperts.com</li>
+                    <li>Include your service details and client ID</li>
                     <li>Specify the effective cancellation date</li>
                     <li>Clear any outstanding payments</li>
                   </ul>
-                  <p>We will acknowledge your cancellation request within 2 business days and provide a final invoice if applicable.</p>
+                  <p>We will acknowledge your cancellation within 2 business days and provide final settlement details.</p>
                 </div>
               </div>
 
@@ -631,11 +544,11 @@ const Privacy: React.FC = () => {
               <div className="bg-gradient-to-r from-blue-600 to-blue-700 rounded-xl p-8 text-white text-center">
                 <h3 className="text-2xl font-bold mb-3">Need to Cancel Services?</h3>
                 <p className="text-blue-100 mb-4">
-                  Contact us directly to discuss cancellation options.
+                  Contact us directly to discuss cancellation options and applicable charges.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
                   <a 
-                    href="mailto:info@earningsharthi.in?subject=Service Cancellation Request"
+                    href="mailto:info@propertyexperts.com?subject=Service Cancellation Request"
                     className="bg-white text-blue-600 px-6 py-3 rounded-lg font-semibold hover:bg-blue-50 transition-colors duration-300 flex items-center"
                   >
                     <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -644,7 +557,7 @@ const Privacy: React.FC = () => {
                     Email Cancellation
                   </a>
                   <a 
-                    href="tel:+916398799013"
+                    href="tel:+919876543210"
                     className="border-2 border-white text-white px-6 py-3 rounded-lg font-semibold hover:bg-white hover:text-blue-600 transition-colors duration-300 flex items-center"
                   >
                     <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
