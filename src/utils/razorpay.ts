@@ -1,119 +1,151 @@
-// Razorpay utility functions
+// src/utils/razorpay.ts
 export const loadRazorpay = (): Promise<boolean> => {
   return new Promise((resolve) => {
-    // Check if already loaded
     if (window.Razorpay) {
-      console.log('Razorpay SDK already loaded');
+      console.log('✅ Razorpay already loaded');
       resolve(true);
-      return;
-    }
-
-    // Check if script is already in the process of loading
-    const existingScript = document.querySelector('script[src="https://checkout.razorpay.com/v1/checkout.js"]');
-    if (existingScript) {
-      console.log('Razorpay SDK already loading');
-      existingScript.addEventListener('load', () => resolve(true));
-      existingScript.addEventListener('error', () => resolve(false));
       return;
     }
 
     const script = document.createElement('script');
     script.src = 'https://checkout.razorpay.com/v1/checkout.js';
-    script.async = true;
-    
     script.onload = () => {
-      console.log('Razorpay SDK loaded successfully');
+      console.log('✅ Razorpay script loaded successfully');
       resolve(true);
     };
-    
-    script.onerror = () => {
-      console.error('Failed to load Razorpay SDK');
+    script.onerror = (error) => {
+      console.error('❌ Failed to load Razorpay script:', error);
       resolve(false);
     };
-    
     document.body.appendChild(script);
   });
 };
 
-export const formatAmount = (amount: number): number => {
-  if (amount <= 0) {
-    throw new Error('Amount must be greater than 0');
-  }
-  return Math.round(amount * 100); // Convert to paise
-};
-
-// Payment handler with environment variables
-export const initializeRazorpayPayment = async (options: {
+export interface RazorpayOptions {
+  key: string;
   amount: number;
-  currency?: string;
-  receipt?: string;
-  notes?: Record<string, string>;
-  prefill?: {
-    name?: string;
-    email?: string;
-    contact?: string;
+  currency: string;
+  name: string;
+  description: string;
+  order_id?: string;
+  handler: (response: any) => void;
+  prefill: {
+    name: string;
+    email: string;
+    contact: string;
   };
-}): Promise<void> => {
+  notes: {
+    package: string;
+  };
+  theme: {
+    color: string;
+  };
+  modal: {
+    ondismiss: () => void;
+  };
+}
+
+// ✅ DIRECT PAYMENT - No backend needed
+export const initiateDirectPayment = async (
+  amount: number, 
+  packageName: string, 
+  userDetails: { name: string; email: string; phone: string },
+  onSuccess: (response: any) => void,
+  onFailure: (error: string) => void
+): Promise<void> => {
   try {
-    // Validate environment variable
+    console.log('💰 Initiating direct payment for:', packageName, 'Amount:', amount);
+
+    // Load Razorpay first
+    const razorpayLoaded = await loadRazorpay();
+    if (!razorpayLoaded) {
+      onFailure('Razorpay failed to load');
+      return;
+    }
+
+    // Get Razorpay key from environment
     const razorpayKey = import.meta.env.VITE_RAZORPAY_KEY_ID;
-    
     if (!razorpayKey) {
-      throw new Error('Razorpay key not found. Please check your environment variables.');
+      onFailure('Razorpay key not configured');
+      return;
     }
 
-    // Load Razorpay SDK
-    const isLoaded = await loadRazorpay();
-    
-    if (!isLoaded) {
-      throw new Error('Failed to load Razorpay SDK. Please check your internet connection.');
-    }
-
-    // Validate amount
-    if (!options.amount || options.amount <= 0) {
-      throw new Error('Invalid payment amount');
-    }
-
-    const paymentOptions = {
+    // Razorpay options for direct payment
+    const options: any = {
       key: razorpayKey,
-      amount: formatAmount(options.amount),
-      currency: options.currency || 'INR',
-      name: 'Your Company Name',
-      description: 'Payment for services',
-      receipt: options.receipt || `receipt_${Date.now()}`,
-      prefill: options.prefill || {},
-      notes: options.notes || {},
+      amount: amount * 1, // Convert to paise
+      currency: 'INR',
+      name: 'KPrealtors',
+      description: `Package: ${packageName}`,
+      prefill: {
+        name: userDetails.name,
+        email: userDetails.email,
+        contact: userDetails.phone,
+      },
+      notes: {
+        package: packageName,
+      },
       theme: {
-        color: '#2563eb'
+        color: '#2563eb',
       },
       handler: function (response: any) {
-        console.log('Payment successful:', response);
-        // Handle successful payment here
-        // You might want to verify the payment on your backend
+        console.log('✅ Payment successful:', response);
+        
+        // ✅ Direct success - no verification needed
+        if (response.razorpay_payment_id) {
+          onSuccess(response);
+        } else {
+          onFailure('Payment ID not received');
+        }
       },
       modal: {
         ondismiss: function() {
-          console.log('Payment modal closed');
+          console.log('❌ Payment cancelled by user');
+          onFailure('Payment cancelled');
         }
       }
     };
 
-    const razorpay = new window.Razorpay(paymentOptions);
-    razorpay.open();
+    // Create Razorpay instance and open
+    const razorpayInstance = new (window as any).Razorpay(options);
+    razorpayInstance.open();
 
   } catch (error) {
-    console.error('Error initializing Razorpay payment:', error);
-    throw error;
+    console.error('❌ Payment initiation error:', error);
+    onFailure(error instanceof Error ? error.message : 'Payment failed');
   }
 };
 
-// Utility to check if Razorpay key is configured
-export const isRazorpayConfigured = (): boolean => {
-  return !!import.meta.env.VITE_RAZORPAY_KEY_ID;
-};
+// ✅ Simple payment function with minimal parameters
+export const simplePayment = (
+  amount: number,
+  packageName: string,
+  userName: string,
+  userEmail: string,
+  userPhone: string
+): void => {
+  const userDetails = {
+    name: userName,
+    email: userEmail,
+    phone: userPhone
+  };
 
-declare global {
-  interface Window {
-    Razorpay: any;
-  }
-}
+  initiateDirectPayment(
+    amount,
+    packageName,
+    userDetails,
+    // Success callback
+    (response) => {
+      console.log('🎉 Payment Completed!', response);
+      alert(`Payment Successful! Payment ID: ${response.razorpay_payment_id}`);
+      // Redirect or update UI here
+      window.location.href = '/payment-success';
+    },
+    // Failure callback
+    (error) => {
+      console.error('💥 Payment Failed:', error);
+      alert(`Payment Failed: ${error}`);
+      // Handle failure UI here
+    }
+  );
+};

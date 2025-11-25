@@ -33,8 +33,8 @@ const Packages: React.FC = () => {
     {
       id: 2,
       name: "Pro Buyer",
-      price: 4999,
-      originalPrice: 7999,
+      price: 99, // ✅ Fixed amount - ₹99
+      originalPrice: 199,
       duration: "3 Months",
       popular: true,
       features: [
@@ -57,8 +57,8 @@ const Packages: React.FC = () => {
     {
       id: 3,
       name: "Premium Investor",
-      price: 14999,
-      originalPrice: 19999,
+      price: 299, // ✅ Fixed amount - ₹299
+      originalPrice: 499,
       duration: "6 Months",
       popular: false,
       features: [
@@ -83,8 +83,8 @@ const Packages: React.FC = () => {
     {
       id: 4,
       name: "Elite Membership",
-      price: 29999,
-      originalPrice: 39999,
+      price: 599, // ✅ Fixed amount - ₹599
+      originalPrice: 999,
       duration: "1 Year",
       popular: false,
       features: [
@@ -112,8 +112,8 @@ const Packages: React.FC = () => {
     {
       id: 5,
       name: "Basic Listing",
-      price: 999,
-      originalPrice: 1999,
+      price: 99, // ✅ Fixed amount - ₹99
+      originalPrice: 199,
       duration: "1 Month",
       popular: false,
       features: [
@@ -134,8 +134,8 @@ const Packages: React.FC = () => {
     {
       id: 6,
       name: "Featured Seller",
-      price: 2999,
-      originalPrice: 4999,
+      price: 299, // ✅ Fixed amount - ₹299
+      originalPrice: 499,
       duration: "3 Months",
       popular: true,
       features: [
@@ -158,8 +158,8 @@ const Packages: React.FC = () => {
     {
       id: 7,
       name: "Premium Seller",
-      price: 7999,
-      originalPrice: 11999,
+      price: 599, // ✅ Fixed amount - ₹599
+      originalPrice: 999,
       duration: "6 Months",
       popular: false,
       features: [
@@ -183,8 +183,8 @@ const Packages: React.FC = () => {
     {
       id: 8,
       name: "Enterprise Seller",
-      price: 19999,
-      originalPrice: 29999,
+      price: 999, // ✅ Fixed amount - ₹999
+      originalPrice: 1499,
       duration: "1 Year",
       popular: false,
       features: [
@@ -210,22 +210,28 @@ const Packages: React.FC = () => {
   const currentPackages = activeTab === 'buyer' ? buyerPackages : sellerPackages;
 
   const handlePackageSelect = (pkg: any) => {
+    if (pkg.price === 0) {
+      // Free package - direct activate
+      alert(`🎉 Your ${pkg.name} package has been activated!`);
+      return;
+    }
     setSelectedPackage(pkg);
     setShowPaymentModal(true);
   };
 
   const handlePaymentSuccess = (paymentId: string) => {
-    alert(`Payment Successful! Your ${selectedPackage.name} package is now active. Payment ID: ${paymentId}`);
+    alert(`🎉 Payment Successful! Your ${selectedPackage.name} package is now active.\nPayment ID: ${paymentId}`);
     setShowPaymentModal(false);
     setSelectedPackage(null);
   };
 
   const handlePaymentFailure = (error: string) => {
-    alert(`Payment Failed: ${error}`);
+    alert(`❌ Payment Failed: ${error}`);
+    setShowPaymentModal(false);
   };
 
   const formatPrice = (price: number) => {
-    return `₹${price.toLocaleString()}`;
+    return `₹${price}`;
   };
 
   return (
@@ -343,18 +349,25 @@ const Packages: React.FC = () => {
                 )}
 
                 {/* CTA Button */}
-                <button
-                  onClick={() => handlePackageSelect(pkg)}
-                  className={`w-full py-3 rounded-xl font-semibold transition-all ${
-                    pkg.popular
-                      ? 'bg-blue-600 text-white hover:bg-blue-700 shadow-lg'
-                      : pkg.price === 0
-                      ? 'bg-green-500 text-white hover:bg-green-600'
-                      : 'bg-gray-800 text-white hover:bg-gray-900'
-                  }`}
-                >
-                  {pkg.buttonText}
-                </button>
+                {pkg.price === 0 ? (
+                  <button
+                    onClick={() => handlePackageSelect(pkg)}
+                    className="w-full bg-green-500 text-white py-3 rounded-xl font-semibold hover:bg-green-600 transition-all"
+                  >
+                    {pkg.buttonText}
+                  </button>
+                ) : (
+                  <button
+                    onClick={() => handlePackageSelect(pkg)}
+                    className={`w-full py-3 rounded-xl font-semibold transition-all ${
+                      pkg.popular
+                        ? 'bg-blue-600 text-white hover:bg-blue-700 shadow-lg'
+                        : 'bg-gray-800 text-white hover:bg-gray-900'
+                    }`}
+                  >
+                    {pkg.buttonText} - {formatPrice(pkg.price)}
+                  </button>
+                )}
 
                 {/* Free trial notice */}
                 {pkg.price === 0 && (
@@ -368,129 +381,48 @@ const Packages: React.FC = () => {
         </div>
       </section>
 
-      {/* Comparison Section */}
-      <section className="bg-white py-16">
-        <div className="container mx-auto px-4">
-          <h2 className="text-4xl font-bold text-center text-gray-800 mb-12">
-            Package Comparison
-          </h2>
-          
-          <div className="overflow-x-auto">
-            <table className="w-full max-w-6xl mx-auto">
-              <thead>
-                <tr className="bg-gray-50">
-                  <th className="p-4 text-left font-semibold">Features</th>
-                  {currentPackages.map((pkg) => (
-                    <th key={pkg.id} className="p-4 text-center font-semibold">
-                      {pkg.name}
-                    </th>
-                  ))}
-                </tr>
-              </thead>
-              <tbody>
-                <tr className="border-b">
-                  <td className="p-4 font-medium">Property Search</td>
-                  {currentPackages.map((pkg) => (
-                    <td key={pkg.id} className="p-4 text-center">
-                      {pkg.features.includes('Basic Property Search') ? 'Basic' : 
-                       pkg.features.includes('Advanced Search Filters') ? 'Advanced' : 
-                       pkg.features.includes('Unlimited Property Access') ? 'Unlimited' : '❌'}
-                    </td>
-                  ))}
-                </tr>
-                <tr className="border-b">
-                  <td className="p-4 font-medium">Support</td>
-                  {currentPackages.map((pkg) => (
-                    <td key={pkg.id} className="p-4 text-center">
-                      {pkg.features.includes('Email Support') ? 'Email' : 
-                       pkg.features.includes('Priority Customer Support') ? 'Priority' : 
-                       pkg.features.includes('Dedicated Manager') ? 'Dedicated' : '❌'}
-                    </td>
-                  ))}
-                </tr>
-                <tr className="border-b">
-                  <td className="p-4 font-medium">Legal Assistance</td>
-                  {currentPackages.map((pkg) => (
-                    <td key={pkg.id} className="p-4 text-center">
-                      {pkg.features.includes('Legal Assistance Basic') ? 'Basic' : 
-                       pkg.features.includes('Legal Consultations') ? 'Limited' : 
-                       pkg.features.includes('Unlimited Legal Consultations') ? 'Unlimited' : '❌'}
-                    </td>
-                  ))}
-                </tr>
-                <tr>
-                  <td className="p-4 font-medium">Price</td>
-                  {currentPackages.map((pkg) => (
-                    <td key={pkg.id} className="p-4 text-center font-bold text-blue-600">
-                      {pkg.price === 0 ? 'FREE' : formatPrice(pkg.price)}
-                    </td>
-                  ))}
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </section>
-
-      {/* FAQ Section */}
-      <section className="bg-gray-50 py-16">
-        <div className="container mx-auto px-4 max-w-4xl">
-          <h2 className="text-4xl font-bold text-center text-gray-800 mb-12">
-            Frequently Asked Questions
-          </h2>
-          
-          <div className="space-y-6">
-            <div className="bg-white rounded-2xl p-6 shadow-lg">
-              <h3 className="font-semibold text-lg mb-2">Can I upgrade my package later?</h3>
-              <p className="text-gray-600">Yes, you can upgrade anytime. The remaining amount from your current package will be adjusted in the new package price.</p>
-            </div>
-            
-            <div className="bg-white rounded-2xl p-6 shadow-lg">
-              <h3 className="font-semibold text-lg mb-2">Is there a refund policy?</h3>
-              <p className="text-gray-600">We offer a 7-day money-back guarantee on all paid packages if you're not satisfied with our services.</p>
-            </div>
-            
-            <div className="bg-white rounded-2xl p-6 shadow-lg">
-              <h3 className="font-semibold text-lg mb-2">Do packages auto-renew?</h3>
-              <p className="text-gray-600">No, packages don't auto-renew. We'll notify you before expiry so you can choose to renew or not.</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* Payment Modal */}
       {showPaymentModal && selectedPackage && (
-        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
           <div className="bg-white rounded-2xl max-w-md w-full p-6">
-            <h3 className="text-2xl font-bold text-gray-800 mb-4">Complete Payment</h3>
+            <div className="flex justify-between items-center mb-4">
+              <h3 className="text-2xl font-bold text-gray-800">Complete Payment</h3>
+              <button 
+                onClick={() => setShowPaymentModal(false)}
+                className="text-gray-500 hover:text-gray-700"
+              >
+                ✕
+              </button>
+            </div>
             
             <div className="bg-gray-50 rounded-xl p-4 mb-6">
-              <h4 className="font-semibold text-gray-800 mb-2">{selectedPackage.name} Package</h4>
+              <h4 className="font-semibold text-gray-800 mb-2">{selectedPackage.name}</h4>
+              <p className="text-gray-600 text-sm mb-2">{selectedPackage.description}</p>
               <p className="text-gray-600 text-sm mb-2">Valid for {selectedPackage.duration}</p>
-              <p className="text-xl font-bold text-blue-600">{formatPrice(selectedPackage.price)}</p>
+              <div className="flex items-center gap-2">
+                <p className="text-xl font-bold text-blue-600">{formatPrice(selectedPackage.price)}</p>
+                {selectedPackage.originalPrice > selectedPackage.price && (
+                  <p className="text-sm text-gray-500 line-through">{formatPrice(selectedPackage.originalPrice)}</p>
+                )}
+              </div>
               {selectedPackage.originalPrice > selectedPackage.price && (
-                <p className="text-green-600 text-sm">
+                <p className="text-green-600 text-sm font-semibold">
                   You save {formatPrice(selectedPackage.originalPrice - selectedPackage.price)}!
                 </p>
               )}
             </div>
 
-            <div className="space-y-4">
-              <PaymentButton
-                amount={selectedPackage.price * 100} // Convert to paise
-                currency="INR"
-                onSuccess={handlePaymentSuccess}
-                onFailure={handlePaymentFailure}
-                description={`${selectedPackage.name} Package - ${selectedPackage.duration}`}
-              />
-              
-              <button
-                onClick={() => setShowPaymentModal(false)}
-                className="w-full bg-gray-500 text-white py-3 rounded-xl font-semibold hover:bg-gray-600 transition"
-              >
-                Cancel
-              </button>
-            </div>
+            {/* ✅ Payment Button Component */}
+            <PaymentButton
+              amount={selectedPackage.price} // ✅ Exact amount from package
+              packageName={selectedPackage.name}
+              packageDescription={selectedPackage.description}
+              onSuccess={handlePaymentSuccess}
+              onFailure={handlePaymentFailure}
+              className="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-xl font-semibold"
+            >
+              Pay {formatPrice(selectedPackage.price)} Now
+            </PaymentButton>
 
             <div className="mt-4 text-center text-sm text-gray-500">
               🔒 Secure payment powered by Razorpay

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet";
 import { ArrowRight, CheckCircle, Star, MessageCircle, Phone, MapPin, Bed, Bath, Square, Heart, Search, Filter, Home as HomeIcon, User, Plus, CreditCard, BookOpen } from "lucide-react";
+import PaymentButton from "../components/PaymentButton";
 
 const Home = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -163,21 +164,20 @@ const Home = () => {
     }
   ];
 
-  // Updated Pricing Packages
+  // ✅ UPDATED PRICING PACKAGES - New Affordable Pricing
   const pricingPackages = [
     {
       name: "STARTER PACKAGE",
-      price: "₹299",
-      originalPrice: "₹499",
+      price: "₹99",
+      originalPrice: "₹199",
       duration: "one-time",
       description: "Perfect for individual property sellers",
       features: [
         "10 Property Submissions",
         "Basic Amenities Setup",
-        "Nearest Location Tags",
+        "Nearest Location Tags", 
         "Additional Information",
         "Image Gallery (10 photos)",
-        "Property Analytics",
         "30 Days Listing Validity"
       ],
       notIncluded: [
@@ -191,8 +191,8 @@ const Home = () => {
     },
     {
       name: "BASIC PACKAGE",
-      price: "₹799",
-      originalPrice: "₹1,499",
+      price: "₹249", 
+      originalPrice: "₹499",
       duration: "one-time",
       description: "Great for regular property listings",
       features: [
@@ -200,14 +200,13 @@ const Home = () => {
         "5 Featured Properties",
         "Basic Amenities Setup",
         "Nearest Location Tags",
-        "Additional Information",
+        "Additional Information", 
         "Image Gallery (20 photos)",
-        "Property Analytics",
         "60 Days Listing Validity"
       ],
       notIncluded: [
         "Top Property Placement",
-        "Urgent Property Tag",
+        "Urgent Property Tag", 
         "Property Plan Upload"
       ],
       popular: true,
@@ -215,14 +214,14 @@ const Home = () => {
     },
     {
       name: "PRO PACKAGE",
-      price: "₹1,199",
-      originalPrice: "₹2,499",
-      duration: "monthly",
+      price: "₹499",
+      originalPrice: "₹999",
+      duration: "monthly", 
       description: "Complete solution for professional agents",
       features: [
         "50 Property Submissions",
         "20 Featured Properties",
-        "10 Top Property Placements",
+        "10 Top Property Placements", 
         "10 Urgent Property Tags",
         "Advanced Amenities Setup",
         "Nearest Location Tags",
@@ -246,19 +245,19 @@ const Home = () => {
       description: "Wide range of verified properties across all budgets"
     },
     {
-      icon: "🤝",
+      icon: "🤝", 
       title: "Trusted Agents",
       description: "Certified and experienced real estate professionals"
     },
     {
       icon: "💰",
-      title: "Best Prices",
+      title: "Best Prices", 
       description: "Guaranteed best deals and transparent pricing"
     },
     {
       icon: "⚡",
       title: "Quick Processing",
-      description: "Fast documentation and hassle-free transactions"
+      description: "Fast documentation and hassle-free transactions" 
     }
   ];
 
@@ -266,14 +265,14 @@ const Home = () => {
   const processSteps = [
     {
       number: "01",
-      title: "Search Property",
+      title: "Search Property", 
       description: "Browse through our extensive property listings",
       icon: "🔍"
     },
     {
       number: "02",
       title: "Visit & Select",
-      description: "Schedule site visits and select your favorite",
+      description: "Schedule site visits and select your favorite", 
       icon: "📍"
     },
     {
@@ -283,7 +282,7 @@ const Home = () => {
       icon: "📝"
     },
     {
-      number: "04",
+      number: "04", 
       title: "Move In",
       description: "Get possession and start your new life",
       icon: "🎉"
@@ -294,19 +293,19 @@ const Home = () => {
   const testimonials = [
     {
       name: "Rajesh Mehra",
-      property: "3BHK in Sector 45",
+      property: "3BHK in Sector 45", 
       text: "Found my dream home within budget. KPrealtors made the entire process smooth and transparent.",
       rating: 5
     },
     {
-      name: "Priya Sharma",
+      name: "Priya Sharma", 
       property: "2BHK in Sohna Road",
       text: "Excellent service! The team helped me sell my apartment quickly at a great price.",
       rating: 5
     },
     {
       name: "Amit Verma",
-      property: "Office in Cyber City",
+      property: "Office in Cyber City", 
       text: "Professional approach and deep market knowledge. Highly recommended for commercial properties.",
       rating: 5
     }
@@ -333,10 +332,6 @@ const Home = () => {
     console.log(`Toggled favorite for property ${id}`);
   };
 
-  const handlePackagePurchase = (pkgName, pkgPrice) => {
-    handleWhatsApp(`I want to purchase ${pkgName} package for ${pkgPrice}. Please provide payment details.`);
-  };
-
   const handleBookInfo = (propertyTitle) => {
     handleWhatsApp(`I want to book a site visit for ${propertyTitle}. Please share available dates.`);
   };
@@ -349,6 +344,18 @@ const Home = () => {
     
     const message = `I'm looking for properties with:\n${filters.join('\n')}`;
     handleWhatsApp(message);
+  };
+
+  // ✅ Payment success handler
+  const handlePaymentSuccess = (paymentId) => {
+    console.log('Payment Successful! ID:', paymentId);
+    // Auto redirect to success page handled in PaymentButton
+  };
+
+  // ✅ Payment failure handler  
+  const handlePaymentFailure = (error) => {
+    console.error('Payment Failed:', error);
+    // Auto redirect to failed page handled in PaymentButton
   };
 
   return (
@@ -690,13 +697,13 @@ const Home = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12 lg:mb-16">
             <div className="inline-flex items-center bg-purple-100 text-purple-800 px-4 py-2 rounded-full text-sm font-semibold mb-4">
-              💰 LISTING PACKAGES
+              💰 AFFORDABLE LISTING PACKAGES
             </div>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
               Choose Your <span className="text-purple-600">Package</span>
             </h2>
             <p className="text-lg lg:text-xl text-gray-600 max-w-3xl mx-auto">
-              Affordable packages to list and promote your properties effectively
+              Budget-friendly packages to list and promote your properties effectively
             </p>
           </div>
 
@@ -724,7 +731,9 @@ const Home = () => {
                   </div>
                   
                   <div className="bg-white/20 rounded-lg px-3 py-1 inline-block mb-6">
-                    <span className="text-sm font-semibold">Save ₹{parseInt(pkg.originalPrice.replace('₹', '').replace(',', '')) - parseInt(pkg.price.replace('₹', '').replace(',', ''))}</span>
+                    <span className="text-sm font-semibold">
+                      Save ₹{parseInt(pkg.originalPrice.replace('₹', '').replace(',', '')) - parseInt(pkg.price.replace('₹', '').replace(',', ''))}
+                    </span>
                   </div>
                   
                   <p className="text-white/90 text-base mb-6">{pkg.description}</p>
@@ -745,23 +754,39 @@ const Home = () => {
                   </div>
 
                   <div className="space-y-2">
-                    <button
-                      onClick={() => handlePackagePurchase(pkg.name, pkg.price)}
-                      className="w-full bg-white text-gray-900 hover:bg-gray-100 py-3 rounded-xl font-bold text-base transition-all duration-300 hover:scale-105 flex items-center justify-center space-x-2"
+                    {/* ✅ Clean Payment Button - No Test Buttons */}
+                    <PaymentButton
+                      amount={parseInt(pkg.price.replace('₹', '').replace(',', '')) * 100}
+                      packageName={pkg.name}
+                      packageDescription={pkg.description}
+                      onSuccess={handlePaymentSuccess}
+                      onFailure={handlePaymentFailure}
                     >
-                      <CreditCard className="h-5 w-5" />
-                      <span>Pay Now</span>
-                    </button>
+                      💳 Pay {pkg.price}
+                    </PaymentButton>
+                    
                     <button
-                      onClick={() => handleWhatsApp(`I want more information about ${pkg.name} package`)}
+                      onClick={() => handleWhatsApp(`I want more information about ${pkg.name} package for ${pkg.price}`)}
                       className="w-full bg-transparent border-2 border-white text-white hover:bg-white hover:text-gray-900 py-3 rounded-xl font-bold text-base transition-all duration-300 hover:scale-105"
                     >
-                      Get Info
+                      💬 Get Info on WhatsApp
                     </button>
                   </div>
                 </div>
               </div>
             ))}
+          </div>
+
+          {/* ✅ Payment Security Note */}
+          <div className="text-center mt-12 bg-green-50 rounded-2xl p-6 border border-green-200">
+            <div className="flex items-center justify-center mb-3">
+              <div className="text-green-600 text-2xl mr-2">🔒</div>
+              <h3 className="text-lg font-bold text-green-800">Secure Payment Processing</h3>
+            </div>
+            <p className="text-green-700 text-sm max-w-2xl mx-auto">
+              All payments are securely processed through Razorpay. We support UPI, Credit/Debit Cards, Net Banking, and Wallets. 
+              Your financial information is protected with bank-level security.
+            </p>
           </div>
         </div>
       </section>
