@@ -1,6 +1,6 @@
 import React from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
-import { Menu, X, Home, Search, Building2, Phone, CreditCard, LogIn, UserPlus } from "lucide-react";
+import { Menu, X, Home, Search, Building2, Phone, CreditCard, LogIn, UserPlus, Home as RentIcon } from "lucide-react";
 
 type NavItem = { 
   name: string; 
@@ -18,6 +18,11 @@ const primaryNav: NavItem[] = [
     name: "Buy", 
     href: "/buy",
     icon: <Search className="h-4 w-4" />
+  },
+  { 
+    name: "Rent", 
+    href: "/rent",
+    icon: <RentIcon className="h-4 w-4" />
   },
   { 
     name: "Sell", 

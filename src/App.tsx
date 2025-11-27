@@ -10,7 +10,6 @@ import Contact from './pages/Contact';
 import Terms from './pages/Terms'; 
 import Privacy from './pages/Privacy';
 import NotFound from './pages/NotFound';
-import Offer from './pages/Offer';
 import Buy from './pages/Buy';
 import Sell from './pages/Sell';
 import Packages from './pages/Packages';
@@ -18,6 +17,10 @@ import Dashboard from './pages/Dashboard';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Services from './pages/Services';
+import Rent from './pages/Rent';
+import Properties from './pages/Properties';
+
+
 
 function App() {
   return (
@@ -122,11 +125,12 @@ function App() {
             <Route path="/buy" element={<Buy />} />
             <Route path="/sell" element={<Sell />} />
             <Route path="/packages" element={<Packages />} />
-            
+            <Route path="/rent" element={<Rent />} />
+            <Route path="/properties" element={<Properties />} />
             {/* Legal Pages */}
             <Route path="/terms" element={<Terms />} />
             <Route path="/privacy" element={<Privacy />} />
-            <Route path="/offer" element={<Offer />} />
+            
             
             {/* User Account Pages */}
             <Route path="/dashboard" element={<Dashboard />} />
