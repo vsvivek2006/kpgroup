@@ -7,36 +7,17 @@ const Packages: React.FC = () => {
   const [showPaymentModal, setShowPaymentModal] = useState(false);
   const [activeTab, setActiveTab] = useState('buyer');
 
+  // --- Finalized Package Data (3 Paid Packages per Category) ---
+
   const buyerPackages = [
     {
       id: 1,
-      name: "Basic Search",
-      price: 0,
-      originalPrice: 0,
-      duration: "Lifetime",
-      popular: false,
-      features: [
-        "Basic Property Search",
-        "Limited Property Views (10/day)",
-        "Standard Customer Support",
-        "Email Notifications",
-        "Save Properties"
-      ],
-      limitations: [
-        "No Priority Access",
-        "Limited Advanced Filters",
-        "No Expert Assistance"
-      ],
-      buttonText: "Get Started Free",
-      description: "Perfect for casual property browsing"
-    },
-    {
-      id: 2,
       name: "Pro Buyer",
-      price: 99, // ✅ Fixed amount - ₹99
-      originalPrice: 199,
+      price: 299, 
+      originalPrice: 499,
       duration: "3 Months",
-      popular: true,
+      popular: false,
+      badge: "ESSENTIAL",
       features: [
         "Unlimited Property Access",
         "Advanced Search Filters",
@@ -44,183 +25,166 @@ const Packages: React.FC = () => {
         "Property Price Analytics",
         "Virtual Tours Access",
         "Document Verification",
-        "Legal Assistance Basic",
-        "Property Comparison Tool"
+        "Property Comparison Tool",
+        "WhatsApp Notifications",
       ],
-      limitations: [
-        "Limited Legal Consultations",
-        "Standard Negotiation Support"
+      buttonText: "Go Pro",
+      description: "Best for serious home buyers and long-term search",
+      gradient: "from-blue-50 to-indigo-100",
+      borderColor: "border-blue-500",
+      buttonColor: "bg-blue-600 hover:bg-blue-700",
+      textColor: "text-blue-800",
+      badgeColor: "bg-blue-500",
+    },
+    {
+      id: 2,
+      name: "Premium Investor",
+      price: 799, 
+      originalPrice: 1099,
+      duration: "6 Months",
+      popular: true,
+      badge: "RECOMMENDED",
+      features: [
+        "🔥 All Pro Features Included",
+        "🔥 Dedicated Relationship Manager",
+        "🔥 Exclusive Pre-Launch Access",
+        "🔥 Investment Analytics Dashboard",
+        "🔥 Legal Consultations (3 sessions)",
+        "🔥 Expert Negotiation Support",
+        "🔥 Property Valuation Reports",
+        "🔥 Portfolio Management Tools",
+        "🔥 Site Visit Coordination",
       ],
-      buttonText: "Buy Now",
-      description: "Best for serious home buyers"
+      buttonText: "Invest Now",
+      description: "For serious real estate investors seeking high returns",
+      gradient: "from-purple-50 to-pink-100",
+      borderColor: "border-purple-500",
+      buttonColor: "bg-purple-600 hover:bg-purple-700",
+      textColor: "text-purple-800",
+      badgeColor: "bg-purple-500",
     },
     {
       id: 3,
-      name: "Premium Investor",
-      price: 299, // ✅ Fixed amount - ₹299
-      originalPrice: 499,
-      duration: "6 Months",
-      popular: false,
-      features: [
-        "All Pro Features",
-        "Dedicated Relationship Manager",
-        "Exclusive Pre-Launch Access",
-        "Investment Analytics",
-        "Legal Consultations (5 sessions)",
-        "Negotiation Support",
-        "Property Valuation Reports",
-        "Market Trend Analysis",
-        "Rental Yield Calculator",
-        "Portfolio Management"
-      ],
-      limitations: [
-        "No Property Management",
-        "Limited to Residential Properties"
-      ],
-      buttonText: "Buy Now",
-      description: "For serious real estate investors"
-    },
-    {
-      id: 4,
       name: "Elite Membership",
-      price: 599, // ✅ Fixed amount - ₹599
-      originalPrice: 999,
+      price: 1199, 
+      originalPrice: 1999,
       duration: "1 Year",
       popular: false,
+      badge: "ELITE",
       features: [
-        "All Premium Features",
-        "Unlimited Legal Consultations",
-        "Full Property Management Support",
-        "Commercial Property Access",
-        "International Property Access",
-        "Personalized Property Alerts",
-        "Site Visits Coordination",
-        "Loan Assistance",
-        "Tax Advisory Services",
-        "Lifetime Support Access"
+        "💎 All Premium Features",
+        "💎 Unlimited Legal Consultations",
+        "💎 Full Property Management Support",
+        "💎 Commercial Property Access",
+        "💎 International Property Insights",
+        "💎 Personalized Property Alerts & Reports",
+        "💎 Complete Loan Assistance & Tax Advisory",
+        "💎 Lifetime Dedicated Support",
+        "💎 Business Property Consulting",
       ],
-      limitations: [
-        "No International Travel Included",
-        "Additional charges for legal documentation"
-      ],
-      buttonText: "Buy Now",
-      description: "Complete real estate solution"
-    }
+      buttonText: "Go Elite",
+      description: "Complete, hands-off real estate solution package",
+      gradient: "from-orange-50 to-red-100",
+      borderColor: "border-orange-500",
+      buttonColor: "bg-orange-600 hover:bg-orange-700",
+      textColor: "text-orange-800",
+      badgeColor: "bg-orange-500",
+    },
   ];
 
   const sellerPackages = [
     {
-      id: 5,
-      name: "Basic Listing",
-      price: 99, // ✅ Fixed amount - ₹99
-      originalPrice: 199,
+      id: 4,
+      name: "Featured Seller",
+      price: 299, 
+      originalPrice: 499,
       duration: "1 Month",
       popular: false,
+      badge: "BOOST",
       features: [
-        "Property Listing (30 days)",
-        "Basic Photo Upload (5 images)",
-        "Contact Form",
-        "Standard Search Visibility",
-        "Email Support"
+        "⭐ Featured Listing Placement (7 Days)",
+        "⭐ High Priority in Search Results",
+        "⭐ Professional Photography (10 images)",
+        "⭐ Virtual Tour Creation",
+        "⭐ Social Media Promotion (Basic)",
+        "⭐ WhatsApp Lead Notifications",
+        "⭐ Lead Management Dashboard",
+        "⭐ Priority Support",
       ],
-      limitations: [
-        "No Featured Listing",
-        "Limited Photo Upload",
-        "No Social Media Promotion"
+      buttonText: "Boost Listing",
+      description: "Maximise visibility for a single property listing",
+      gradient: "from-teal-50 to-cyan-100",
+      borderColor: "border-teal-500",
+      buttonColor: "bg-teal-600 hover:bg-teal-700",
+      textColor: "text-teal-800",
+      badgeColor: "bg-teal-500",
+    },
+    {
+      id: 5,
+      name: "Premium Seller",
+      price: 799, 
+      originalPrice: 1099,
+      duration: "3 Months",
+      popular: true,
+      badge: "TOP SELLER",
+      features: [
+        "🚀 All Featured Seller Benefits (3 Listings)",
+        "🚀 Dedicated Sales Manager",
+        "🚀 Professional Video Tour",
+        "🚀 Multi-platform Listing",
+        "🚀 Advanced Market Analysis",
+        "🚀 Expert Negotiation Support",
+        "🚀 Legal Documentation Help",
+        "🚀 Property Valuation Report",
+        "🚀 Open House Organization (1 Session)",
       ],
-      buttonText: "List Now",
-      description: "Basic property listing package"
+      buttonText: "Go Premium",
+      description: "Comprehensive package for faster, premium sales",
+      gradient: "from-pink-50 to-rose-100",
+      borderColor: "border-pink-500",
+      buttonColor: "bg-pink-600 hover:bg-pink-700",
+      textColor: "text-pink-800",
+      badgeColor: "bg-pink-500",
     },
     {
       id: 6,
-      name: "Featured Seller",
-      price: 299, // ✅ Fixed amount - ₹299
-      originalPrice: 499,
-      duration: "3 Months",
-      popular: true,
-      features: [
-        "Featured Listing Placement",
-        "High Priority in Search",
-        "Professional Photography (10 images)",
-        "Virtual Tour Creation",
-        "Social Media Promotion",
-        "WhatsApp Notifications",
-        "Buyer Verification",
-        "Lead Management Dashboard"
-      ],
-      limitations: [
-        "Limited to one property",
-        "No dedicated manager"
-      ],
-      buttonText: "List Now",
-      description: "Get maximum visibility for your property"
-    },
-    {
-      id: 7,
-      name: "Premium Seller",
-      price: 599, // ✅ Fixed amount - ₹599
-      originalPrice: 999,
+      name: "Enterprise Seller",
+      price: 1199, 
+      originalPrice: 1999,
       duration: "6 Months",
       popular: false,
+      badge: "ENTERPRISE",
       features: [
-        "All Featured Seller Benefits",
-        "Dedicated Sales Manager",
-        "Property Video Tour",
-        "Multi-platform Listing",
-        "Lead Priority Management",
-        "Market Price Analysis",
-        "Negotiation Support",
-        "Legal Documentation Help",
-        "Property Valuation Report"
+        "🏢 All Premium Seller Features (5 Listings)",
+        "🏢 Custom Marketing Campaign & Staging Advice",
+        "🏢 Complete Open House Management",
+        "🏢 Full Legal & Documentation Support",
+        "🏢 Price Optimization Strategy & Reports",
+        "🏢 Dedicated Support Team",
+        "🏢 Custom API Access for Developers",
+        "🏢 Bulk Listing Management",
+        "🏢 Business Analytics Dashboard",
       ],
-      limitations: [
-        "Additional charges for legal work",
-        "Limited to residential properties"
-      ],
-      buttonText: "List Now",
-      description: "Complete selling solution"
+      buttonText: "Enterprise Plan",
+      description: "For builders, developers, and bulk property owners",
+      gradient: "from-indigo-50 to-violet-100",
+      borderColor: "border-indigo-500",
+      buttonColor: "bg-indigo-600 hover:bg-indigo-700",
+      textColor: "text-indigo-800",
+      badgeColor: "bg-indigo-500",
     },
-    {
-      id: 8,
-      name: "Enterprise Seller",
-      price: 999, // ✅ Fixed amount - ₹999
-      originalPrice: 1499,
-      duration: "1 Year",
-      popular: false,
-      features: [
-        "All Premium Seller Features",
-        "Multiple Property Listings",
-        "Custom Marketing Campaign",
-        "Professional Staging Advice",
-        "Open House Organization",
-        "Legal & Documentation Full Support",
-        "Price Optimization Strategy",
-        "Competitor Analysis",
-        "Dedicated Support Team"
-      ],
-      limitations: [
-        "Maximum 5 properties",
-        "Commercial properties extra"
-      ],
-      buttonText: "List Now",
-      description: "For builders and multiple property owners"
-    }
   ];
 
   const currentPackages = activeTab === 'buyer' ? buyerPackages : sellerPackages;
 
   const handlePackageSelect = (pkg: any) => {
-    if (pkg.price === 0) {
-      // Free package - direct activate
-      alert(`🎉 Your ${pkg.name} package has been activated!`);
-      return;
-    }
     setSelectedPackage(pkg);
+    // Removed the conditional check for pkg.price === 1
     setShowPaymentModal(true);
   };
 
   const handlePaymentSuccess = (paymentId: string) => {
-    alert(`🎉 Payment Successful! Your ${selectedPackage.name} package is now active.\nPayment ID: ${paymentId}`);
+    alert(`🎉 Payment Successful! \nYour ${selectedPackage.name} package is now active.\nPayment ID: ${paymentId}`);
     setShowPaymentModal(false);
     setSelectedPackage(null);
   };
@@ -235,146 +199,121 @@ const Packages: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-r from-blue-600 to-indigo-700 text-white py-20">
-        <div className="absolute inset-0 bg-black opacity-10"></div>
+      <section className="relative bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-700 text-white py-20 sm:py-24">
+        <div className="absolute inset-0 bg-black opacity-20"></div>
         <div className="container mx-auto px-4 relative z-10 text-center">
-          <h1 className="text-5xl md:text-6xl font-bold mb-6">Choose Your Package</h1>
-          <p className="text-xl md:text-2xl mb-4 max-w-3xl mx-auto">
-            Find the perfect plan for your real estate journey
+          <h1 className="text-4xl md:text-6xl font-extrabold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-yellow-300 to-orange-300">
+            Premium Real Estate Packages
+          </h1>
+          <p className="text-lg md:text-xl mb-3 max-w-3xl mx-auto font-light">
+            Unlock exclusive features tailored for buyers and sellers in India.
           </p>
-          <p className="text-lg opacity-90">
-            Flexible packages for buyers, sellers, and investors
+          <p className="text-md opacity-90 font-medium">
+            Find, Buy, or Sell faster with our professional plans.
           </p>
         </div>
       </section>
 
-      {/* Tab Navigation */}
-      <section className="container mx-auto px-4 -mt-8 relative z-20">
-        <div className="bg-white rounded-2xl shadow-2xl p-2 max-w-2xl mx-auto">
-          <div className="flex">
+      {/* Tab Navigation (Mobile Friendly) */}
+      <section className="container mx-auto px-4 -mt-10 relative z-20">
+        <div className="bg-white/95 backdrop-blur-sm rounded-2xl shadow-xl p-1 max-w-lg mx-auto border border-white/20">
+          <div className="flex bg-gray-100 rounded-xl p-1">
             <button
               onClick={() => setActiveTab('buyer')}
-              className={`flex-1 py-4 px-6 rounded-xl font-semibold text-lg transition-all ${
+              className={`flex-1 py-3 sm:py-4 px-4 rounded-xl font-bold text-base sm:text-lg transition-all duration-300 text-center ${
                 activeTab === 'buyer'
-                  ? 'bg-blue-600 text-white shadow-lg'
+                  ? 'bg-white text-blue-600 shadow-lg transform scale-105'
                   : 'text-gray-600 hover:text-blue-600'
               }`}
             >
-              👨‍💼 Buyer Packages
+              🏠 Buyer Plans
             </button>
             <button
               onClick={() => setActiveTab('seller')}
-              className={`flex-1 py-4 px-6 rounded-xl font-semibold text-lg transition-all ${
+              className={`flex-1 py-3 sm:py-4 px-4 rounded-xl font-bold text-base sm:text-lg transition-all duration-300 text-center ${
                 activeTab === 'seller'
-                  ? 'bg-blue-600 text-white shadow-lg'
-                  : 'text-gray-600 hover:text-blue-600'
+                  ? 'bg-white text-green-600 shadow-lg transform scale-105'
+                  : 'text-gray-600 hover:text-green-600'
               }`}
             >
-              👨‍💻 Seller Packages
+              💰 Seller Plans
             </button>
           </div>
         </div>
       </section>
 
-      {/* Packages Grid */}
+      {/* Packages Grid (Professional Look) */}
       <section className="container mx-auto px-4 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
           {currentPackages.map((pkg) => (
             <div
               key={pkg.id}
-              className={`bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300 ${
-                pkg.popular ? 'ring-4 ring-blue-500 ring-opacity-50 transform hover:scale-105' : 'hover:scale-102'
-              }`}
+              className={`relative rounded-3xl overflow-hidden shadow-2xl transform hover:scale-[1.02] transition-all duration-500 border-4 ${pkg.borderColor} bg-white`}
             >
-              {pkg.popular && (
-                <div className="bg-blue-600 text-white text-center py-2 font-semibold">
-                  ⭐ MOST POPULAR
-                </div>
-              )}
-              
-              <div className="p-6">
+              {/* Badge & Popular Ribbon */}
+              <div className={`text-center py-4 bg-gradient-to-r ${pkg.gradient} relative`}>
+                <span className={`inline-block ${pkg.badgeColor} text-white px-4 py-1 rounded-full text-xs font-bold z-10 shadow-md uppercase`}>
+                  {pkg.badge}
+                </span>
+                {pkg.popular && (
+                  <div className="absolute top-0 right-0 bg-yellow-400 text-yellow-900 px-3 py-1 text-xs font-bold rounded-bl-xl shadow-lg">
+                    BEST VALUE
+                  </div>
+                )}
+              </div>
+
+              <div className="p-6 sm:p-8 flex flex-col h-full">
                 {/* Package Header */}
                 <div className="text-center mb-6">
-                  <h3 className="text-2xl font-bold text-gray-800 mb-2">{pkg.name}</h3>
-                  <p className="text-gray-600 text-sm mb-4">{pkg.description}</p>
+                  <h3 className={`text-3xl font-bold ${pkg.textColor} mb-2`}>{pkg.name}</h3>
+                  <p className="text-gray-600 text-sm mb-4 font-medium">{pkg.description}</p>
                   
-                  <div className="flex items-center justify-center gap-2 mb-2">
-                    <span className="text-3xl font-bold text-blue-600">
+                  {/* Price Section */}
+                  <div className="mb-4">
+                    <span className={`text-5xl font-extrabold ${pkg.textColor}`}>
                       {formatPrice(pkg.price)}
                     </span>
-                    {pkg.originalPrice > pkg.price && (
-                      <span className="text-lg text-gray-500 line-through">
-                        {formatPrice(pkg.originalPrice)}
-                      </span>
-                    )}
-                  </div>
-                  
-                  {pkg.originalPrice > pkg.price && (
-                    <div className="bg-green-100 text-green-600 text-sm font-semibold px-3 py-1 rounded-full inline-block">
-                      Save {((pkg.originalPrice - pkg.price) / pkg.originalPrice * 100).toFixed(0)}%
+                    <span className="text-xl text-gray-500 font-semibold"> / {pkg.duration}</span>
+                    <div className="flex items-center justify-center gap-3 mt-1">
+                      {pkg.originalPrice > pkg.price && (
+                        <span className="text-lg text-red-500 line-through font-medium">
+                          {formatPrice(pkg.originalPrice)}
+                        </span>
+                      )}
+                      {pkg.originalPrice > pkg.price && (
+                        <div className="bg-green-500 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg">
+                          Save {((pkg.originalPrice - pkg.price) / pkg.originalPrice * 100).toFixed(0)}%
+                        </div>
+                      )}
                     </div>
-                  )}
-                  
-                  <div className="text-gray-500 text-sm mt-2">Valid for {pkg.duration}</div>
+                  </div>
                 </div>
 
-                {/* Features */}
-                <div className="mb-6">
-                  <h4 className="font-semibold text-gray-800 mb-3">✅ What's Included:</h4>
-                  <ul className="space-y-2">
+                {/* Features List */}
+                <div className="flex-grow mb-8">
+                  <ul className="space-y-3">
                     {pkg.features.map((feature, index) => (
-                      <li key={index} className="flex items-start text-sm text-gray-600">
-                        <span className="text-green-500 mr-2">✓</span>
-                        {feature}
+                      <li key={index} className="flex items-start text-sm">
+                        <span className={`text-green-500 mr-3 mt-1 flex-shrink-0 font-extrabold`}>
+                          {activeTab === 'buyer' ? '🏠' : '💰'}
+                        </span>
+                        <span className="text-gray-700 font-medium">{feature}</span>
                       </li>
                     ))}
                   </ul>
                 </div>
 
-                {/* Limitations */}
-                {pkg.limitations.length > 0 && (
-                  <div className="mb-6">
-                    <h4 className="font-semibold text-gray-800 mb-3">⚠️ Limitations:</h4>
-                    <ul className="space-y-2">
-                      {pkg.limitations.map((limitation, index) => (
-                        <li key={index} className="flex items-start text-sm text-gray-600">
-                          <span className="text-gray-400 mr-2">•</span>
-                          {limitation}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
-
                 {/* CTA Button */}
-                {pkg.price === 0 ? (
+                <div className="mt-auto"> {/* Ensures button is at the bottom */}
                   <button
                     onClick={() => handlePackageSelect(pkg)}
-                    className="w-full bg-green-500 text-white py-3 rounded-xl font-semibold hover:bg-green-600 transition-all"
+                    className={`w-full ${pkg.buttonColor} text-white py-4 rounded-2xl font-bold text-lg transition-all duration-300 transform hover:shadow-2xl shadow-xl`}
                   >
-                    {pkg.buttonText}
+                    {pkg.buttonText} • {formatPrice(pkg.price)}
                   </button>
-                ) : (
-                  <button
-                    onClick={() => handlePackageSelect(pkg)}
-                    className={`w-full py-3 rounded-xl font-semibold transition-all ${
-                      pkg.popular
-                        ? 'bg-blue-600 text-white hover:bg-blue-700 shadow-lg'
-                        : 'bg-gray-800 text-white hover:bg-gray-900'
-                    }`}
-                  >
-                    {pkg.buttonText} - {formatPrice(pkg.price)}
-                  </button>
-                )}
-
-                {/* Free trial notice */}
-                {pkg.price === 0 && (
-                  <p className="text-center text-gray-500 text-xs mt-2">
-                    No credit card required
-                  </p>
-                )}
+                </div>
               </div>
             </div>
           ))}
@@ -383,67 +322,86 @@ const Packages: React.FC = () => {
 
       {/* Payment Modal */}
       {showPaymentModal && selectedPackage && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-          <div className="bg-white rounded-2xl max-w-md w-full p-6">
-            <div className="flex justify-between items-center mb-4">
-              <h3 className="text-2xl font-bold text-gray-800">Complete Payment</h3>
+        <div className="fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center z-50 p-4">
+          <div className="bg-white rounded-3xl max-w-md w-full p-8 transform transition-all duration-300 scale-100 opacity-100">
+            <div className="flex justify-between items-center mb-6">
+              <h3 className="text-3xl font-bold text-gray-800">Complete Payment</h3>
               <button 
                 onClick={() => setShowPaymentModal(false)}
-                className="text-gray-500 hover:text-gray-700"
+                className="text-gray-500 hover:text-gray-700 text-3xl font-bold leading-none"
               >
-                ✕
+                ×
               </button>
             </div>
             
-            <div className="bg-gray-50 rounded-xl p-4 mb-6">
-              <h4 className="font-semibold text-gray-800 mb-2">{selectedPackage.name}</h4>
-              <p className="text-gray-600 text-sm mb-2">{selectedPackage.description}</p>
-              <p className="text-gray-600 text-sm mb-2">Valid for {selectedPackage.duration}</p>
-              <div className="flex items-center gap-2">
-                <p className="text-xl font-bold text-blue-600">{formatPrice(selectedPackage.price)}</p>
-                {selectedPackage.originalPrice > selectedPackage.price && (
-                  <p className="text-sm text-gray-500 line-through">{formatPrice(selectedPackage.originalPrice)}</p>
-                )}
+            {/* Package Summary */}
+            <div className="bg-gradient-to-r from-blue-50 to-purple-50 rounded-2xl p-6 mb-6 border-2 border-blue-200">
+              <h4 className="font-bold text-xl text-gray-800 mb-2">{selectedPackage.name}</h4>
+              <p className="text-gray-600 text-sm mb-3">{selectedPackage.description}</p>
+              <div className="flex items-center justify-between">
+                <div>
+                  <p className="text-gray-500 text-sm">Duration</p>
+                  <p className="font-semibold text-gray-700">{selectedPackage.duration}</p>
+                </div>
+                <div className="text-right">
+                  <p className="text-gray-500 text-sm">Total Amount</p>
+                  <div className="flex items-center gap-2">
+                    <p className="text-2xl font-bold text-blue-600">{formatPrice(selectedPackage.price)}</p>
+                    {selectedPackage.originalPrice > selectedPackage.price && (
+                      <p className="text-sm text-gray-500 line-through">{formatPrice(selectedPackage.originalPrice)}</p>
+                    )}
+                  </div>
+                </div>
               </div>
               {selectedPackage.originalPrice > selectedPackage.price && (
-                <p className="text-green-600 text-sm font-semibold">
-                  You save {formatPrice(selectedPackage.originalPrice - selectedPackage.price)}!
-                </p>
+                <div className="mt-3 bg-green-100 border border-green-200 rounded-lg p-2">
+                  <p className="text-green-700 text-sm font-semibold text-center">
+                    🎉 You save {formatPrice(selectedPackage.originalPrice - selectedPackage.price)}!
+                  </p>
+                </div>
               )}
             </div>
 
-            {/* ✅ Payment Button Component */}
+            {/* Payment Button (Placeholder for actual implementation) */}
             <PaymentButton
-              amount={selectedPackage.price} // ✅ Exact amount from package
+              amount={selectedPackage.price}
               packageName={selectedPackage.name}
               packageDescription={selectedPackage.description}
               onSuccess={handlePaymentSuccess}
               onFailure={handlePaymentFailure}
-              className="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-xl font-semibold"
+              className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white py-4 rounded-2xl font-bold text-lg shadow-lg hover:shadow-xl transition-all duration-300"
             >
-              Pay {formatPrice(selectedPackage.price)} Now
+              💳 Pay {formatPrice(selectedPackage.price)} Now
             </PaymentButton>
 
-            <div className="mt-4 text-center text-sm text-gray-500">
-              🔒 Secure payment powered by Razorpay
+            <div className="mt-6 text-center">
+              <div className="flex items-center justify-center gap-2 text-sm text-gray-500 mb-2">
+                <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                🔒 Secure & Encrypted Payment
+              </div>
+              <p className="text-xs text-gray-400">
+                Powered by Razorpay • All major cards accepted
+              </p>
             </div>
           </div>
         </div>
       )}
 
-      {/* CTA Section */}
-      <section className="bg-gradient-to-r from-blue-600 to-indigo-700 text-white py-16">
+      {/* Final CTA Section */}
+      <section className="bg-gradient-to-r from-gray-900 to-black text-white py-16 sm:py-20">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="text-4xl font-bold mb-4">Still Confused About Which Package to Choose?</h2>
-          <p className="text-xl mb-8 max-w-2xl mx-auto">
-            Our experts will help you select the perfect package based on your requirements
+          <h2 className="text-3xl md:text-5xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-blue-300 to-purple-300">
+            Need Expert Guidance?
+          </h2>
+          <p className="text-lg mb-8 max-w-2xl mx-auto opacity-90">
+            Our team is ready to help you choose the best plan for your needs.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button className="bg-white text-blue-600 px-8 py-4 rounded-xl font-semibold text-lg hover:bg-gray-100 transition shadow-lg">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+            <button className="w-full sm:w-auto bg-gradient-to-r from-blue-500 to-purple-500 text-white px-8 py-3 rounded-xl font-bold text-md hover:from-blue-600 hover:to-purple-600 transition-all duration-300 transform hover:scale-[1.03] shadow-xl">
               📞 Call Expert: +91-9876543210
             </button>
-            <button className="bg-transparent border-2 border-white text-white px-8 py-4 rounded-xl font-semibold text-lg hover:bg-white hover:text-blue-600 transition">
-              💬 Chat with Us
+            <button className="w-full sm:w-auto bg-white text-gray-900 px-8 py-3 rounded-xl font-bold text-md hover:bg-gray-100 transition-all duration-300 transform hover:scale-[1.03] shadow-xl border-2 border-white">
+              💬 24/7 WhatsApp Support
             </button>
           </div>
         </div>
