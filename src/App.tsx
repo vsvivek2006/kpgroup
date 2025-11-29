@@ -19,6 +19,7 @@ import Signup from './pages/Signup';
 import Services from './pages/Services';
 import Rent from './pages/Rent';
 import Properties from './pages/Properties';
+import Refund from './pages/Refund';
 
 
 
@@ -130,6 +131,7 @@ function App() {
             {/* Legal Pages */}
             <Route path="/terms" element={<Terms />} />
             <Route path="/privacy" element={<Privacy />} />
+            <Route path="/refund" element={<Refund />} /> 
             
             
             {/* User Account Pages */}
