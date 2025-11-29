@@ -168,8 +168,8 @@ const Home = () => {
   const pricingPackages = [
     {
       name: "STARTER PACKAGE",
-      price: "₹99",
-      originalPrice: "₹199",
+      price: "₹299",
+      originalPrice: "₹599",
       duration: "one-time",
       description: "Perfect for individual property sellers",
       features: [
@@ -191,8 +191,8 @@ const Home = () => {
     },
     {
       name: "BASIC PACKAGE",
-      price: "₹249", 
-      originalPrice: "₹499",
+      price: "₹799", 
+      originalPrice: "₹1599",
       duration: "one-time",
       description: "Great for regular property listings",
       features: [
@@ -214,8 +214,8 @@ const Home = () => {
     },
     {
       name: "PRO PACKAGE",
-      price: "₹499",
-      originalPrice: "₹999",
+      price: "₹1199",
+      originalPrice: "₹2399",
       duration: "monthly", 
       description: "Complete solution for professional agents",
       features: [
