@@ -290,7 +290,6 @@ const Footer: React.FC = () => {
                 { name: "Privacy Policy", path: "/privacy" },
                 { name: "Terms of Service", path: "/terms" },
                 { name: "Refund Policy", path: "/refund" },
-                { name: "Disclaimer", path: "/disclaimer" }
               ].map((item) => (
                 <Link 
                   key={item.name}
